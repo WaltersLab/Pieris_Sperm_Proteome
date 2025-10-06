@@ -1891,14 +1891,17 @@ proteins.</p>
 <p>How many sperm proteins have PANNZER annotations?</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co">#Cross-Tabulate </span></span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>desc <span class="ot">&lt;-</span> merge_by_gene<span class="sc">$</span>master.de  <span class="co"># get sperm-differentiation assignment</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>type <span class="ot">&lt;-</span> <span class="fu">is.na</span>(merge_by_gene<span class="sc">$</span>desc) <span class="co"># Logical, TRUE if annotated by PANNZER</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>type <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(merge_by_gene<span class="sc">$</span>desc) <span class="co"># Logical, TRUE if annotated by PANNZER</span></span>
 <span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>missingannotations <span class="ot">&lt;-</span> <span class="fu">table</span>(desc, type)</span>
 <span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="fu">write.csv</span>(missingannotations, <span class="at">file =</span> <span class="st">&quot;../Results/Pannzer-by-DE_table.csv&quot;</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>            <span class="at">quote =</span> F, <span class="at">col.names =</span> <span class="cn">NA</span>, <span class="at">row.names =</span> T )</span></code></pre></div>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="fu">write.csv</span>(missingannotations, <span class="at">file =</span> <span class="st">&quot;../Results/Pannzer-by-DE_table.csv&quot;</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>            <span class="at">quote =</span> F, <span class="at">col.names =</span> <span class="cn">NA</span>, <span class="at">row.names =</span> T)</span></code></pre></div>
 <pre><code>## Warning in write.csv(missingannotations, file =
 ## &quot;../Results/Pannzer-by-DE_table.csv&quot;, : attempt to set &#39;col.names&#39; ignored</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">kable</span>(missingannotations)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">PANNZER annotation by DE</span><span class="sc">\n</span><span class="st">TRUE if annotated&quot;</span>, <span class="at">file =</span> <span class="st">&quot;../Results/Pannzer-by-DE_table.csv&quot;</span>, <span class="at">append =</span> T )</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">kable</span>(missingannotations)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1910,22 +1913,22 @@ proteins.</p>
 <tbody>
 <tr class="odd">
 <td align="left">apyrene</td>
-<td align="right">100</td>
 <td align="right">25</td>
+<td align="right">100</td>
 </tr>
 <tr class="even">
 <td align="left">eupyrene</td>
-<td align="right">86</td>
 <td align="right">64</td>
+<td align="right">86</td>
 </tr>
 <tr class="odd">
 <td align="left">unbiased</td>
-<td align="right">1111</td>
 <td align="right">276</td>
+<td align="right">1111</td>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(<span class="fu">prop.table</span>(missingannotations), <span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(<span class="fu">prop.table</span>(missingannotations, <span class="at">margin =</span> <span class="dv">1</span>), <span class="dv">4</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1937,18 +1940,18 @@ proteins.</p>
 <tbody>
 <tr class="odd">
 <td align="left">apyrene</td>
-<td align="right">0.0602</td>
-<td align="right">0.0150</td>
+<td align="right">0.2000</td>
+<td align="right">0.8000</td>
 </tr>
 <tr class="even">
 <td align="left">eupyrene</td>
-<td align="right">0.0517</td>
-<td align="right">0.0385</td>
+<td align="right">0.4267</td>
+<td align="right">0.5733</td>
 </tr>
 <tr class="odd">
 <td align="left">unbiased</td>
-<td align="right">0.6685</td>
-<td align="right">0.1661</td>
+<td align="right">0.1990</td>
+<td align="right">0.8010</td>
 </tr>
 </tbody>
 </table>
@@ -1958,47 +1961,132 @@ proteins.</p>
 ## 
 ## data:  missingannotations
 ## X-squared = 41.244, df = 2, p-value = 1.106e-09</code></pre>
+<p>How many sperm proteins have BLAST annotations?</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co">#Cross-Tabulate </span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>type <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(merge_by_gene<span class="sc">$</span>subject_seq.id) <span class="co"># Logical, TRUE if annotated by BLAST</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>missingannotations <span class="ot">&lt;-</span> <span class="fu">table</span>(desc, type)</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="fu">write.csv</span>(missingannotations, <span class="at">file =</span> <span class="st">&quot;../Results/BLAST-by-DE_table.csv&quot;</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>            <span class="at">quote =</span> F, <span class="at">col.names =</span> <span class="cn">NA</span>, <span class="at">row.names =</span> T )</span></code></pre></div>
+<pre><code>## Warning in write.csv(missingannotations, file =
+## &quot;../Results/BLAST-by-DE_table.csv&quot;, : attempt to set &#39;col.names&#39; ignored</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">BLAST annotation by DE</span><span class="sc">\n</span><span class="st">TRUE if annotated&quot;</span>, <span class="at">file =</span> <span class="st">&quot;../Results/BLAST-by-DE_table.csv&quot;</span>, <span class="at">append =</span> T )</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="fu">kable</span>(missingannotations)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">FALSE</th>
+<th align="right">TRUE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">apyrene</td>
+<td align="right">21</td>
+<td align="right">104</td>
+</tr>
+<tr class="even">
+<td align="left">eupyrene</td>
+<td align="right">63</td>
+<td align="right">87</td>
+</tr>
+<tr class="odd">
+<td align="left">unbiased</td>
+<td align="right">222</td>
+<td align="right">1165</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">round</span>(<span class="fu">prop.table</span>(missingannotations, <span class="at">margin =</span> <span class="dv">1</span>), <span class="dv">4</span>))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">FALSE</th>
+<th align="right">TRUE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">apyrene</td>
+<td align="right">0.1680</td>
+<td align="right">0.8320</td>
+</tr>
+<tr class="even">
+<td align="left">eupyrene</td>
+<td align="right">0.4200</td>
+<td align="right">0.5800</td>
+</tr>
+<tr class="odd">
+<td align="left">unbiased</td>
+<td align="right">0.1601</td>
+<td align="right">0.8399</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">chisq.test</span>(missingannotations)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  missingannotations
+## X-squared = 61.121, df = 2, p-value = 5.342e-14</code></pre>
 <p>It appears the apy- &amp; eup-biased proteins are disproportionately
 likely to be without annotations.</p>
 <p>How many sperm proteins have BLAST and/or PANNZER annotations?</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co">#Summarize how many proteins do or do not have annotations</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>missingAnn <span class="ot">&lt;-</span> <span class="fu">apply</span>(merge_by_gene[,<span class="fu">c</span>(<span class="st">&quot;desc&quot;</span>,<span class="st">&quot;subject_seq.id&quot;</span>)], <span class="at">MAR =</span> <span class="dv">2</span>, <span class="cf">function</span>(x) {<span class="fu">sum</span>(<span class="fu">is.na</span>(x))})</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">names</span>(missingAnn) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;PANNZER&quot;</span>, <span class="st">&quot;BLAST&quot;</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="fu">print</span>(missingAnn)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="co">#Summarize how many proteins do or do not have annotations</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>missingAnn <span class="ot">&lt;-</span> <span class="fu">apply</span>(merge_by_gene[,<span class="fu">c</span>(<span class="st">&quot;desc&quot;</span>,<span class="st">&quot;subject_seq.id&quot;</span>)], <span class="at">MAR =</span> <span class="dv">2</span>, <span class="cf">function</span>(x) {<span class="fu">sum</span>(<span class="fu">is.na</span>(x))})</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="fu">names</span>(missingAnn) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;PANNZER&quot;</span>, <span class="st">&quot;BLAST&quot;</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="fu">print</span>(missingAnn)</span></code></pre></div>
 <pre><code>## PANNZER   BLAST 
 ##     365     306</code></pre>
 <p>Let’s cross-reference how many sperm proteins have BLAST vs
 PANNZER</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co">#How many have BLAST versus how many have PANNZER</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>PANNZER_annotations <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(merge_by_gene<span class="sc">$</span>desc)</span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>BLAST_annotations <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(merge_by_gene<span class="sc">$</span>subject_seq.id)</span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>annotationComparisons <span class="ot">&lt;-</span> <span class="fu">table</span>(PANNZER_annotations, BLAST_annotations) <span class="co">#Cross tabulate</span></span>
-<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="fu">print</span>(annotationComparisons)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co">#How many have BLAST versus how many have PANNZER</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>PANNZER_annotations <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(merge_by_gene<span class="sc">$</span>desc)</span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>BLAST_annotations <span class="ot">&lt;-</span> <span class="sc">!</span><span class="fu">is.na</span>(merge_by_gene<span class="sc">$</span>subject_seq.id)</span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>annotationComparisons <span class="ot">&lt;-</span> <span class="fu">table</span>(PANNZER_annotations, BLAST_annotations) <span class="co">#Cross tabulate</span></span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a><span class="fu">print</span>(annotationComparisons)</span></code></pre></div>
 <pre><code>##                    BLAST_annotations
 ## PANNZER_annotations FALSE TRUE
 ##               FALSE   257  108
 ##               TRUE     49 1248</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Using ftable captures dim names</span></span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="fu">write.ftable</span>(<span class="fu">ftable</span>(annotationComparisons), <span class="at">file =</span> <span class="st">&quot;../Results/annotationComparisons.txt&quot;</span>,</span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>             <span class="at">quote =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co"># Using ftable captures dim names</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="fu">write.ftable</span>(<span class="fu">ftable</span>(annotationComparisons), <span class="at">file =</span> <span class="st">&quot;../Results/annotationComparisons.txt&quot;</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>             <span class="at">quote =</span> F)</span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a>annotCompByDE <span class="ot">&lt;-</span> <span class="fu">table</span>(desc, PANNZER_annotations, BLAST_annotations) <span class="co">#Cross tabulate</span></span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a><span class="fu">ftable</span>(annotCompByDE)</span></code></pre></div>
+<pre><code>##                              BLAST_annotations FALSE TRUE
+## desc     PANNZER_annotations                             
+## apyrene  FALSE                                    16    9
+##          TRUE                                      5   95
+## eupyrene FALSE                                    53   11
+##          TRUE                                     10   76
+## unbiased FALSE                                   188   88
+##          TRUE                                     34 1077</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="fu">write.ftable</span>(<span class="fu">ftable</span>(annotCompByDE), <span class="at">file =</span> <span class="st">&quot;../Results/annotationComparisonsByDE.txt&quot;</span>,</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>             <span class="at">quote =</span> F)</span></code></pre></div>
 </div>
 <div id="streamline-output" class="section level2">
 <h2>Streamline output</h2>
 <p>The complete data structure has a lot of columns that aren’t very
 useful. So let’s slim this down to columns that are the more informative
 selection.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>goodCols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GeneID&quot;</span>, <span class="st">&quot;TrxID&quot;</span>, <span class="st">&quot;Means.All&quot;</span>, <span class="st">&quot;Means.Apy&quot;</span>, <span class="st">&quot;Means.Eupy&quot;</span>, </span>
-<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>              <span class="st">&quot;Apyrene_vs_Eupyrene_p.bh&quot;</span>, <span class="st">&quot;significant_bh&quot;</span>,<span class="st">&quot;Apyrene_vs_Eupyrene_diff&quot;</span>, </span>
-<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>              <span class="st">&quot;desc&quot;</span>, <span class="st">&quot;subject_seq.id&quot;</span>, <span class="st">&quot;expect_value&quot;</span>, <span class="st">&quot;organism_commonName&quot;</span>,</span>
-<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>              <span class="st">&quot;organism_scientificName&quot;</span>, <span class="st">&quot;organism_group&quot;</span>, <span class="st">&quot;function.&quot;</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>goodCols[<span class="sc">!</span>goodCols <span class="sc">%in%</span> <span class="fu">names</span>(merge_by_gene)]</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>goodCols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GeneID&quot;</span>, <span class="st">&quot;TrxID&quot;</span>, <span class="st">&quot;Means.All&quot;</span>, <span class="st">&quot;Means.Apy&quot;</span>, <span class="st">&quot;Means.Eupy&quot;</span>, </span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>              <span class="st">&quot;Apyrene_vs_Eupyrene_p.bh&quot;</span>, <span class="st">&quot;significant_bh&quot;</span>,<span class="st">&quot;Apyrene_vs_Eupyrene_diff&quot;</span>, </span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>              <span class="st">&quot;desc&quot;</span>, <span class="st">&quot;subject_seq.id&quot;</span>, <span class="st">&quot;expect_value&quot;</span>, <span class="st">&quot;organism_commonName&quot;</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>              <span class="st">&quot;organism_scientificName&quot;</span>, <span class="st">&quot;organism_group&quot;</span>, <span class="st">&quot;function.&quot;</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a>goodCols[<span class="sc">!</span>goodCols <span class="sc">%in%</span> <span class="fu">names</span>(merge_by_gene)]</span></code></pre></div>
 <pre><code>## character(0)</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>merge_by_gene[<span class="fu">order</span>(merge_by_gene<span class="sc">$</span>Means.All), goodCols] <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">%&gt;%</span>  <span class="fu">kable_paper</span>(<span class="st">&quot;hover&quot;</span>, <span class="at">full_width =</span> F, <span class="at">font_size =</span> <span class="dv">9</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;800px&quot;</span>, <span class="at">height =</span> <span class="st">&quot;500px&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>merge_by_gene[<span class="fu">order</span>(merge_by_gene<span class="sc">$</span>Means.All), goodCols] <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">%&gt;%</span>  <span class="fu">kable_paper</span>(<span class="st">&quot;hover&quot;</span>, <span class="at">full_width =</span> F, <span class="at">font_size =</span> <span class="dv">9</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;800px&quot;</span>, <span class="at">height =</span> <span class="st">&quot;500px&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:800px; ">
 <table class=" lightable-paper lightable-hover" style="font-size: 9px; font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -86882,22 +86970,22 @@ NA
 </table>
 </div>
 <p>Save this “slimmer” version of annotations to a distinct file.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>GeneAnnotations <span class="ot">&lt;-</span> merge_by_gene[ , goodCols]</span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="co">#Write out to csv</span></span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="fu">write.csv</span>(GeneAnnotations, <span class="at">file =</span> <span class="st">&quot;../Results/GeneAnnotations.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>GeneAnnotations <span class="ot">&lt;-</span> merge_by_gene[ , goodCols]</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a><span class="co">#Write out to csv</span></span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a><span class="fu">write.csv</span>(GeneAnnotations, <span class="at">file =</span> <span class="st">&quot;../Results/GeneAnnotations.csv&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="session-info" class="section level1">
 <h1>Session Info</h1>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
-<pre><code>## R version 4.4.2 (2024-10-31)
-## Platform: x86_64-apple-darwin20
-## Running under: macOS Sonoma 14.6.1
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>## R version 4.5.1 (2025-06-13)
+## Platform: aarch64-apple-darwin20
+## Running under: macOS Sequoia 15.6.1
 ## 
 ## Matrix products: default
-## BLAS:   /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/lib/libRblas.0.dylib 
-## LAPACK: /Library/Frameworks/R.framework/Versions/4.4-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib 
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1
 ## 
 ## locale:
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -86910,24 +86998,24 @@ NA
 ## [8] base     
 ## 
 ## other attached packages:
-## [1] kableExtra_1.4.0    Biostrings_2.74.1   GenomeInfoDb_1.42.1
-## [4] XVector_0.46.0      IRanges_2.40.1      S4Vectors_0.44.0   
-## [7] BiocGenerics_0.52.0
+## [1] kableExtra_1.4.0    Biostrings_2.76.0   GenomeInfoDb_1.44.2
+## [4] XVector_0.48.0      IRanges_2.42.0      S4Vectors_0.46.0   
+## [7] BiocGenerics_0.54.0 generics_0.1.4     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] jsonlite_1.8.9          compiler_4.4.2          crayon_1.5.3           
-##  [4] xml2_1.3.6              stringr_1.5.1           jquerylib_0.1.4        
-##  [7] systemfonts_1.1.0       scales_1.3.0            yaml_2.3.10            
-## [10] fastmap_1.2.0           R6_2.5.1                knitr_1.49             
-## [13] munsell_0.5.1           GenomeInfoDbData_1.2.13 svglite_2.1.3          
-## [16] bslib_0.8.0             rlang_1.1.4             cachem_1.1.0           
-## [19] stringi_1.8.4           xfun_0.49               sass_0.4.9             
-## [22] viridisLite_0.4.2       cli_3.6.3               magrittr_2.0.3         
-## [25] zlibbioc_1.52.0         digest_0.6.37           rstudioapi_0.17.1      
-## [28] lifecycle_1.0.4         vctrs_0.6.5             evaluate_1.0.1         
-## [31] glue_1.8.0              colorspace_2.1-1        rmarkdown_2.29         
-## [34] httr_1.4.7              tools_4.4.2             htmltools_0.5.8.1      
-## [37] UCSC.utils_1.2.0</code></pre>
+##  [1] jsonlite_2.0.0          compiler_4.5.1          crayon_1.5.3           
+##  [4] xml2_1.4.0              stringr_1.5.2           jquerylib_0.1.4        
+##  [7] systemfonts_1.2.3       scales_1.4.0            textshaping_1.0.3      
+## [10] yaml_2.3.10             fastmap_1.2.0           R6_2.6.1               
+## [13] knitr_1.50              GenomeInfoDbData_1.2.14 svglite_2.2.1          
+## [16] bslib_0.9.0             RColorBrewer_1.1-3      rlang_1.1.6            
+## [19] cachem_1.1.0            stringi_1.8.7           xfun_0.53              
+## [22] sass_0.4.10             viridisLite_0.4.2       cli_3.6.5              
+## [25] magrittr_2.0.4          digest_0.6.37           rstudioapi_0.17.1      
+## [28] lifecycle_1.0.4         vctrs_0.6.5             evaluate_1.0.5         
+## [31] glue_1.8.0              farver_2.1.2            rmarkdown_2.29         
+## [34] httr_1.4.7              tools_4.5.1             htmltools_0.5.8.1      
+## [37] UCSC.utils_1.4.0</code></pre>
 </div>
 
 

@@ -1,4 +1,8 @@
 ,FALSE,TRUE
-apyrene,100,25
-eupyrene,86,64
-unbiased,1111,276
+apyrene,25,100
+eupyrene,64,86
+unbiased,276,1111
+
+
+PANNZER annotation by DE
+TRUE if annotated

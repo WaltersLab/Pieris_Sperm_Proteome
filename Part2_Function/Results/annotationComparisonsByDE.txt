@@ -1,0 +1,8 @@
+                             BLAST_annotations FALSE TRUE
+desc     PANNZER_annotations                             
+apyrene  FALSE                                    16    9
+         TRUE                                      5   95
+eupyrene FALSE                                    53   11
+         TRUE                                     10   76
+unbiased FALSE                                   188   88
+         TRUE                                     34 1077

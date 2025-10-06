@@ -130,19 +130,44 @@ How many sperm proteins have PANNZER annotations?
 ```{r}
 #Cross-Tabulate 
 desc <- merge_by_gene$master.de  # get sperm-differentiation assignment
-type <- is.na(merge_by_gene$desc) # Logical, TRUE if annotated by PANNZER
+type <- !is.na(merge_by_gene$desc) # Logical, TRUE if annotated by PANNZER
 missingannotations <- table(desc, type)
 
+
 write.csv(missingannotations, file = "../Results/Pannzer-by-DE_table.csv",
-            quote = F, col.names = NA, row.names = T )
+            quote = F, col.names = NA, row.names = T)
+cat("\n\nPANNZER annotation by DE\nTRUE if annotated", file = "../Results/Pannzer-by-DE_table.csv", append = T )
 
 kable(missingannotations)
-kable(round(prop.table(missingannotations), 4))
+kable(round(prop.table(missingannotations, margin = 1), 4))
 
 
 chisq.test(missingannotations)
 
 ```
+
+
+How many sperm proteins have BLAST annotations?
+
+
+```{r}
+#Cross-Tabulate 
+
+type <- !is.na(merge_by_gene$subject_seq.id) # Logical, TRUE if annotated by BLAST
+missingannotations <- table(desc, type)
+
+write.csv(missingannotations, file = "../Results/BLAST-by-DE_table.csv",
+            quote = F, col.names = NA, row.names = T )
+cat("\n\nBLAST annotation by DE\nTRUE if annotated", file = "../Results/BLAST-by-DE_table.csv", append = T )
+
+kable(missingannotations)
+kable(round(prop.table(missingannotations, margin = 1), 4))
+
+
+chisq.test(missingannotations)
+
+```
+
 
 It appears the apy- & eup-biased proteins are disproportionately likely to be without annotations.
 
@@ -168,6 +193,12 @@ annotationComparisons <- table(PANNZER_annotations, BLAST_annotations) #Cross ta
 print(annotationComparisons)
 # Using ftable captures dim names
 write.ftable(ftable(annotationComparisons), file = "../Results/annotationComparisons.txt",
+             quote = F)
+
+annotCompByDE <- table(desc, PANNZER_annotations, BLAST_annotations) #Cross tabulate
+ftable(annotCompByDE)
+
+write.ftable(ftable(annotCompByDE), file = "../Results/annotationComparisonsByDE.txt",
              quote = F)
 
 ```
