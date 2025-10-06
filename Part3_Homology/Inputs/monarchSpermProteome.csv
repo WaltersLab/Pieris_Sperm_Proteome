@@ -1,0 +1,680 @@
+﻿Gene,SpermSubset,ProteinOrthoHomology,PANNZER_Description,Avg NSAF Apyrene,Avg NSAF Eupyrene
+DPOGS200051,Shared,Msex2.07359,NA,0.000697686,0.000392676
+DPOGS200107,Shared,NA,NA,0.000309005,0.000101306
+DPOGS200137,Eupyrene,NA,Leucine-rich repeat-containing protein 23,NA,0.000470809
+DPOGS200150,Shared,"Msex2.13025,Msex2.00999",Tetraspanin,0.002280501,0.0021048
+DPOGS200170,Apyrene,Msex2.01013,Tetraspanin,0.000677535,NA
+DPOGS200181,Apyrene,Msex2.06755,Chromodomain-helicase-DNA-binding protein Mi-2,7.22E-05,NA
+DPOGS200206,Eupyrene,Msex2.02475,Tissue factor pathway inhibitor,NA,0.005151753
+DPOGS200283,Shared,Msex2.13825,NA,0.004487787,0.004214252
+DPOGS200300,Apyrene,Msex2.05369,NA,0.000696319,NA
+DPOGS200327,Shared,"Msex2.08645,Msex2.07366",Non-muscle actin,0.003036588,0.002244936
+DPOGS200328,Shared,"Msex2.08645,Msex2.07366",Alpha-actin,0.003036588,0.002244936
+DPOGS200337,Shared,Msex2.05354,Putative cohesin subunit,0.000409721,0.000227616
+DPOGS200337,Shared,Msex2.05354,Coiled-coil domain-containing protein 40,NA,0.000956233
+DPOGS200355,Eupyrene,Msex2.07821,Mitochondrial ATP synthase subunit f,0.002097771,0.0089476
+DPOGS200359,Shared,Msex2.13828,NA,NA,6.38E-05
+DPOGS200366,Eupyrene,Msex2.03536,RING finger protein unkempt,0.000828655,0.000898528
+DPOGS200377,Shared,Msex2.01111,"ATP synthase Oligomycin sensitivity conferral subunit, putative",NA,0.001615115
+DPOGS200377,Shared,Msex2.01111,Mitochondrial ATP synthase subunit O,NA,1.57E-05
+DPOGS200384,Eupyrene,Msex2.02701,Mitochondrial dicarboxylate carrier,NA,0.002031686
+DPOGS200453,Eupyrene,Msex2.10435,Neurofibromin truncated,0.000892042,0.00065015
+DPOGS200465,Eupyrene,Msex2.08151,NA,0.000637392,0.000324679
+DPOGS200485,Shared,NA,NA,0.008183987,0.008322606
+DPOGS200496,Shared,Msex2.02970,Nucleoside diphosphate kinase,0.00255823,0.001360124
+DPOGS200518,Shared,Msex2.08594,Metalloendopeptidase,NA,0.000190688
+DPOGS200548,Shared,NA,Aminopeptidase,0.000148346,NA
+DPOGS200549,Eupyrene,NA,NA,NA,5.68E-05
+DPOGS200625,Apyrene,Msex2.02589,Pre-mRNA-processing factor,0.000738662,0.000617442
+DPOGS200629,Eupyrene,Msex2.04076,NA,0.001639706,0.001644387
+DPOGS200638,Shared,Msex2.04066,Phosphodiesterase,NA,0.000817484
+DPOGS200646,Shared,"Msex2.04050,Msex2.04051",NADH dehydrogenase,NA,0.001102863
+DPOGS200647,Eupyrene,"Msex2.04050,Msex2.04051",NA,0.000128902,NA
+DPOGS200759,Eupyrene,Msex2.11042,NA,0.000454879,NA
+DPOGS200771,Apyrene,Msex2.07440,A disintegrin and metalloproteinase with thrombospondin motifs 18,NA,0.002418097
+DPOGS200773,Apyrene,NA,NA,NA,0.000825308
+DPOGS200799,Eupyrene,Msex2.12444,ATP synthase subunit beta vacuolar,0.003804975,0.002626844
+DPOGS200858,Eupyrene,Msex2.07792,"acyl carrier protein, mitochondrial isoform X2",0.002148042,0.00275183
+DPOGS200888,Shared,Msex2.06553,NADH-ubiquinone oxidoreductase subunit 8,0.000754033,0.000718101
+DPOGS200904,Shared,Msex2.11529,Citrate synthase,0.00096679,0.000589511
+DPOGS200908,Shared,Msex2.11523,EF-hand calcium-binding domain-containing protein 1,NA,0.000266691
+DPOGS200926,Shared,Msex2.03104,Glutamine-rich protein 2,NA,0.000535229
+DPOGS200969,Eupyrene,NA,NA,NA,0.003207402
+DPOGS200987,Eupyrene,NA,Mitochondrial 2-oxoglutarate/malate carrier protein isoform 1,0.00026873,NA
+DPOGS200989,Eupyrene,Msex2.03362,Mitochondrial 2-oxoglutarate/malate carrier protein isoform 1,3.48E-05,NA
+DPOGS201044,Apyrene,Msex2.02223,Desaturase,0.000217001,NA
+DPOGS201045,Apyrene,Msex2.02225,"sushi, von Willebrand factor type A, EGF and pentraxin domain-containing protein 1 isoform X1",0.000814882,0.000914932
+DPOGS201085,Apyrene,NA,NA,NA,0.000648905
+DPOGS201094,Shared,Msex2.06467,"Isocitrate dehydrogenase [NAD] subunit, mitochondrial",NA,0.002170774
+DPOGS201095,Eupyrene,NA,"Putative isocitrate dehydrogenase [NAD] subunit alpha, mitochondrial (Fragment)",0.001768289,0.001982923
+DPOGS201112,Eupyrene,Msex2.06954,Putative Trypsin alpha,0.000718723,0.001761749
+DPOGS201117,Shared,Msex2.06956,Mitochondrial cytochrome c oxidase subunit IV,NA,0.001801342
+DPOGS201118,Shared,Msex2.06957,Trypsin-4,0.002183419,0.001185159
+DPOGS201125,Eupyrene,Msex2.04716,Trypsin-1,0.000257369,NA
+DPOGS201143,Shared,Msex2.13123,WD repeat-containing protein 16,NA,0.000179632
+DPOGS201167,Apyrene,Msex2.11992,Sodium-independent sulfate anion transporter,0.001547685,0.000916871
+DPOGS201223,Eupyrene,Msex2.05184,NA,0.003892663,0.003043859
+DPOGS201289,Shared,Msex2.05412,"Dynein heavy chain 7, axonemal",0.004015342,0.003330325
+DPOGS201311,Shared,NA,NA,NA,0.000604941
+DPOGS201312,Shared,Msex2.05438,Chymotrypsin,0.003500265,0.004311532
+DPOGS201313,Eupyrene,Msex2.05437,NA,2.28E-05,NA
+DPOGS201323,Shared,Msex2.05418,Aspartate aminotransferase,0.00054929,0.000435561
+DPOGS201355,Apyrene,Msex2.06968,Dynein heavy chain,0.000463425,0.000508571
+DPOGS201379,Shared,Msex2.06578,Dynein heavy chain,NA,0.010065879
+DPOGS201389,Shared,NA,lymphocyte expansion molecule-like,NA,0.000161511
+DPOGS201402,Eupyrene,Msex2.06969,Adenine nucleotide translocase,NA,0.000128107
+DPOGS201519,Eupyrene,NA,Guanine nucleotide exchange factor DBS,NA,0.001682591
+DPOGS201524,Eupyrene,NA,NA,NA,0.000234401
+DPOGS201557,Eupyrene,NA,Putative uridylate kinase/adenylate kinase,0.000763226,0.000449777
+DPOGS201557,Eupyrene,NA,Adenylate kinase isoenzyme 1,NA,0.000292568
+DPOGS201597,Eupyrene,NA,NA,NA,0.003866904
+DPOGS201656,Shared,Msex2.09940,Axonemal inner arm dynein heavy chain 3,NA,0.000969202
+DPOGS201674,Eupyrene,Msex2.01886,NA,NA,0.000108264
+DPOGS201676,Eupyrene,Msex2.01888,NADH dehydrogenase [ubiquinone] 1 alpha subcomplex subunit 6,NA,0.000250162
+DPOGS201692,Eupyrene,NA,Coiled-coil domain-containing protein 63,NA,0.000215015
+DPOGS201709,Eupyrene,Msex2.11674,NA,NA,0.000689586
+DPOGS201744,Eupyrene,Msex2.06504,14-3-3 protein zeta,NA,0.000380228
+DPOGS201752,Eupyrene,Msex2.06493,Cullin-associated and neddylation-dissociated protein 1,NA,0.000668874
+DPOGS201801,Eupyrene,Msex2.08307,Coiled-coil domain-containing protein 63,0.000707122,NA
+DPOGS201813,Eupyrene,"Msex2.12647,Msex2.07480",Phosphoglycerate mutase,0.024079417,0.010538295
+DPOGS201832,Eupyrene,"Msex2.07934,Msex2.01052",Dynein intermediate chain 2,0.000176022,NA
+DPOGS201850,Apyrene,NA,Membrane magnesium transporter,7.42E-05,NA
+DPOGS201912,Shared,NA,NA,0.000205455,0.000220844
+DPOGS201928,Apyrene,Msex2.07918,Very low-density lipoprotein receptor,0.000313476,0.000282084
+DPOGS201965,Apyrene,Msex2.05568,Mitogen-activated protein kinase kinase kinase,0.006117801,0.007429827
+DPOGS201969,Shared,NA,NA,NA,9.46E-05
+DPOGS201984,Shared,Msex2.13505,NA,NA,0.00011388
+DPOGS202024,Shared,Msex2.03529,Succinate dehydrogenase iron-sulfur subunit,NA,0.000311714
+DPOGS202076,Eupyrene,Msex2.11618,Sodium-independent sulfate anion transporter,NA,0.000311714
+DPOGS202110,Eupyrene,Msex2.00165,NA,0.000401106,0.000443623
+DPOGS202129,Eupyrene,Msex2.06763,Putative: flagellar/basal body protein [Chlamydomonas reinhardtii],0.001751472,0.002868433
+DPOGS202130,Eupyrene,Msex2.06763,Putative: flagellar/basal body protein [Chlamydomonas reinhardtii],0.000992661,0.002046966
+DPOGS202178,Shared,Msex2.09677,Aspartate aminotransferase,0.000490102,0.000420954
+DPOGS202254,Shared,Msex2.08114,NA,NA,0.000845436
+DPOGS202261,Shared,Msex2.12581,NADH dehydrogenase [ubiquinone] 1 alpha subcomplex subunit,NA,0.000493973
+DPOGS202367,Shared,NA,NA,0.00592775,0.004011671
+DPOGS202376,Eupyrene,Msex2.10983,NA,0.001140206,0.000522399
+DPOGS202391,Eupyrene,Msex2.10371,NA,NA,0.003894989
+DPOGS202402,Shared,NA,Tubulin beta chain,0.001037156,0.001100491
+DPOGS202403,Shared,"Msex2.01816,Msex2.01815,Msex2.06075",Tubulin beta chain,NA,0.001500444
+DPOGS202417,Eupyrene,Msex2.01461,Tubulin beta chain,0.002663699,0.002490798
+DPOGS202421,Shared,NA,NA,0.001447371,0.001413735
+DPOGS202422,Eupyrene,Msex2.13184,Alpha amylase (Fragment),0.004555107,0.002536708
+DPOGS202432,Shared,NA,NA,NA,4.83E-05
+DPOGS202451,Shared,NA,"2-oxoglutarate dehydrogenase E1 component, mitochondrial",NA,0.000194719
+DPOGS202452,Shared,Msex2.04496,NA,7.23E-05,NA
+DPOGS202464,Eupyrene,NA,NA,0.000160678,NA
+DPOGS202511,Eupyrene,Msex2.02506,polyubiquitin-B,0.001102931,0.001079229
+DPOGS202523,Apyrene,Msex2.02511,"Dynein heavy chain, cytoplasmic",0.000351541,0.000264957
+DPOGS202538,Apyrene,NA,NA,0.00675707,0.002754976
+DPOGS202628,Shared,Msex2.01169,Mitochondrial prohibitin complex protein 2,0.001317312,0.001877912
+DPOGS202689,Shared,Msex2.07892,Coiled-coil domain-containing protein 135,0.002721239,0.001992504
+DPOGS202694,Shared,Msex2.07903,NA,NA,0.000508928
+DPOGS202695,Shared,Msex2.07904,NA,9.10E-06,NA
+DPOGS202769,Shared,Msex2.11487,Radial spoke head protein 9 like protein,0.000437534,0.000512348
+DPOGS202773,Eupyrene,Msex2.11496,Peroxiredoxin,0.000337316,0.000383812
+DPOGS202792,Apyrene,Msex2.06395,NA,0.000715416,0.000433798
+DPOGS202793,Shared,NA,"Dynein-1-beta heavy chain, flagellar inner arm I1 complex",0.000683805,0.000423267
+DPOGS202794,Shared,NA,NA,NA,0.000398361
+DPOGS202795,Shared,NA,NA,NA,0.000461354
+DPOGS202822,Shared,Msex2.04815,Phosphodiesterase,NA,0.001434026
+DPOGS202898,Eupyrene,Msex2.10721,NA,NA,0.003332596
+DPOGS202910,Eupyrene,Msex2.12147,ATP-binding cassette sub-family A member 3,NA,0.00033225
+DPOGS202970,Eupyrene,NA,Putative malate dehydrogenase,NA,0.000615878
+DPOGS202994,Eupyrene,Msex2.11850,Ociad protein isoform 1,0.000136891,5.86E-05
+DPOGS202994,Eupyrene,Msex2.11850,OCIA domain-containing protein 1,NA,0.001261943
+DPOGS202995,Eupyrene,Msex2.11849,OCIA domain-containing protein 1,NA,0.000113182
+DPOGS202999,Eupyrene,Msex2.01334,ATP synthase subunit gamma,0.000952437,0.002297954
+DPOGS203034,Shared,Msex2.07351,NA,NA,0.000132228
+DPOGS203039,Eupyrene,Msex2.01269,NA,0.006795273,0.004683112
+DPOGS203207,Eupyrene,Msex2.06743,NA,0.004562305,0.004751286
+DPOGS203218,Shared,Msex2.11923,Flagellar associated protein (Fragment),0.001465454,0.001326998
+DPOGS203222,Eupyrene,Msex2.05588,Transmembrane anterior posterior transformation,NA,5.45E-05
+DPOGS203278,Shared,NA,NA,0.000581402,0.000927584
+DPOGS203282,Shared,Msex2.01420,Succinate dehydrogenase flavoprotein subunit,0.001594848,0.001093186
+DPOGS203290,Shared,Msex2.01396,Aldose 1-epimerase,0.018694324,0.013773752
+DPOGS203293,Eupyrene,Msex2.01399,NA,0.007307066,0.003579907
+DPOGS203308,Shared,Msex2.05998,NA,NA,0.002035118
+DPOGS203321,Shared,Msex2.03689,Mitochondrial processing peptidase beta subunit,NA,0.000306015
+DPOGS203321,Shared,Msex2.03689,"Cytochrome b-c1 complex subunit 1, mitochondrial",0.000744879,0.000518068
+DPOGS203334,Shared,"Msex2.04846,Msex2.02828",Tubulin alpha chain,NA,0.004496865
+DPOGS203337,Shared,Msex2.01345,NA,0.004903745,0.002461035
+DPOGS203359,Eupyrene,NA,NA,0.004733708,0.002299314
+DPOGS203389,Eupyrene,Msex2.03686,Testicular secretory protein Li 3,0.005749246,0.004183678
+DPOGS203391,Shared,NA,Ubiquinol-cytochrome c reductase core protein I,NA,0.006809046
+DPOGS203413,Eupyrene,NA,NA,NA,0.002097072
+DPOGS203442,Shared,NA,NA,NA,0.000115001
+DPOGS203450,Shared,Msex2.01968,NA,NA,5.82E-05
+DPOGS203451,Shared,NA,NA,7.21E-05,5.34E-05
+DPOGS203469,Eupyrene,NA,NADH dehydrogenase [ubiquinone] 1 beta subcomplex subunit,0.001553662,0.00255332
+DPOGS203490,Eupyrene,Msex2.07462,Vacuolar ATP synthase catalytic subunit A,0.000677004,0.001316649
+DPOGS203491,Eupyrene,Msex2.07463,NA,NA,0.000374008
+DPOGS203525,Eupyrene,Msex2.04911,NA,0.000615011,0.000726805
+DPOGS203530,Shared,NA,NA,0.001037575,0.010789814
+DPOGS203597,Shared,Msex2.01138,NADH dehydrogenase [ubiquinone] 1 beta subcomplex subunit,0.000427045,0.005046573
+DPOGS203603,Shared,Msex2.01151,NA,0.000114402,NA
+DPOGS203616,Eupyrene,NA,NA,NA,0.000499889
+DPOGS203617,Shared,"Msex2.01152,Msex2.01150",NA,0.003535878,0.006078634
+DPOGS203626,Shared,Msex2.13998,NA,NA,0.001396283
+DPOGS203629,Shared,Msex2.05958,NA,NA,0.001326114
+DPOGS203640,Apyrene,NA,NA,0.001150861,0.001201784
+DPOGS203644,Eupyrene,Msex2.13476,Sui m 6 allergen,NA,0.001151761
+DPOGS203648,Shared,NA,NA,NA,0.000657076
+DPOGS203653,Eupyrene,Msex2.07890,Low-expression lectin 2,NA,2.20E-05
+DPOGS203655,Eupyrene,NA,NA,0.002384037,0.003263676
+DPOGS203656,Shared,NA,NA,NA,0.000133559
+DPOGS203677,Eupyrene,Msex2.00235,Casein kinase II alpha subunit,0.000552924,0.001590379
+DPOGS203703,Eupyrene,NA,EF hand 2 domain containing protein,0.001693573,0.001271756
+DPOGS203716,Eupyrene,Msex2.00183,NA,0.002179315,0.001269987
+DPOGS203718,Shared,Msex2.13302,NADH-ubiquinone oxidoreductase chain E,0.001725726,0.002352701
+DPOGS203765,Eupyrene,Msex2.09436,NA,0.000447416,0.000183724
+DPOGS203779,Shared,NA,NA,0.000379581,0.000417568
+DPOGS203785,Shared,NA,NA,NA,0.003072913
+DPOGS203786,Shared,Msex2.10051,Dynein heavy chain,NA,0.00073648
+DPOGS203787,Shared,Msex2.11546,NADH dehydrogenase ubiquinone iron sulfur,NA,0.00081674
+DPOGS203796,Shared,Msex2.00198,cilia- and flagella-associated protein 57-like,NA,0.000946946
+DPOGS203796,Shared,Msex2.00198,WD repeat-containing protein 65,0.032443685,0.016944755
+DPOGS203806,Shared,"Msex2.00212,Msex2.00213",NA,0.002038642,0.00204524
+DPOGS203840,Eupyrene,Msex2.07885,NA,NA,0.00495322
+DPOGS203842,Eupyrene,NA,NA,0.000151808,NA
+DPOGS203862,Eupyrene,NA,NA,NA,0.003101256
+DPOGS203865,Eupyrene,Msex2.02543,MICOS complex subunit,NA,0.001494494
+DPOGS203866,Shared,Msex2.01758,NA,0.018641645,0.012199076
+DPOGS203867,Shared,Msex2.01760,NA,NA,0.000411175
+DPOGS203869,Eupyrene,NA,NA,2.76E-05,2.57E-05
+DPOGS203903,Apyrene,Msex2.02067,NA,0.002475065,0.001822307
+DPOGS203910,Eupyrene,NA,V-type proton ATPase subunit a,0.001549958,0.001212213
+DPOGS203917,Eupyrene,"Msex2.02551,Msex2.02546",NA,0.001324115,0.00188972
+DPOGS203921,Shared,Msex2.10427,NA,0.000140787,NA
+DPOGS203932,Eupyrene,Msex2.08258,Enkurin,NA,0.00137832
+DPOGS203958,Shared,Msex2.02093,Laminin subunit alpha,0.000890998,0.000697141
+DPOGS203971,Shared,NA,"Cytochrome b-c1 complex subunit Rieske, mitochondrial",0.00079675,NA
+DPOGS203983,Shared,NA,NADH dehydrogenase [ubiquinone] 1 alpha subcomplex subunit,0.000307148,NA
+DPOGS203997,Shared,NA,NADH-ubiquinone oxidoreductase subunit,NA,0.000155249
+DPOGS204026,Apyrene,Msex2.00856,Transcription termination factor 2,NA,0.001193013
+DPOGS204043,Eupyrene,Msex2.00844,NA,0.000334119,0.000230945
+DPOGS204049,Shared,Msex2.07777,NA,0.00055085,NA
+DPOGS204063,Apyrene,NA,NA,NA,0.000358214
+DPOGS204064,Apyrene,Msex2.08042,NA,0.001522963,0.001954082
+DPOGS204082,Eupyrene,NA,NA,0.000471109,0.000622377
+DPOGS204137,Eupyrene,Msex2.12129,RNA polymerase II transcription elongation factor elongin,0.005202191,0.002166971
+DPOGS204147,Shared,Msex2.13599,Serine protease easter,0.000553107,0.000208894
+DPOGS204164,Apyrene,Msex2.12326,Two pore potassium channel protein sup-9,NA,4.77E-05
+DPOGS204179,Eupyrene,NA,Trypsin-like serine proteinase,0.001126232,0.000709316
+DPOGS204260,Shared,Msex2.07054,NA,NA,0.001557461
+DPOGS204262,Shared,NA,NA,6.52E-05,NA
+DPOGS204263,Shared,NA,NA,0.00410394,0.002486365
+DPOGS204284,Shared,Msex2.07047,Coiled-coil domain-containing protein 39,0.00058942,0.001036061
+DPOGS204296,Eupyrene,Msex2.06240,Poly(ADP-ribose) glycohydrolase,NA,0.00485854
+DPOGS204324,Shared,Msex2.02709,"Dynein intermediate chain 3, ciliary",NA,0.002595261
+DPOGS204330,Eupyrene,Msex2.03577,Carboxypeptidase B,0.008243405,0.008303752
+DPOGS204341,Apyrene,Msex2.12368,RNA-binding protein 6,0.001132652,0.001098472
+DPOGS204357,Shared,Msex2.02786,parkin coregulated gene protein homolog,NA,0.00586301
+DPOGS204410,Shared,Msex2.06835,Arginase,NA,0.003071358
+DPOGS204410,Shared,Msex2.06835,"arginase, hepatic",NA,0.005559011
+DPOGS204410,Shared,Msex2.06835,"Arginase-2, mitochondrial",0.001046376,0.000509966
+DPOGS204433,Eupyrene,Msex2.08978,NA,NA,0.000194719
+DPOGS204469,Eupyrene,Msex2.06846,"Cytochrome c oxidase subunit 6A, mitochondrial",8.62E-05,NA
+DPOGS204492,Shared,Msex2.03322,NA,0.000691438,0.000259522
+DPOGS204593,Shared,NA,NA,0.00160519,0.001075782
+DPOGS204676,Eupyrene,Msex2.09308,Vacuolar ATP synthethase subunit E,0.001419732,0.001562449
+DPOGS204677,Eupyrene,Msex2.09305,Mitochondrial glutamate carrier 1,0.000433258,NA
+DPOGS204680,Eupyrene,Msex2.09301,Regucalcin,0.006961732,0.002569278
+DPOGS204704,Shared,NA,Sperm flagellar protein,0.003199395,0.006982909
+DPOGS204814,Eupyrene,Msex2.02506,Polyubiquitin-C,0.000185149,7.45E-05
+DPOGS204826,Apyrene,Msex2.02479,NA,NA,0.000463675
+DPOGS204865,Shared,NA,NA,0.002471033,0.001802313
+DPOGS204885,Shared,Msex2.10324,Ubiquinol-cytochrome c reductase core protein II,0.000127626,3.24E-05
+DPOGS204918,Shared,NA,NA,0.002032886,NA
+DPOGS204979,Apyrene,Msex2.08272,Male-specific lethal 3,NA,0.002057516
+DPOGS204999,Shared,Msex2.08281,"Cytochrome c oxidase, subunit VB",NA,0.002009926
+DPOGS205037,Shared,NA,NA,0.010336491,0.007958421
+DPOGS205083,Shared,Msex2.04978,Integrin beta-PS,0.020983832,0.014220826
+DPOGS205126,Eupyrene,NA,NA,NA,0.000185248
+DPOGS205137,Shared,NA,NA,0.021632363,0.01265445
+DPOGS205159,Shared,Msex2.04194,Elongation factor Tu,NA,0.000109417
+DPOGS205162,Apyrene,NA,NA,NA,0.000171954
+DPOGS205202,Eupyrene,Msex2.09814,Putative vacuolar ATP synthase subunit S1,NA,0.003193355
+DPOGS205204,Eupyrene,NA,NA,NA,0.000200789
+DPOGS205211,Shared,Msex2.14995,Adenine nucleotide translocase,0.001972567,0.001723679
+DPOGS205217,Shared,"Msex2.14077,Msex2.09818",NA,0.001305489,0.006674227
+DPOGS205225,Eupyrene,Msex2.14321,Putative ubx domain-containing protein,NA,0.000933183
+DPOGS205225,Eupyrene,Msex2.14321,Ubiquitin-associated domain-containing protein 1,0.001213876,0.003578786
+DPOGS205229,Shared,NA,NA,NA,0.001253176
+DPOGS205233,Eupyrene,NA,NA,NA,0.001008634
+DPOGS205238,Eupyrene,Msex2.09813,Heat shock protein cognate 5,NA,0.000210761
+DPOGS205340,Eupyrene,Msex2.06951,Vitellin-degrading protease,0.000145437,0.000263078
+DPOGS205390,Eupyrene,NA,NA,NA,0.000515334
+DPOGS205423,Shared,Msex2.02848,NADH dehydrogenase (Ubiquinone) 1 alpha subcomplex subunit,0.003413106,0.00254398
+DPOGS205435,Shared,NA,Odorant binding protein 20,NA,3.59E-05
+DPOGS205437,Eupyrene,NA,Odorant binding protein 20,0.000729921,0.000467501
+DPOGS205439,Shared,Msex2.03519,Odorant-binding protein 2,NA,0.000375749
+DPOGS205498,Eupyrene,Msex2.09592,Actin depolymerization factor,NA,0.000519279
+DPOGS205547,Eupyrene,Msex2.00975,Small heat shock protein G4,0.000670488,0.000814749
+DPOGS205562,Eupyrene,Msex2.07572,Neurofilament heavy polypeptide,NA,0.000570954
+DPOGS205570,Shared,Msex2.02883,WD repeat-containing protein 63,NA,0.00126019
+DPOGS205592,Eupyrene,Msex2.02540,Isochorismatase domain-containing protein 1,NA,0.00272642
+DPOGS205606,Shared,Msex2.07558,"Cytochrome b-c1 complex subunit 2, mitochondrial",NA,0.000679276
+DPOGS205736,Eupyrene,Msex2.11443,NA,NA,0.002181763
+DPOGS205797,Shared,Msex2.09544,NA,0.001350668,0.000874393
+DPOGS205815,Eupyrene,Msex2.02667,NA,3.80E-05,2.15E-05
+DPOGS205984,Eupyrene,Msex2.10562,Ribosomal protein S16,NA,0.002013739
+DPOGS205989,Shared,Msex2.10570,RIB43A-like with coiled-coils protein 2,0.004815001,0.003311411
+DPOGS206035,Eupyrene,Msex2.04782,NA,0.000137189,0.000184242
+DPOGS206036,Eupyrene,NA,NA,0.000546176,0.000324496
+DPOGS206037,Eupyrene,NA,NA,0.001857268,0.001633554
+DPOGS206039,Eupyrene,Msex2.04785,NA,NA,0.001214705
+DPOGS206045,Eupyrene,Msex2.05990,Ficolin-3,NA,0.000936919
+DPOGS206069,Shared,Msex2.10022,Serine/threonine-protein phosphatase,0.001002295,0.000556553
+DPOGS206074,Shared,Msex2.09193,Fibrillin-1,NA,0.002570121
+DPOGS206077,Eupyrene,Msex2.09188,Mitochondrial NADH:ubiquinone oxidoreductase ESSS subunit,NA,0.000100185
+DPOGS206096,Shared,Msex2.09179,"4-aminobutyrate aminotransferase, mitochondrial",NA,0.000293505
+DPOGS206137,Shared,Msex2.09094,NA,0.001438548,0.000698226
+DPOGS206139,Shared,Msex2.09092,Sperm-associated antigen 17,0.001695004,0.000754641
+DPOGS206192,Shared,Msex2.13591,MICOS complex subunit MIC60 (Fragment),0.000180578,NA
+DPOGS206193,Eupyrene,Msex2.13590,NA,NA,0.000271131
+DPOGS206257,Eupyrene,Msex2.00727,NADH dehydrogenase,0.002048554,0.001670915
+DPOGS206344,Shared,Msex2.04745,NA,NA,0.000341928
+DPOGS206365,Eupyrene,Msex2.08678,"Myosin heavy chain, muscle",NA,0.000341928
+DPOGS206459,Eupyrene,Msex2.01904,Suppressor of sable,0.006602084,0.003997383
+DPOGS206498,Eupyrene,Msex2.07954,Transcription cofactor vestigial-like protein 2,0.004836747,0.007794742
+DPOGS206517,Shared,"Msex2.09579,Msex2.09578",Testis specific tektin,NA,0.011141314
+DPOGS206518,Shared,"Msex2.09579,Msex2.09578",Testis specific tektin,0.011591391,0.005335225
+DPOGS206562,Apyrene,NA,NA,0.000221065,8.37E-05
+DPOGS206636,Eupyrene,NA,Putative deoxyribonuclease ii,0.00647682,0.005015038
+DPOGS206670,Shared,Msex2.00519,Serine/threonine-protein phosphatase,NA,0.000330261
+DPOGS206680,Eupyrene,"Msex2.00533,Msex2.00532,Msex2.00534",UDP-glucuronosyltransferase,0.013823689,0.005035467
+DPOGS206681,Eupyrene,NA,NA,0.000194922,NA
+DPOGS206797,Shared,Msex2.11628,NA,5.73E-05,2.20E-05
+DPOGS206819,Shared,Msex2.09886,Dynein light chain cytoplasmic,0.002719195,0.00492283
+DPOGS206873,Eupyrene,NA,NA,NA,0.000290324
+DPOGS206930,Shared,NA,Metalloendopeptidase,NA,0.000484019
+DPOGS206939,Shared,Msex2.04457,TWiK family of potassium channel protein 7,0.003924115,0.006507996
+DPOGS206959,Shared,Msex2.12780,Fructose-bisphosphate aldolase,0.003472508,0.002276266
+DPOGS206968,Eupyrene,Msex2.01545,NA,NA,0.000122668
+DPOGS207006,Shared,Msex2.05068,Metalloendopeptidase,NA,0.001459178
+DPOGS207058,Apyrene,Msex2.11134,NA,9.40E-05,NA
+DPOGS207081,Shared,NA,NA,NA,0.002512719
+DPOGS207101,Shared,Msex2.01570,Mitochondrial malate dehydrogenase 2,NA,0.000136042
+DPOGS207155,Eupyrene,NA,Myosin class II heavy chain,NA,0.000429777
+DPOGS207222,Eupyrene,"Msex2.07219,Msex2.04683",Dynein light chain roadblock,NA,0.000995654
+DPOGS207236,Shared,NA,NA,NA,0.000281915
+DPOGS207276,Shared,Msex2.01039,"Axoneme central apparatus protein, putative",0.000669582,0.001138159
+DPOGS207276,Shared,Msex2.01039,Sperm-associated antigen 6,0.002499376,0.000946763
+DPOGS207283,Eupyrene,Msex2.01032,NA,NA,0.007664971
+DPOGS207327,Eupyrene,NA,NA,NA,0.002235966
+DPOGS207354,Apyrene,NA,Tight junction protein,0.01733282,0.009341684
+DPOGS207382,Eupyrene,Msex2.01647,Vacuolar ATP synthase subunit H,NA,0.005663641
+DPOGS207386,Eupyrene,Msex2.01643,Coiled-coil domain-containing protein 164,6.79E-05,6.39E-05
+DPOGS207388,Eupyrene,Msex2.01640,Kallikrein 1-related peptidase b24,0.009612115,0.005340851
+DPOGS207396,Eupyrene,Msex2.01630,NA,NA,0.000264929
+DPOGS207401,Eupyrene,Msex2.01447,NA,0.001297878,0.002219001
+DPOGS207402,Shared,Msex2.01446,NA,0.001218464,0.000967397
+DPOGS207454,Shared,NA,Ferritin,NA,0.000103182
+DPOGS207526,Eupyrene,NA,Putative structural component of insect carboxypeptidase,0.007612361,0.005281691
+DPOGS207528,Eupyrene,Msex2.05220,Zinc carboxypeptidase,0.001929232,0.000958912
+DPOGS207540,Shared,Msex2.07364,NA,0.003163559,0.0016735
+DPOGS207542,Eupyrene,"Msex2.08645,Msex2.07366",Muscle-specific actin,NA,0.000101045
+DPOGS207577,Shared,Msex2.10817,Serine protease inhibitor 28,0.005373726,0.004079051
+DPOGS207595,Shared,NA,Pre-mRNA-splicing factor ISY1-like protein,NA,8.91E-05
+DPOGS207607,Eupyrene,NA,NA,0.000614612,0.000953268
+DPOGS207628,Shared,Msex2.02052,NADH dehydrogenase flavoprotein 1 ubiquinone,NA,0.002459672
+DPOGS207641,Shared,Msex2.02045,cAMP-dependent protein kinase catalytic subunit alpha,NA,0.000179952
+DPOGS207725,Eupyrene,Msex2.02282,FACT complex subunit SSRP1,NA,4.84E-05
+DPOGS207733,Shared,Msex2.02267,NA,0.001338264,0.00195459
+DPOGS207775,Shared,Msex2.08816,EF-hand domain-containing family member C2,0.012030319,0.009410613
+DPOGS207824,Shared,Msex2.02259,"Cytochrome c oxidase, subunit VIA",NA,5.82E-05
+DPOGS207829,Eupyrene,NA,NA,0.00868336,0.007882595
+DPOGS207830,Shared,Msex2.02268,NA,0.031056217,0.015940195
+DPOGS207855,Eupyrene,Msex2.02301,IQ domain-containing protein D,0.023600937,0.009881224
+DPOGS207944,Shared,Msex2.06356,Glutamine synthetase 2 cytoplasmic,0.001200583,0.004653597
+DPOGS207945,Eupyrene,NA,Glutamine synthetase,0.005045116,0.002822324
+DPOGS207955,Eupyrene,Msex2.03124,Tissue inhibitor of metalloproteases,0.000440006,NA
+DPOGS207959,Eupyrene,Msex2.03127,TBC1 domain family member 30,NA,0.002083933
+DPOGS207987,Shared,NA,NA,NA,5.57E-05
+DPOGS207993,Shared,NA,NA,0.001300874,0.002133153
+DPOGS208083,Eupyrene,Msex2.11131,NA,0.000906741,0.002562057
+DPOGS208095,Shared,Msex2.11301,NA,NA,0.002336932
+DPOGS208096,Shared,NA,NA,0.000263615,NA
+DPOGS208097,Shared,NA,NA,NA,0.002889507
+DPOGS208145,Shared,Msex2.12226,Reactive intermediate/imine deaminase,NA,0.00083416
+DPOGS208155,Shared,NA,NA,0.002915003,NA
+DPOGS208161,Apyrene,Msex2.12376,NA,0.012199231,0.015605951
+DPOGS208164,Eupyrene,NA,NA,0.000986809,0.001367683
+DPOGS208170,Eupyrene,NA,NA,0.000577365,0.000281275
+DPOGS208175,Shared,Msex2.03780,Dynein light chain Tctex-type,NA,0.000165151
+DPOGS208185,Shared,Msex2.03776,"Succinate--CoA ligase [ADP/GDP-forming] subunit alpha, mitochondrial",NA,0.004847708
+DPOGS208210,Eupyrene,Msex2.13581,NA,NA,0.000712828
+DPOGS208215,Apyrene,Msex2.02106,Zn-finger (Ran-binding)-3,0.000329053,0.00045511
+DPOGS208359,Eupyrene,NA,NA,0.000546977,0.001822059
+DPOGS208360,Eupyrene,Msex2.13435,NA,0.003385567,0.002442315
+DPOGS208370,Apyrene,Msex2.01421,"Succinate dehydrogenase cytochrome b560 subunit, mitochondrial",0.000774081,0.003281949
+DPOGS208377,Shared,Msex2.09227,Glutamate dehydrogenase,NA,0.000215594
+DPOGS208377,Shared,Msex2.09227,Seminal fluid protein (Fragment),0.000126336,NA
+DPOGS208385,Shared,Msex2.01405,NA,0.000681057,0.00042965
+DPOGS208416,Shared,NA,NA,NA,0.000370715
+DPOGS208477,Eupyrene,Msex2.09049,Histidine-rich glyco,NA,3.17E-05
+DPOGS208521,Eupyrene,Msex2.00420,NA,NA,0.000399039
+DPOGS208563,Eupyrene,Msex2.09047,Putative salivary secreted peptide,0.004957124,0.003848765
+DPOGS208602,Shared,NA,NA,NA,0.00724735
+DPOGS208650,Shared,Msex2.09793,Succinate-CoA ligase subunit beta,NA,0.000330016
+DPOGS208656,Shared,Msex2.09783,EF-hand domain-containing protein 1,0.000538827,0.001181377
+DPOGS208675,Shared,NA,NA,NA,8.93E-05
+DPOGS208692,Eupyrene,Msex2.04113,Zinc finger protein 358,0.000125135,NA
+DPOGS208713,Apyrene,"Msex2.08194,Msex2.10938",Putative multidrug resistance-associated protein lethal(2)03659,NA,0.002378425
+DPOGS208750,Shared,Msex2.04108,Ribosomal protein (Fragment),0.001832816,0.003067751
+DPOGS208773,Eupyrene,Msex2.10248,Adenylate kinase 8,4.90E-05,2.56E-05
+DPOGS208774,Eupyrene,NA,Histone-lysine N-methyltransferase EHMT1,NA,5.91E-05
+DPOGS208793,Eupyrene,Msex2.04864,NA,NA,0.002580523
+DPOGS208810,Shared,Msex2.04888,NA,0.000638336,0.001255601
+DPOGS208819,Eupyrene,Msex2.04871,NA,0.000638336,0.001255601
+DPOGS208881,Eupyrene,Msex2.00685,DNAJ chaperone,0.000431573,NA
+DPOGS208883,Shared,Msex2.00684,"glycerol-3-phosphate dehydrogenase [NAD(+)], cytoplasmic",0.000625542,0.000439888
+DPOGS208892,Eupyrene,Msex2.08008,Patched domain-containing,0.000352801,0.002057875
+DPOGS208915,Apyrene,Msex2.09326,Xaa-pro aminopeptidase,NA,0.000831031
+DPOGS208941,Eupyrene,Msex2.04496,Oxoglutarate dehydrogenase,5.98E-05,NA
+DPOGS208946,Shared,Msex2.09315,MICOS complex subunit MIC13,NA,0.00209833
+DPOGS208953,Shared,Msex2.09329,NA,NA,9.54E-05
+DPOGS208973,Eupyrene,Msex2.00680,Multiple epidermal growth factor-like domains protein 11,0.023412135,0.008724995
+DPOGS209002,Eupyrene,NA,DNA ligase,0.000152465,NA
+DPOGS209009,Shared,"Msex2.05734,Msex2.00696",ATP synthase subunit beta,NA,0.005070307
+DPOGS209016,Shared,"Msex2.05734,Msex2.00696",ATP synthase subunit beta,0.01394998,0.00828064
+DPOGS209034,Apyrene,NA,NA,0.000936294,0.003189587
+DPOGS209079,Shared,Msex2.08184,Dynein axonemal heavy chain 3,NA,0.000352153
+DPOGS209112,Shared,NA,NA,0.000235326,0.000320799
+DPOGS209118,Eupyrene,NA,NA,7.49E-05,NA
+DPOGS209125,Apyrene,NA,NA,0.001304129,0.000744006
+DPOGS209134,Eupyrene,Msex2.00386,Superoxide dismutase [Cu-Zn],0.000408588,0.000267942
+DPOGS209136,Eupyrene,Msex2.00391,NA,NA,1.72E-05
+DPOGS209137,Shared,Msex2.00393,NA,0.042962063,0.02876226
+DPOGS209165,Apyrene,Msex2.05620,NA,NA,0.008349499
+DPOGS209294,Eupyrene,Msex2.04003,NA,NA,0.000382493
+DPOGS209305,Shared,Msex2.13050,Outer dense fiber protein 3-B,0.000671777,0.000535443
+DPOGS209345,Shared,Msex2.12008,Phosphate carrier mitochondrial,NA,0.00041906
+DPOGS209405,Eupyrene,NA,NA,NA,0.001620062
+DPOGS209449,Shared,Msex2.11389,NA,NA,6.40E-05
+DPOGS209563,Apyrene,Msex2.04613,Proprotein convertase subtilisin/kexin type,0.039660078,0.017457681
+DPOGS209581,Shared,Msex2.12016,NA,NA,0.001608103
+DPOGS209582,Shared,NA,NA,NA,0.001526544
+DPOGS209630,Eupyrene,"Msex2.11773,Msex2.11956",Hemocytin,0.001476432,0.000844821
+DPOGS209637,Shared,NA,Glutamine synthetase 2 cytoplasmic,NA,0.000194719
+DPOGS209638,Eupyrene,Msex2.05052,Glutamine synthetase,NA,0.000838621
+DPOGS209641,Eupyrene,Msex2.05047,NA,0.000120367,NA
+DPOGS209648,Shared,Msex2.05036,Armadillo repeat-containing protein gudu,0.002078513,0.002663953
+DPOGS209670,Eupyrene,Msex2.03412,Catalase,NA,0.000131452
+DPOGS209706,Eupyrene,NA,"Putative malate dehydrogenase, glyoxysomal",0.000168745,NA
+DPOGS209738,Eupyrene,Msex2.06038,Ubiquitin elongating factor core,NA,0.000116847
+DPOGS209741,Shared,Msex2.06044,Voltage-dependent anion-selective channel,NA,0.001785769
+DPOGS209764,Eupyrene,NA,"Malate dehydrogenase, mitochondrial",0.000132538,NA
+DPOGS209786,Eupyrene,Msex2.05170,V-type proton ATPase subunit F,NA,3.10E-05
+DPOGS209915,Shared,Msex2.02721,Tetratricopeptide repeat protein 25,0.000587301,0.000596285
+DPOGS209956,Eupyrene,NA,Ribosome biogenesis protein NSA2,0.0005506,0.000409426
+DPOGS209980,Eupyrene,Msex2.10735,Very-high-density lipoprotein receptor,3.48E-05,NA
+DPOGS210059,Apyrene,NA,Methylcytosine dioxygenase TET2 (Fragment),NA,0.000544997
+DPOGS210074,Shared,"Msex2.14486,Msex2.13840",NA,0.00153841,0.001432256
+DPOGS210077,Eupyrene,Msex2.11947,Mitochondrial Fe/S cluster exporter,NA,0.000639498
+DPOGS210120,Apyrene,Msex2.13066,Cuticular protein RR-1 motif 47,0.003837777,0.003399291
+DPOGS210140,Eupyrene,NA,NA,0.00074663,0.000553423
+DPOGS210146,Eupyrene,Msex2.02853,Serine protease 48,0.002657225,0.000706477
+DPOGS210251,Apyrene,Msex2.07580,NA,NA,0.000583204
+DPOGS210252,Eupyrene,NA,NA,0.004138634,0.002136629
+DPOGS210288,Shared,NA,NA,NA,0.000630575
+DPOGS210289,Shared,Msex2.09827,Coiled-coil domain-containing protein 147 (Fragment),NA,0.004457157
+DPOGS210344,Apyrene,Msex2.07635,Low-density lipoprotein receptor (Ldl),0.002309377,0.001464017
+DPOGS210345,Eupyrene,NA,NA,0.002260352,0.002564524
+DPOGS210346,Shared,NA,Alanine aminotransferase,NA,0.016449454
+DPOGS210353,Eupyrene,Msex2.07640,NA,0.000329481,0.000176638
+DPOGS210435,Shared,Msex2.08530,ATP synthase subunit alpha,0.000329481,0.000176638
+DPOGS210452,Shared,Msex2.08723,"Dynein heavy chain 10, axonemal",0.000828588,0.002382729
+DPOGS210536,Shared,NA,NA,NA,3.75E-05
+DPOGS210547,Eupyrene,NA,NA,NA,0.000440512
+DPOGS210552,Shared,Msex2.04248,NA,0.000486174,0.001055527
+DPOGS210648,Eupyrene,Msex2.13808,"Ferrochelatase, mitochondrial",NA,0.000126273
+DPOGS210661,Eupyrene,NA,NA,0.000158669,0.000233545
+DPOGS210662,Shared,NA,NA,0.001664797,0.001461858
+DPOGS210672,Shared,Msex2.09336,Putative cystoskeletal protein tektin,0.001923409,0.003080713
+DPOGS210682,Eupyrene,NA,NA,0.000988556,0.002627081
+DPOGS210700,Shared,Msex2.02432,Heat shock protein cognate 2,0.000380672,0.000184232
+DPOGS210702,Shared,Msex2.02432,Heat shock protein cognate 2,0.002297249,0.001836471
+DPOGS210708,Shared,Msex2.02440,Putative farnesoic acid O-methyl transferase,NA,0.001222899
+DPOGS210718,Eupyrene,Msex2.02460,Serine/threonine-protein kinase LATS1,0.000138687,NA
+DPOGS210777,Eupyrene,Msex2.12927,E3 ubiquitin-protein ligase MARCH2,0.000458397,0.000809302
+DPOGS210800,Shared,Msex2.04660,NA,NA,4.25E-05
+DPOGS210804,Eupyrene,Msex2.04655,Adenylosuccinate lyase,0.00267722,0.001768044
+DPOGS210806,Shared,Msex2.04652,NA,NA,0.000302547
+DPOGS210821,Shared,Msex2.06427,NA,NA,0.002762502
+DPOGS210830,Shared,NA,NA,0.005089151,0.010625881
+DPOGS210866,Shared,Msex2.04661,NA,3.31E-05,NA
+DPOGS210891,Shared,Msex2.00265,WD repeat-containing protein 96,0.000224115,0.000262029
+DPOGS210924,Shared,Msex2.00281,NA,0.000274869,NA
+DPOGS210951,Eupyrene,Msex2.00609,Renin receptor,NA,0.002152396
+DPOGS210956,Apyrene,Msex2.00617,NA,0.000281793,0.000277126
+DPOGS210982,Shared,Msex2.12488,NA,NA,0.000408347
+DPOGS210990,Eupyrene,NA,Chorion peroxidase,0.000334646,0.000327087
+DPOGS211019,Shared,NA,NA,0.000532908,0.000599916
+DPOGS211023,Eupyrene,NA,NA,0.000262437,NA
+DPOGS211065,Eupyrene,NA,NA,NA,0.001903793
+DPOGS211068,Shared,Msex2.01765,NA,NA,0.002809028
+DPOGS211070,Apyrene,Msex2.01767,Ryanodine receptor RyR,0.001845092,0.001928732
+DPOGS211075,Shared,NA,NA,0.000256599,0.000319347
+DPOGS211101,Apyrene,Msex2.10354,Radial spoke head 10-like B,NA,0.000327623
+DPOGS211107,Eupyrene,Msex2.11647,NA,NA,0.000353553
+DPOGS211175,Shared,Msex2.11152,NA,NA,6.67E-05
+DPOGS211186,Eupyrene,NA,Sodium/potassium-transporting ATPase subunit alpha,NA,0.000193608
+DPOGS211202,Shared,NA,"Dynein heavy chain 12, axonemal (Fragment)",0.000315855,8.73E-05
+DPOGS211203,Shared,NA,NA,0.004401556,0.003081693
+DPOGS211204,Apyrene,Msex2.06577,Dynein heavy chain,NA,0.000521824
+DPOGS211216,Eupyrene,Msex2.10072,V-type proton ATPase subunit d,NA,0.000465348
+DPOGS211221,Eupyrene,Msex2.10083,Peroxisomal N(1)-acetyl-spermine/spermidine oxidase,NA,0.000460795
+DPOGS211221,Eupyrene,Msex2.10083,Putative polyamine oxidase,0.001843098,0.001529135
+DPOGS211221,Eupyrene,Msex2.10083,Amine oxidase,NA,0.000116272
+DPOGS211221,Eupyrene,Msex2.10083,Spermine oxidase (Fragment),NA,0.001316114
+DPOGS211341,Shared,Msex2.00440,NA,0.002910814,0.001478316
+DPOGS211353,Shared,NA,NA,0.000294275,0.001061004
+DPOGS211354,Eupyrene,Msex2.00451,NA,0.00957602,0.008475358
+DPOGS211363,Eupyrene,NA,NA,0.002474299,0.002010305
+DPOGS211368,Eupyrene,Msex2.00431,NA,NA,0.000441849
+DPOGS211428,Eupyrene,Msex2.07095,Basic helix-loop-helix neural transcription factor TAP,NA,0.002137518
+DPOGS211429,Shared,Msex2.07096,Tubulin alpha chain,0.00037569,0.000413049
+DPOGS211437,Shared,Msex2.01475,Natural killer cell enhancement factor,NA,0.005671117
+DPOGS211475,Eupyrene,Msex2.11940,Inorganic pyrophosphatase,0.00186381,0.002275217
+DPOGS211492,Eupyrene,Msex2.09233,Pyruvate dehydrogenase beta,NA,0.000332702
+DPOGS211498,Eupyrene,Msex2.10797,Phosphatidylethanolamine-binding protein 1,0.001967856,0.001154585
+DPOGS211519,Shared,Msex2.10779,Dihydrolipoyllysine-residue succinyltransferase component of 2-oxoglutarate dehydrogenase complex,NA,0.000201318
+DPOGS211544,Eupyrene,NA,NA,NA,0.000583433
+DPOGS211545,Eupyrene,Msex2.04176,"Putative apoptosis-inducing factor 1, mitochondrial",9.24E-05,7.19E-05
+DPOGS211585,Shared,Msex2.00575,Axonemal dynein light intermediate polypeptide 1,5.26E-05,3.87E-05
+DPOGS211597,Shared,Msex2.05836,Malic enzyme,NA,0.000261804
+DPOGS211602,Shared,Msex2.07197,Aspartate ammonia lyase,0.00176907,0.002521835
+DPOGS211615,Shared,"Msex2.06050,Msex2.05350",NADH-ubiquinone oxidoreductase,NA,0.001381015
+DPOGS211657,Eupyrene,Msex2.10329,Nucleoside diphosphate sugar epimerase,NA,0.001063909
+DPOGS211665,Eupyrene,NA,NA,0.003161192,0.002992922
+DPOGS211696,Shared,Msex2.08323,NA,NA,0.002472586
+DPOGS211755,Eupyrene,NA,NA,NA,5.16E-05
+DPOGS211771,Shared,NA,Transcription factor IIB,0.000150535,0.000100074
+DPOGS211775,Eupyrene,Msex2.05863,Testis-specific serine/threonine-protein kinase,NA,0.000992787
+DPOGS211789,Shared,Msex2.05857,cAMP-dependent protein kinase type II regulatory subunit,NA,0.000146284
+DPOGS211801,Eupyrene,"Msex2.13429,Msex2.13376,Msex2.13375",NA,0.000751417,0.000501736
+DPOGS211811,Eupyrene,Msex2.13702,Thyroid receptor-interacting protein 11,NA,0.000976158
+DPOGS211851,Shared,NA,NA,0.000135341,NA
+DPOGS211883,Shared,Msex2.12110,Low-density lipoprotein receptor-related protein 4,0.008628616,0.003316749
+DPOGS211893,Eupyrene,NA,NA,NA,0.000194568
+DPOGS211948,Shared,Msex2.06817,NADH dehydrogenase 1 alpha subcomplex subunit,NA,0.000318744
+DPOGS211980,Eupyrene,NA,Ubiquinol-cytochrome c reductase complex,0.000320925,0.000365497
+DPOGS211988,Eupyrene,NA,NA,0.000243307,0.000265929
+DPOGS211996,Shared,NA,ATP synthase subunit beta,0.006639695,0.003392765
+DPOGS212075,Eupyrene,Msex2.09611,NA,NA,0.000125082
+DPOGS212094,Eupyrene,Msex2.04295,Putative e3 ubiquitin ligase involved in syntaxin degradation,0.00079675,0.003396393
+DPOGS212130,Shared,Msex2.06194,Coiled-coil domain-containing protein 108,NA,0.000243239
+DPOGS212200,Eupyrene,Msex2.05665,NA,NA,0.001115354
+DPOGS212294,Eupyrene,NA,NA,0.004175549,0.0030934
+DPOGS212299,Shared,Msex2.08824,Peptidyl-prolyl cis-trans isomerase-like 6,0.00692198,0.003050804
+DPOGS212340,Eupyrene,NA,Subunit VIb of cytochrome c oxidase,NA,0.000904743
+DPOGS212341,Apyrene,Msex2.12341,Enhancer of zeste 2 polycomb repressive complex 2 subunit,NA,0.001744126
+DPOGS212342,Shared,Msex2.12338,LOW QUALITY PROTEIN: tektin-3,0.000404906,0.000428161
+DPOGS212360,Eupyrene,Msex2.11718,Fatty acid synthase S-acetyltransferase,NA,0.000145745
+DPOGS212365,Eupyrene,Msex2.11721,Proteasome endopeptidase complex,NA,0.000453574
+DPOGS212419,Shared,Msex2.04501,Pyridine nucleotide-disulfide oxidoreductase,NA,0.000101989
+DPOGS212420,Shared,Msex2.04499,WD repeat-containing protein 66,0.002106093,0.000890387
+DPOGS212452,Shared,NA,NA,0.001975247,0.000856839
+DPOGS212469,Eupyrene,Msex2.10206,Galectin,0.006001463,0.003713038
+DPOGS212499,Shared,NA,NA,0.001421935,0.00145184
+DPOGS212509,Eupyrene,Msex2.10183,Coiled-coil domain-containing protein 13,0.000415373,0.000299843
+DPOGS212546,Eupyrene,Msex2.11964,NA,0.00036188,0.0005455
+DPOGS212563,Shared,Msex2.06012,Enolase II,0.002694668,0.008298681
+DPOGS212567,Shared,Msex2.03697,Outer dense fiber protein 2,0.008087795,0.013031257
+DPOGS212574,Eupyrene,NA,NADH-ubiquinone oxidoreductase sgdh subunit,NA,0.004090664
+DPOGS212589,Eupyrene,Msex2.02939,Malate dehydrogenase,7.24E-05,NA
+DPOGS212621,Shared,Msex2.02950,Radial spoke head 1,NA,0.001745901
+DPOGS212631,Eupyrene,NA,NA,0.000648819,0.001745901
+DPOGS212658,Eupyrene,Msex2.04726,Trypsin-6,5.03E-05,NA
+DPOGS212676,Eupyrene,NA,NA,NA,0.000491297
+DPOGS212742,Shared,NA,DnaJ like protein subfamily B member 13,NA,0.000616125
+DPOGS212876,Shared,Msex2.00871,Radial spoke head protein 4 like protein A,0.007552894,0.008103768
+DPOGS212901,Shared,NA,NA,0.00241599,0.004587536
+DPOGS212973,Shared,Msex2.03495,"Cytochrome c1, heme protein, mitochondrial",0.000317638,0.000250362
+DPOGS213028,Shared,NA,NA,0.000477029,0.004043365
+DPOGS213075,Shared,NA,NA,0.000352783,0.004779105
+DPOGS213087,Shared,Msex2.13890,NA,NA,0.000337491
+DPOGS213094,Shared,"Msex2.14160,Msex2.13015",NA,0.005780753,0.00581676
+DPOGS213109,Eupyrene,NA,Putative serine protease,0.019175328,0.015868413
+DPOGS213117,Apyrene,Msex2.12410,ATP-dependent chromatin remodeler brahma,NA,0.001058677
+DPOGS213119,Eupyrene,Msex2.14166,NADH-ubiquinone oxidoreductase ashi subunit,0.000375326,NA
+DPOGS213120,Shared,Msex2.14166,NADH-ubiquinone oxidoreductase ashi subunit,0.006905582,0.003667681
+DPOGS213146,Apyrene,NA,NA,0.001673971,0.001916748
+DPOGS213237,Eupyrene,Msex2.07271,Pyruvate dehydrogenase,0.001794696,0.008467066
+DPOGS213255,Eupyrene,Msex2.07263,NA,NA,0.002148249
+DPOGS213309,Shared,Msex2.03019,Succinyl-CoA ligase [ADP-forming] subunit beta,0.006551028,0.003402488
+DPOGS213336,Shared,Msex2.08890,NA,NA,0.000395566
+DPOGS213345,Shared,Msex2.06078,"Coiled-coil domain-containing protein 19, mitochondrial",NA,0.003229382
+DPOGS213365,Shared,NA,NA,NA,4.02E-05
+DPOGS213366,Shared,Msex2.01835,NA,NA,0.001265816
+DPOGS213370,Eupyrene,Msex2.01836,NA,0.000171203,0.000334448
+DPOGS213378,Shared,Msex2.09559,NA,0.00035692,0.000237275
+DPOGS213379,Shared,Msex2.09560,NA,0.000212195,0.000159289
+DPOGS213385,Eupyrene,Msex2.06073,Tubulin beta chain,NA,8.71E-05
+DPOGS213388,Apyrene,"Msex2.01816,Msex2.01815,Msex2.06075",Tubulin beta chain,0.002095141,0.003339994
+DPOGS213430,Shared,NA,Hypodermin-A,NA,0.001197272
+DPOGS213431,Shared,Msex2.05941,Trypsin,0.000402484,0.000293267
+DPOGS213461,Shared,NA,NA,0.000332134,0.00012086
+DPOGS213462,Eupyrene,Msex2.13962,NADH dehydrogenase [ubiquinone] 1 beta subcomplex subunit,NA,0.002317469
+DPOGS213472,Shared,NA,NA,NA,0.001201088
+DPOGS213476,Eupyrene,Msex2.13316,Transcription elongation factor B,NA,0.000104828
+DPOGS213489,Eupyrene,Msex2.11476,NA,0.002505623,0.003247895
+DPOGS213540,Eupyrene,NA,Nucleolar GTP-binding protein 2,0.001363641,0.002141503
+DPOGS213555,Eupyrene,Msex2.02346,NA,NA,4.21E-05
+DPOGS213623,Shared,Msex2.08000,Sodium/potassium-transporting ATPase subunit alpha,8.99E-05,NA
+DPOGS213656,Shared,Msex2.02915,Pyruvate kinase,0.007549355,0.004665648
+DPOGS213659,Shared,NA,Radial spoke head protein 3,0.000866829,0.000573263
+DPOGS213668,Eupyrene,NA,NA,0.004838654,0.003040002
+DPOGS213678,Shared,Msex2.08347,NADH dehydrogenase [ubiquinone] 1 subunit C2,NA,0.000376443
+DPOGS213678,Shared,Msex2.08347,Putative mitochondrial electron transport nadh to ubiquinone,NA,0.001132126
+DPOGS213683,Eupyrene,Msex2.14424,NA,NA,0.000346281
+DPOGS213744,Shared,Msex2.00017,Calmodulin-binding protein trpl,NA,0.000195948
+DPOGS213831,Shared,Msex2.02642,Leucine zipper-EF-hand containing transmembrane protein 1,0.004474655,0.00339896
+DPOGS213870,Eupyrene,Msex2.11631,NA,NA,4.41E-05
+DPOGS213874,Eupyrene,Msex2.04242,NA,NA,0.000554795
+DPOGS213880,Eupyrene,NA,NA,0.00065891,0.000898926
+DPOGS213882,Shared,NA,NA,NA,0.000369999
+DPOGS213883,Shared,NA,NA,NA,0.001531404
+DPOGS213928,Eupyrene,Msex2.10134,Small nuclear ribonucleoprotein polypeptide G,NA,0.000267039
+DPOGS214053,Apyrene,NA,Non-lysosomal glucosylceramidase,0.004506491,0.003592477
+DPOGS214088,Shared,NA,NA,NA,2.37E-05
+DPOGS214092,Shared,Msex2.02032,NA,NA,0.000210782
+DPOGS214107,Shared,Msex2.02019,Prohibitin protein WPH,NA,0.006142872
+DPOGS214115,Eupyrene,NA,NA,0.002281683,0.001149814
+DPOGS214132,Eupyrene,Msex2.10464,NA,0.00239405,0.00149031
+DPOGS214203,Eupyrene,NA,"NADH dehydrogenase [ubiquinone] iron-sulfur protein 6, mitochondrial",NA,0.000211735
+DPOGS214218,Eupyrene,Msex2.03175,Glycerophosphoryl diester phosphodiesterase,NA,0.002465036
+DPOGS214224,Shared,NA,NA,0.002043714,0.00093251
+DPOGS214262,Eupyrene,Msex2.10477,Zinc finger protein 729,0.001622596,0.002261846
+DPOGS214263,Eupyrene,Msex2.10479,Putative defense protein Hdd11,NA,6.30E-05
+DPOGS214382,Shared,Msex2.09977,NADH dehydrogenase [ubiquinone] iron-sulfur protein 4 mitochondrial,NA,0.000324437
+DPOGS214411,Eupyrene,Msex2.07758,NA,NA,0.002070489
+DPOGS214431,Eupyrene,Msex2.08148,NA,NA,0.000138048
+DPOGS214474,Eupyrene,NA,NA,6.11E-05,NA
+DPOGS214479,Shared,"Msex2.04846,Msex2.02828",Tubulin alpha chain,0.000508787,0.000741819
+DPOGS214599,Eupyrene,NA,Papilin,NA,0.003320903
+DPOGS214617,Eupyrene,NA,NA,0.001172295,0.000688299
+DPOGS214623,Eupyrene,Msex2.12353,MICOS complex subunit MIC13,NA,0.000251645
+DPOGS214631,Shared,NA,NA,0.000440756,0.000591926
+DPOGS214632,Shared,Msex2.11008,Dynein heavy chain,0.000177347,0.000363039
+DPOGS214653,Eupyrene,NA,"Dynein heavy chain 9, axonemal",0.00021361,NA
+DPOGS214656,Eupyrene,NA,NA,0.000183094,NA
+DPOGS214667,Shared,Msex2.05235,Axonemal dynein intermediate chain polypeptide,NA,0.003777435
+DPOGS214674,Shared,Msex2.08753,Tctex1 domain-containing protein 1-A (Fragment),NA,0.000305309
+DPOGS214682,Eupyrene,NA,NA,NA,0.000493151
+DPOGS214710,Eupyrene,NA,NA,NA,0.00261214
+DPOGS214731,Eupyrene,Msex2.01218,NADH-plastoquinone oxidoreductase,NA,0.000386396
+DPOGS214737,Eupyrene,NA,NA,NA,0.000383996
+DPOGS214781,Apyrene,Msex2.12711,Teneurin-m,NA,2.71E-05
+DPOGS214840,Shared,Msex2.01713,Growth arrest-specific protein 8,NA,0.004038787
+DPOGS214869,Eupyrene,Msex2.01704,NA,0.000428121,0.000527183
+DPOGS214875,Shared,Msex2.01716,NA,NA,0.000223749
+DPOGS214906,Eupyrene,Msex2.12378,NA,NA,0.000362127
+DPOGS214956,Shared,Msex2.12565,Coiled-coil domain-containing protein 135,0.000128766,NA
+DPOGS215043,Shared,Msex2.03557,NA,8.10E-05,2.44E-05
+DPOGS215098,Apyrene,NA,NA,NA,0.001010973
+DPOGS215150,Apyrene,NA,NA,0.014266517,0.00638904
+DPOGS215153,Eupyrene,Msex2.10274,V-type proton ATPase subunit C,NA,0.000153147
+DPOGS215209,Eupyrene,Msex2.05870,Nucleolar complex protein 3-like,9.50E-05,NA
+DPOGS215229,Eupyrene,NA,Titin,0.006947246,0.006150486
+DPOGS215231,Eupyrene,NA,NA,0.000577365,0.000490029
+DPOGS215242,Eupyrene,NA,Insulin receptor substrate 1,0.000411159,0.001350809
+DPOGS215291,Eupyrene,Msex2.11666,Pyrroline-5-carboxylate dehydrogenase,NA,0.000208393
+DPOGS215296,Eupyrene,NA,NA,0.000254563,NA
+DPOGS215321,Eupyrene,Msex2.13383,NA,0.002276181,0.003933986
+DPOGS215346,Shared,Msex2.12043,Coagulation factor XI,0.004926856,0.003396645
+DPOGS215381,Eupyrene,Msex2.07296,NA,0.003552485,0.002666377
+DPOGS215382,Eupyrene,NA,NA,NA,0.001077538
+DPOGS215393,Apyrene,Msex2.04615,Proprotein convertase subtilisin/kexin type,0.000416392,0.000386066
+DPOGS215419,Shared,Msex2.12009,Fibrillin-2,0.001754724,0.002062173
+DPOGS215420,Eupyrene,Msex2.12008,NA,0.000197257,NA
+DPOGS215440,Shared,"Msex2.01816,Msex2.01815,Msex2.06075",Tubulin beta chain,NA,0.000199058
+DPOGS215443,Eupyrene,NA,NA,0.000398375,0.00015234
+DPOGS215444,Apyrene,NA,Delta(24)-sterol reductase,0.001113662,0.000371116
+DPOGS215474,Shared,Msex2.04446,NA,0.000488033,0.000607114
+DPOGS215496,Shared,Msex2.03430,Superoxide dismutase,NA,0.000361705
+DPOGS215520,Shared,Msex2.11051,"NADH dehydrogenase [ubiquinone] 1 alpha subcomplex subunit 10, mitochondrial",NA,0.001373627
+DPOGS215524,Eupyrene,Msex2.12876,Glutathione synthetase,NA,0.002974197
+DPOGS215527,Apyrene,Msex2.11050,NA,0.000874686,0.000609585
+DPOGS215528,Shared,NA,Putative pacifastin-related serine protease inhibitor,0.000778316,0.00029051
+DPOGS215529,Shared,NA,NA,NA,0.000484588
+DPOGS215532,Shared,Msex2.11194,NA,NA,0.000484588
+DPOGS215533,Eupyrene,NA,Sideroflexin,0.003600272,0.003052261
+DPOGS215548,Shared,NA,NA,NA,0.000383335
+DPOGS215549,Shared,Msex2.04935,Coagulation factor IX,0.000515037,0.000480615
+DPOGS215557,Apyrene,Msex2.11190,Zinc finger protein 26,NA,0.000589557
+DPOGS215558,Eupyrene,Msex2.11193,"isocitrate dehydrogenase [NAD] subunit beta, mitochondrial",0.000565593,0.000423174
+DPOGS215576,Shared,NA,NA,5.96E-05,NA
+DPOGS215594,Shared,Msex2.04407,NA,0.00344513,0.002159081
+DPOGS215614,Shared,Msex2.06991,Nucleoside diphosphate kinase,NA,0.000158298
+DPOGS215635,Eupyrene,Msex2.05475,Mitochondrial import receptor subunit TOM40-like 2,NA,0.000182776
+DPOGS215645,Eupyrene,Msex2.05459,Cytochrome b-c1 complex subunit 7,0.003452581,0.003018161
+DPOGS215645,Eupyrene,Msex2.05459,Putative mitochondrial electron transport (Fragment),NA,0.000192184
+DPOGS215645,Eupyrene,Msex2.05459,Ubiquinol-cytochrome c reductase (Fragment),0.000292915,NA
+DPOGS215665,Eupyrene,Msex2.09631,Mitochondrial NADH-ubuiquinone oxidoreductase 13 kDa-B subunit,NA,0.002798376
+DPOGS215677,Shared,Msex2.03763,Fibrous sheath-interacting protein 2,NA,0.001102164
+DPOGS215705,Shared,Msex2.00940,Armadillo repeat-containing protein 3,NA,0.000630652
+DPOGS215717,Eupyrene,NA,NA,0.000561776,0.001033023
+DPOGS215718,Eupyrene,NA,NA,NA,0.000217538
+DPOGS215720,Shared,Msex2.00929,Arginine kinase,NA,0.000280017
+DPOGS215757,Eupyrene,Msex2.09628,Phosphatidylethanolamine-binding protein 1,6.16E-05,9.39E-05
+DPOGS215766,Shared,NA,NA,,
+DPOGS215785,Eupyrene,NA,NA,,
+DPOGS215800,Shared,Msex2.06992,"Non-metastatic cells 7, protein expressed in (Nucleoside-diphosphate kinase)",,
+DPOGS215800,Shared,Msex2.06992,Nucleoside diphosphate kinase,,
+DPOGS215815,Apyrene,Msex2.08483,Multiple epidermal growth factor-like domains protein 8,,
+DPOGS215818,Shared,NA,Pyruvate kinase,,
+DPOGS215844,Eupyrene,Msex2.06521,NA,,
+DPOGS215910,Eupyrene,NA,Cuticular protein RR-2 motif 82,,
+DPOGS215921,Shared,Msex2.03083,Dihydrolipoyl dehydrogenase,,
+DPOGS215940,Eupyrene,NA,NA,,
+DPOGS215990,Apyrene,Msex2.04573,NA,,
+DPOGS216029,Eupyrene,Msex2.01656,Mitochondrial cytochrome c,,
+DPOGS216053,Eupyrene,Msex2.01694,Very-high-density lipoprotein receptor,,
+DPOGS216054,Eupyrene,Msex2.01694,Very-high-density lipoprotein receptor,,
+DPOGS216075,Shared,NA,NA,,
+DPOGS216077,Eupyrene,Msex2.01660,Fas-associated factor,,
+DPOGS216129,Eupyrene,NA,NA,,
+DPOGS216202,Shared,Msex2.01809,Transcription factor castor,,

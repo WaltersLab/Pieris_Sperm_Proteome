@@ -1,0 +1,319 @@
+---
+title: "Process ProtDisco for DEP"
+author: "James R. Walters"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: readable
+    toc: true
+    toc_float: true
+    toc_collapsed: false
+
+---
+
+This document captures the process of filtering and transforming the output from ProteomeDiscoverer (PD) to a `SummarizedExperiment`format compliant for use with the `DEP` package. In particular, we used the detection scores and normalized values from PD, excluded values where proteins were determined to be "not observed" (since these abundances were imputed by PD), and then averaged technical replicate values into individual abundance values for biological replicates.
+
+# Load libraries and data
+```{r}
+library(DEP)
+
+# load results from PD
+proteomicsData <- "../InputFiles/Pieris_LFQ_PD2.4OD.csv"
+proteins <- read.csv(file = proteomicsData, as.is = T)
+```
+
+
+# Consolidating protein detection
+## Score detection
+
+Score technical replicates as present or absent to determine detection in biological replicates.
+
+```{r}
+
+#Create list of grouped technical replicates
+sampleID <- c("Sample1", "Sample2", "Sample3", "Sample4", 
+              "Sample5", "Sample6", "Sample7", "Sample8", 
+              "Sample9", "Sample10", "Sample11", "Sample12")
+
+# Extract Found/NotFound results
+techreps_found <- list(proteins[237:239], proteins[240:242], proteins[243:245],
+                       proteins[246:248], proteins[249:251], proteins[252:253],
+                       proteins[254:256], proteins[257:259], proteins[260:262],
+                       proteins[263:265], proteins[266:268], proteins[269:270])
+names(techreps_found) <- sampleID
+
+# Clean up names of techrep detection columns
+clean.det.names <- function(x) {
+    tmpnames <- names(x)
+    tmpnames <- gsub(x = tmpnames, pattern = "Found.in.Sample...S\\d+\\.+", replacement = "")
+    tmpnames <- gsub(x=tmpnames, pattern="Sample", replacement = ".")
+    tmpnames <- gsub(x=tmpnames, pattern="\\.+", replacement = ".")
+    names(x) <- tmpnames
+    rownames(x) <- proteins$Accession
+    return(x)
+}
+# clean.det.names(techreps_found[[1]])
+techreps_found <- lapply(techreps_found, FUN = clean.det.names)
+
+# convert Found/NotFound to logical: FALSE if NotFound
+# Note datastructure shift: output is a list of logical matrices, no longer list of DFs
+techreps_logical <- lapply(techreps_found, FUN = function(x) {ifelse(x == "Not Found", FALSE, TRUE)} )
+
+# make this into a single DF for later reference
+techreps_logical_df <- as.data.frame(techreps_logical)
+```
+
+
+## Quantify detection
+It would be interesting to know how common a problem it is to have variable detection across biological replicates.
+
+```{r}
+count_missing_techreps <- sapply(techreps_logical, FUN = rowSums ) 
+missing_counts_tables <- apply(count_missing_techreps, 2, table)
+# Samples 6 & 12 only have 2 techreps
+missing_counts_tables$Sample6["3"] <- NA
+missing_counts_tables$Sample12["3"] <- NA
+do.call(rbind, missing_counts_tables)
+```
+
+So it appears that ~50-70 proteins have detection in a single tech rep for each biorep. Indeed, this is probably worth excluding these particular values when calculating average abundances.
+
+
+## Biorep Detection
+Now we need to translate technical replicate present/absence into biological replicate present/absence call. This will generate a "detection" matrix for biological replicates.
+
+For the immediate moment, we will require detection in at least two technical replicate to consider the protein present in the biological replicate. However, these assessments of "detection" in bioreps are not used subsequently for deciding on imputation in `DEP`; that is based on whether there is any abundance estimate at all (that is not imputed by PD). 
+
+```{r}
+bio_replicates <- vector(length = 12, mode = "list")
+names(bio_replicates) <- sampleID
+bio_replicates <- sapply(techreps_logical, FUN = function(x) {
+  ifelse(rowSums(as.matrix(x)) >= 2, TRUE, FALSE)
+  } )  
+
+bioRep_df <- as.data.frame(bio_replicates)
+row.names(bioRep_df) <- proteins$Accession
+
+str(bioRep_df)
+
+# Count number of replicates in which protein is detected for both sperm types
+biorep_count_apy  <- rowSums(bioRep_df[1:6])
+biorep_count_eup  <- rowSums(bioRep_df[7:12])
+```
+
+
+# Consolidating protein abundance
+
+Next we will work with the normalized (and imputed) abundances from ProteomeDiscoverer. The aim is to generate an average single value per biorep by averaging techreps. We just need to exclude the techreps values which are imputed in PD due to missing data.
+
+```{r}
+abundances_normalized <- list(proteins[101:103], proteins[104:106], proteins[107:109],
+                              proteins[110:112], proteins[113:115], proteins[116:117],
+                              proteins[118:120], proteins[121:123], proteins[124:126],
+                              proteins[127:129], proteins[130:132], proteins[133:134])
+names(abundances_normalized) <- sampleID
+
+
+# Clean up names of techrep abundance columns
+clean.abd.names <- function(x) {
+    tmpnames <- names(x)
+    tmpnames <- gsub(x = tmpnames, pattern = "Abundances\\.+Normalized\\.+", replacement = "")
+    tmpnames <- gsub(x=tmpnames, pattern="Sample", replacement = ".")
+    tmpnames <- gsub(x=tmpnames, pattern="\\.+", replacement = ".")
+    names(x) <- tmpnames
+    rownames(x) <- proteins$Accession
+    return(x)
+}
+
+abundances_normalized <- lapply(abundances_normalized, FUN = clean.abd.names)
+names(abundances_normalized[[1]])
+```
+
+The next step is to generate a single abundance value per biological replicate by averaging technical replicates. However, the techreps also have imputed data in them, which need to be excluded. So assign `NA` to normalized+imputed values where techreps have missing data.
+
+
+
+```{r}
+
+abundances_normalized_NA <- vector(mode="list", length = 12)
+names(abundances_normalized_NA) <- sampleID
+
+# convert abundance dataframes to matrix, assign NA where techrep is NA
+for (samp in sampleID) {
+    abundances_normalized_NA[[samp]] <- as.matrix(abundances_normalized[[samp]])
+    abundances_normalized_NA[[samp]][!techreps_logical[[samp]]] <- NA
+}
+```
+
+## Correlation among tech reps
+Now we can examine the correlation between techreps. If these are very high, it justifies the decision to average them. 
+
+```{r, fig.height=3, fig.width=4}
+techrep_cor_mats <- lapply(abundances_normalized_NA, cor, use="complete.obs")
+
+panel.cor <- function(x, y, ...) {
+    txt <- as.character(format(cor(x, y, use = "complete.obs"), digits=5))
+    text(1e6, 1e6, labels=paste0("R=",txt), cex = 1)
+}
+
+#par(mfrow=c(4,3))
+for (i in 1:12) {
+    pairs(abundances_normalized_NA[[i]], main = sampleID[i], 
+          upper.panel=panel.cor,  log = "xy", pch = 19, cex = 0.3, cex.axis = 0.5)
+}
+```
+
+Let's make a consolidated figure for the publication. 
+
+**OOPS** can't use layout or par() with `pairs()`. The following block does not evaluate currently. 
+```{r, eval = F}
+png(filename = "../Results/TechRep_Corrs.png", width = 10, height = 8, 
+    units = "in", pointsize = 10, res = 300)
+
+# Set up a 3-row, 4-column layout, filling by columns
+layout(matrix(1:12, nrow = 3, ncol = 4, byrow = FALSE))
+
+# Adjust margins to fit multiple plots
+par(mar = c(3, 3, 2, 1))
+
+for (i in 1:12) {
+    pairs(abundances_normalized_NA[[i]], main = sampleID[i], 
+          upper.panel=panel.cor,  log = "xy", pch = 19, cex = 0.3)
+}
+dev.off()
+```
+
+
+
+So indeed, the techreps have very high replication.  Accordingly, we will average them to get a single biological replicate value. 
+
+## Biorep abundance dataframe
+
+Importantly, this gives us our dataframe (`biorep_abund_mean`) of abundance values that will be provided to the `SummarizedExperiment` assay dataframe for `DEP` analysis.
+
+```{r}
+# Get mean across techreps for each biorep, store in matrix
+biorep_abund_mean <- sapply(abundances_normalized_NA, FUN = function(x) {rowMeans(x, na.rm=T)} ) 
+head(biorep_abund_mean)
+tail(biorep_abund_mean)
+```
+
+## Biorep correlations
+
+So now we can ask how consistent the abundance values are among biological replicates.
+
+```{r, fig.width = 7, fig.height=7}
+pairs(biorep_abund_mean[,1:6], main = "Apyrene Sperm Replicates", 
+      upper.panel=panel.cor,  log = "xy", pch = 19, cex = 0.3)
+
+pairs(biorep_abund_mean[,7:12], main = "Eupyrene Sperm Replicates", 
+      upper.panel=panel.cor,  log = "xy", pch = 19, cex = 0.3)
+```
+
+
+Generally the replication is OK, ranging roughly from 0.7-0.9, but seems to be a bit higher for eupyrene than apyrene.
+
+## Make `SummarizedExperiment`
+
+Now we can move on to assembling the other components of the SE for DEP. Let's start with the colData (samples) dataframe
+
+```{r}
+spermType <- c(rep("Apyrene",6), rep("Eupyrene",6))
+replicate <- c(1:6,1:6)
+colData.df <- data.frame("label"=sampleID, "condition"= spermType, "replicate"=replicate)
+
+# gsub(x=names(techreps_logical_df), pattern = "Sample\\d+\\.(F\\d+)\\.\\d\\.\\w", replacement = "\\1")
+```
+
+And now we make the _Features_ dataframe
+
+```{r}
+# extract geneID
+geneID <- gsub(x=proteins$Description, pattern = "geneID=(\\S+)\\sgenename=.+", replacement = "\\1")
+
+feature.df <- data.frame("TrxID" = proteins$Accession, "GeneID" = geneID, "Npeptides" = proteins[[12]], "Ndetect.apy" = biorep_count_apy, "Ndetect.eup" = biorep_count_eup)
+
+# DEP requires abundance data and metadata in the same dataframe...
+dep.df <- data.frame(cbind(feature.df, biorep_abund_mean))
+
+# This seems a completely superfluous step to use make_unique() to create
+# "names" and "ID" columns which correspond to transcript and gene IDs. 
+# I'm just following the DEP workflow here, but probably could just manually
+# create those two columns directly...
+dep.df.uniq <- make_unique(proteins=dep.df, names = "TrxID", ids="GeneID")
+```
+
+
+Now we have the primary data (`biorep_abund_mean`), the gene/feature data, and the sample data. So we can assemble them into the `DEP` _SummarizedExperiment_ object.
+
+```{r}
+pieris.se <- make_se(proteins_unique = dep.df.uniq, columns = grep(pattern="Sample", names(dep.df.uniq)), expdesign = colData.df)
+```
+
+Let's write out the DEP summarized experiment object `pieris.se` for access in other contexts.
+
+```{r}
+save(pieris.se, file = "pieris_DEP_SE_object.Rdata")
+```
+
+# Test `DEP` functions
+
+Now we can make use of the `DEP` functions!
+
+```{r, fig.height=3, fig.width=5}
+plot_frequency(pieris.se)
+plot_numbers(pieris.se)
+plot_coverage(pieris.se)
+plot_normalization(pieris.se)
+plot_missval(pieris.se)
+```
+
+## Pub figure: counts & abundance
+Make figure for publication, combine `plot_numbers()` and `plot_normalization()`
+```{r}
+library(patchwork)
+library(ggplot2)
+
+
+#myCols <- c("orange2", "skyblue2")
+myCols <- c("goldenrod1", "orchid3")
+
+pnumb <- plot_numbers(pieris.se) + 
+  scale_fill_manual(values = myCols) + coord_flip() +
+  theme(axis.text.x = element_text(angle = 0, hjust = 0.5)) +
+  ggtitle(label = "Protein counts ") +
+  guides(fill=guide_legend(title="Sperm morph"))
+#pnumb 
+
+pnorm <- plot_normalization(pieris.se) + 
+  scale_fill_manual(values = myCols) + 
+  theme(
+  strip.background = element_blank(),
+  strip.text.x = element_blank(),
+  axis.text.y=element_blank(),
+  legend.position = "none") + 
+  ggtitle(label = "Protein abundance") +
+  labs(x = "", y = expression(Log[2] ~ "Abundance"))  
+
+#pnorm 
+
+
+outplot <- pnumb + pnorm + plot_layout(guides = "collect") 
+
+print(outplot)
+
+ggsave(plot = outplot, filename = "../Results/Count-Abund_prefilter.pdf", 
+       width = 6, height = 3, scale=1.8)
+
+
+```
+
+
+# Session Info
+```{r}
+sessionInfo()
+```
+
+
+
+

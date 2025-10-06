@@ -1,0 +1,429 @@
+---
+title: "Differential Abundance Testing"
+author: "James R. Walters & Katie McLaughlin"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: readable
+    toc: true
+    toc_float: true
+---
+
+# Load Packages & Data
+Load the necessary packages, the SE object, and the analysis scripts.
+```{r setup, include = TRUE}
+suppressMessages(library(DEP))
+suppressMessages(library(SummarizedExperiment))
+library(ggplot2)
+library(kableExtra)
+library(patchwork)
+
+load("pieris_DEP_SE_object.RData")
+```
+
+
+# Filtering
+
+## Remove Apyrene 4
+
+Preliminary analysis indicated that there was something wrong with Apyrene 4. It appeared to be a notable outlier in terms of having few proteins detected and an apparently elevated distribution of abundances. So we will remove it from further analysis.
+
+```{r}
+pieris.se <- pieris.se[ , -which(colnames(pieris.se) == "Apyrene_4") ]
+```
+
+
+## Missing values filter
+
+The `filter_missval()` function allows proteins to be missing from three samples in at least one condition. So here we allow a maximum of two missing observations in one sample. In other words, a protein is filtered if it is missing values in 3 or more replicates in both sperm morphs.
+```{r}
+pieris.logInt <- assay(pieris.se) # extract raw data of ion intensities into stand alone matrix
+# get counts of non-NA observations across Apyrene and Eupyrene 
+Nobs.apy <- apply( pieris.logInt[, grep(pattern="Apy", x = colnames(pieris.logInt))],  1, function(x){sum(! is.na(x) )} )
+Nobs.eup <- apply( pieris.logInt[, grep(pattern="Eup", x = colnames(pieris.logInt))],  1, function(x){sum(! is.na(x) )} )
+
+# append these into SE object rowData
+rowData(pieris.se)$Nobs.apy <- Nobs.apy
+rowData(pieris.se)$Nobs.eup <- Nobs.eup
+
+#Filter for proteins that are identified in replicates
+pieris.filt <- filter_missval(pieris.se, thr = 2) 
+```
+
+## PCA of filtered data
+
+After removing "unexpressed" proteins, we can do a first-pass assessment of variation in the data via PCA. And do it up nice for inclusion in publication
+
+```{r}
+myCols <- c("goldenrod1", "orchid3")
+pcaplot <- plot_pca(pieris.filt, n = 500) + 
+  scale_color_manual(values = myCols) +
+  guides(shape=guide_legend(title="Replicate",
+                            override.aes = list(size = 3)),
+         color=guide_legend(title="Sperm morph"), 
+         ) +
+  
+  ggtitle("Principal Component Analysis")
+
+
+ggsave(plot = pcaplot, filename = "../Results/PCA_filtered.pdf", 
+       width = 5, height = 4, scale = 1.1)
+```
+
+# Standard Visualizations
+
+Generate standard `DEP` plots. Also, merge plots of overlap for a single plot in publication.
+```{r}
+
+
+plot_numbers(pieris.filt)
+
+plot_normalization(pieris.filt)
+
+
+yLims <- c(0,1400)
+all.freq <- plot_frequency(pieris.filt) + 
+  labs(title = "All samples") + 
+  scale_y_continuous(breaks = c(seq(0, 1500, 200)), limits = yLims) 
+
+apy.freq <- plot_frequency(pieris.filt[,pieris.filt$condition == "Apyrene"]) + 
+  labs(title = "Apyrene") + 
+  scale_y_continuous(breaks = c(seq(0, 1500, 200)), limits = yLims) 
+
+
+eup.freq <- plot_frequency(pieris.filt[,pieris.filt$condition == "Eupyrene"]) + 
+  labs(title = "Eupyrene") + 
+  scale_y_continuous(breaks = c(seq(0, 1500, 200)), limits = yLims) 
+
+
+
+overlaps <- all.freq + eup.freq + apy.freq  + plot_layout(axis_titles = "collect", 
+                                                         widths = c(3,2.2,2), 
+                                                         axes = "collect")
+print(overlaps)
+
+ggsave(filename = "../Results/Overlaps.pdf", plot = overlaps, width = 6, height = 3, scale = 1.3)
+
+```
+
+
+
+# Missing Data
+
+## Assess missing data
+
+There are many proteins which have incomplete sets of observations. Roughly a third of the proteins have at least one missing value.  And plots of abundances partitioned by missing values clearly shows lower abundance for proteins with missing values, consistent with reduced opportunity for detection. 
+
+```{r}
+sum( apply( is.na(assay(pieris.filt)), 1, any ) )
+
+plot_detect(pieris.filt)
+```
+
+Now let’s assess which proteins may be missing at random (MAR) versus not (MNAR).
+We will require 2 or more observations in both morphs to be MAR, and otherwise they will be MNAR, In other words, MNAR will have 1 or 0 observations in one morph, and at least 3 in the other.
+```{r}
+obs.required <- 2
+
+rowData(pieris.filt)$mar <- rowData(pieris.filt)$Nobs.apy >= obs.required & rowData(pieris.filt)$Nobs.eup >= obs.required
+
+# subset to only proteins with any missing values, then tabulate MAR/MNAR
+table(rowData(pieris.filt[apply( is.na(assay(pieris.filt)), 1, any )])$mar )
+```
+
+Now we can examine patterns of missing values via heatmap, for MAR and MNAR proteins. Here I've hacked the `plot_missval()` function from `DEP`. 
+```{r}
+suppressMessages( library(ComplexHeatmap) )
+
+plot_missval.jrw <- function (se, title = "Missing Values Pattern") 
+{
+    assertthat::assert_that(inherits(se, "SummarizedExperiment"))
+    se_assay <- assay(se)
+    if (!any(is.na(se_assay))) {
+        stop("No missing values in '", deparse(substitute(se)), 
+            "'", call. = FALSE)
+    }
+    #df <- se_assay %>% data.frame(.)
+    df <- as.data.frame(se_assay)
+    missval <- df[apply(df, 1, function(x) any(is.na(x))), ]
+    missval <- ifelse(is.na(missval), 0, 1)
+    ht2 = Heatmap(missval, col = c("grey90", "black"), column_names_side = "top", cluster_columns = F,
+        show_row_names = FALSE, show_column_names = TRUE, name = title, 
+        column_names_gp = gpar(fontsize = 10), heatmap_legend_param = list(at = c(0, 
+            1), labels = c("Missing value", "Valid value")))
+    draw(ht2, heatmap_legend_side = "top")
+}
+
+plot_missval.jrw(pieris.filt[rowData(pieris.filt)$mar], title = "MAR proteins")
+
+plot_missval.jrw(pieris.filt[!rowData(pieris.filt)$mar], title = "MNAR proteins")
+
+
+## Write out plots for publication
+pdf(file = "../Results/MissingVals_Heatmaps.pdf", width = 6, height = 4)
+
+plot_missval.jrw(pieris.filt[rowData(pieris.filt)$mar], title = "MAR proteins")
+
+plot_missval.jrw(pieris.filt[!rowData(pieris.filt)$mar], title = "MNAR proteins")
+
+dev.off()
+```
+
+
+## Qualitative Differences
+
+There is a basic expectation, based on precedent from our previous Lep sperm proteomes, that some proteins should be found in only one sperm morph. In this case, we will use a qualitative presence/absence metric to identify these proteins: The protein must be present in four bioreps of one morph, and present 0 or 1 times in the other. Permitting 1 replicate allows for some error due to contamination during sperm separation.
+
+All of these proteins will overlap with the “MNAR” subset later in analyses.
+```{r}
+
+# Find eupyrene specific proteins
+rowData(pieris.filt)$specific.eup <- rowData(pieris.filt)$Nobs.eup >= 4 &
+  rowData(pieris.filt)$Nobs.apy <= 1
+sum(rowData(pieris.filt)$specific.eup)
+
+# Find apyrene specific proteins
+rowData(pieris.filt)$specific.apy <- rowData(pieris.filt)$Nobs.apy >= 4 &
+  rowData(pieris.filt)$Nobs.eup <= 1
+sum(rowData(pieris.filt)$specific.apy)
+
+# Select all the morph-specific proteins
+specific.se <- pieris.filt[ rowData(pieris.filt)$specific.eup | rowData(pieris.filt)$specific.apy, ]
+nrow(specific.se)
+```
+
+## Imputing missing data: Mixed Approach 
+
+At this point, we will impute missing values so as to allow full testing for differential expression. Since we appear to have a mix of MAR with some MNAR proteins, we will apply a mixed approach to imputing. This approach follows the principles and guidance from the [DEP vignette on handling missing values](https://bioconductor.org/packages/release/bioc/vignettes/DEP/inst/doc/MissingValues.html) and also related [MSnbase vignette](https://bioconductor.org/packages/3.14/bioc/vignettes/MSnbase/inst/doc/v01-MSnbase-demo.html#8_Processing_quantitative_data)
+
+We will use the “MinDet” method for MNAR and "MLE" for MAR.
+
+Note that at least the MLE method has a random component to it, as it uses `norm::imp.norm()`, so I will `set.seed()` for reproducibility here. 
+```{r}
+set.seed(1) 
+pieris.imp.mle <- impute(se = pieris.filt, fun = "mixed", 
+                         randna = rowData(pieris.filt)$mar, 
+                         mar = "MLE", mnar = "MinDet" )
+
+plot_imputation(pieris.imp.mle)
+```
+
+
+## Calculate Mean Abundances
+```{r}
+apy_meanAbundance <- pieris.imp.mle[ , pieris.imp.mle$condition == "Apyrene"]
+rowData(pieris.imp.mle)$Means.Apy <- rowMeans(assay(apy_meanAbundance))
+
+eupy_meanAbundance <- pieris.imp.mle[ , pieris.imp.mle$condition == "Eupyrene"]
+rowData(pieris.imp.mle)$Means.Eupy <- rowMeans(assay(pieris.imp.mle))
+
+rowData(pieris.imp.mle)$Means.All <- rowMeans(assay(pieris.imp.mle)) #Store in col of rowData
+```
+
+
+# Differential Abundance Testing
+
+With imputed data, we are ready to perform differential expression analysis.  DEP breaks this into a few steps, so we will compress these into a single wrapper function.
+
+However, the p-value correction for multiple testing employed by DEP is not standard.  It uses something called "fdrtool", which corresponds to some "generalized" approach to multiple testing correction, and not the widely used BH "fdr" approach. The "fdrtool" correction appears extremely conservative, so I will manually add a set of results for BH fdr corrected p-values.
+
+
+## Applying BH Correction
+
+
+
+Require a log fold change of 1.5x to be significant, along with FDR of 0.05. Write a wrapper function to apply these thresholds for significance testing.
+
+```{r}
+do.de.se <- function(my.se, alpha = 0.05, lfc = log2(1.5)) {
+  my.se <- test_diff(se = my.se, type = "all")
+  my.se <- add_rejections(diff = my.se, alpha = alpha, lfc = lfc)
+  rowData(my.se)$Apyrene_vs_Eupyrene_p.bh <- p.adjust(rowData(my.se)$Apyrene_vs_Eupyrene_p.val, method = "BH")
+  rowData(my.se)$significant_bh <- ifelse(rowData(my.se)$Apyrene_vs_Eupyrene_p.bh <= alpha & abs(rowData(my.se)$Apyrene_vs_Eupyrene_diff) >= lfc, TRUE, FALSE )
+  return(my.se)
+}
+
+pieris.imp.mle <- do.de.se(pieris.imp.mle)
+```
+
+## Plotting Significant BH Results
+
+Here we can plot the relationship between conventional BH type FDR, and `DEP`'s p-value adjustments, which are much more conservative!
+
+```{r}
+
+par(mfrow=c(1,2))
+plot(x = rowData(pieris.imp.mle)$Apyrene_vs_Eupyrene_p.adj, 
+     y=rowData(pieris.imp.mle)$Apyrene_vs_Eupyrene_p.bh, 
+     xlab = "DEP adjusted P-value", ylab = "BH FDR P-value", 
+     main = "Adjusted P-values:  DEP vs BH", pch = 19, cex = 0.5)
+
+
+bh.signif <- rowData(pieris.imp.mle)$Apyrene_vs_Eupyrene_p.bh < 0.05
+plot(x = rowData(pieris.imp.mle)$Apyrene_vs_Eupyrene_p.adj[bh.signif], 
+     y = rowData(pieris.imp.mle)$Apyrene_vs_Eupyrene_p.bh[bh.signif], 
+     xlab = "DEP adjusted P-value", ylab = "BH FDR P-value", 
+     main = "Adjusted P-values:  DEP vs BH", pch = 19, cex = 0.5)
+abline(a = 0, b = 1, lty = 2, col = "red")
+
+#BH FDR significance
+table(rowData(pieris.imp.mle)$significant_bh, useNA = "always")
+```
+
+# Visualizing results
+
+The visualization tools of `DEP` are "tuned" to use the results from the `fdrtools` package it implements. But we can overwrite the BH results into the "standard" columns used by DEP and get it to plot data based on BH fdr significance.
+```{r}
+pieris.hack <- pieris.imp.mle
+rowData(pieris.hack)$Apyrene_vs_Eupyrene_p.adj <- rowData(pieris.hack)$Apyrene_vs_Eupyrene_p.bh
+rowData(pieris.hack)$Apyrene_vs_Eupyrene_significant <- rowData(pieris.hack)$significant_bh
+rowData(pieris.hack)$significant <- rowData(pieris.hack)$significant_bh
+```
+
+Now we can generate various plots of the data
+```{r}
+plot_cor(pieris.hack)
+
+# Plot heatmap of significantly DE proteins
+plot_heatmap(pieris.hack, type = "centered", show_row_names = FALSE, indicate = "condition")
+
+plot_volcano(pieris.hack, contrast = "Apyrene_vs_Eupyrene", add_names = F)
+
+plot_pca(pieris.hack)
+
+```
+## Good Volcano
+
+Make a volcano plot for publication. Could use DEP's `plot_pca()`, but I'd like to customize it further. Following [this example](https://erikaduan.github.io/posts/2021-01-02-volcano-plots-with-ggplot2/). Also [this reference](https://dataanalytics.org.uk/axis-labels-in-r-plots-using-expression/) for generating subscripts with `expression`
+
+```{r}
+# Extract data from SE object for easy access
+volcDat <- rowData(pieris.hack)
+
+# Code results as directionally DE, or unbiased
+genetype <- rep("Unbiased", times = nrow(volcDat))
+genetype[volcDat$Apyrene_vs_Eupyrene_p.adj < 0.05 &
+         volcDat$Apyrene_vs_Eupyrene_diff > 0 ] <- "Apyrene"
+genetype[volcDat$Apyrene_vs_Eupyrene_p.adj < 0.05 &
+         volcDat$Apyrene_vs_Eupyrene_diff < 0 ] <- "Eupyrene"
+
+cols <- c("Apyrene" = myCols[1], "Eupyrene" = myCols[2], "Unbiased" = "grey") 
+sizes <- c("Apyrene" = 1.5, "Eupyrene" = 1.5, "Unbiased" = 1) 
+alphas <- c("Apyrene" = 1, "Eupyrene" = 1, "Unbiased" = 0.5)
+
+legendTitle <- "Differential result"
+
+volcPlot <- ggplot(volcDat, aes(x = Apyrene_vs_Eupyrene_diff,
+                    y = -log10(Apyrene_vs_Eupyrene_p.adj),
+                    fill = genetype,    
+                    size = genetype,
+                    alpha = genetype)
+       ) +
+  geom_point(shape = 21, color = "black") +
+  scale_fill_manual(legendTitle, values = cols) + # Modify point colour
+  scale_size_manual(legendTitle, values = sizes) + # Modify point size
+  scale_alpha_manual(legendTitle, values = alphas) +  # Modify point transparency
+  theme_light() +
+  scale_x_continuous(breaks = c(seq(-10, 10, 2)), limits = c(-6.8,6.8)) +
+  ylab(expression(-Log[10](FDR~p-value))) +
+  xlab(expression(Log[2](Apyrene:Eupyrene))) +
+  guides(fill=guide_legend( override.aes = list(size = 3)) )
+
+print(volcPlot)
+
+ggsave(plot = volcPlot, filename = "../Results/Volcano_PierisSperm.pdf", 
+       width = 5, height = 3, scale = 1.2)
+
+
+
+
+```
+
+
+
+# Summary & output files 
+
+
+Let's format data so that it can be easily used with downstream analyses.  Add columns that indicate explicitly whether a protein is biased towards apyrene, eupyrene, or is unbiased.
+
+```{r}
+# Create a vector for calling result (apyrene-biased//eupyrene-biased or not)
+# Start with all "unbaised". Then assign results based on "qualitative" assessment
+master.de <- rep("unbiased", times = nrow(pieris.imp.mle))
+master.de[rowData(pieris.imp.mle)$specific.apy] <- "apyrene"
+master.de[rowData(pieris.imp.mle)$specific.eup] <- "eupyrene"
+
+# Now add on result based on statistical support
+master.de[rowData(pieris.imp.mle)$Apyrene_vs_Eupyrene_diff > 0 & 
+            rowData(pieris.imp.mle)$significant_bh] <- "apyrene"
+
+master.de[rowData(pieris.imp.mle)$Apyrene_vs_Eupyrene_diff < 0 & 
+            rowData(pieris.imp.mle)$significant_bh] <- "eupyrene"
+
+
+rowData(pieris.imp.mle)$master.de <- master.de
+```
+
+
+So in conclusion, we have a total of **`r length(master.de)`** proteins detected. And these break down as the following, in terms of DE
+
+```{r}
+table(master.de) |> kable()
+```
+
+Now how many genes do those proteins belong to?
+
+```{r}
+pierisSpermProtDiffEx <- as.data.frame(rowData(pieris.imp.mle))
+apyGenes <- length(unique(pierisSpermProtDiffEx$GeneID[
+  pierisSpermProtDiffEx$master.de == "apyrene"] ))
+eupGenes <- length(unique(pierisSpermProtDiffEx$GeneID[
+  pierisSpermProtDiffEx$master.de == "eupyrene"] ))
+unbGenes <- length(unique(pierisSpermProtDiffEx$GeneID[
+  pierisSpermProtDiffEx$master.de == "unbiased"] ))
+
+apyGenes
+eupGenes
+unbGenes
+```
+
+And among proteins identified qualitatively, how many were _also_ identified as DE quantitatively?
+
+```{r}
+# vector indicating qualitative differences
+qualDE <- pierisSpermProtDiffEx$specific.apy | pierisSpermProtDiffEx$specific.eup
+# vector indicating quantitative DE
+quantDE <- pierisSpermProtDiffEx$significant_bh
+
+sum(qualDE) # number of qualDE proteins
+sum(quantDE) # number of quantDE proteins
+sum(qualDE & quantDE) # overlap in qual and quant
+
+```
+
+So it appears that only `r sum(qualDE & quantDE)` proteins overlap between qualitative and quantitatively assessed "differential" proteins.  
+
+
+## Write output table
+
+Now write out the various files as table and R objects
+
+```{r}
+#Write out a df
+pierisSpermProtDiffEx <- as.data.frame(rowData(pieris.imp.mle))
+
+#Save R Objects
+save(pierisSpermProtDiffEx , file = "../Results/pierisSpermProtDiffEx.RData")
+save(pieris.imp.mle, file = "../Results/pierisImputedMLE.RData")
+
+#Write out to csv
+write.csv(pierisSpermProtDiffEx ,"../Results/pierisSpermProtDiffEx.csv", row.names = FALSE)
+```
+
+
+# Session Info
+```{r}
+sessionInfo()
+```
+
+

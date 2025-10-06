@@ -1,0 +1,151 @@
+---
+title: "P. rapae Sperm GO enrichment"
+author: "Katie McLaughlin & James R. Walters"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: readable
+    toc: true
+    toc_float: true
+    toc_collapsed: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Here we will do GO-enrichment tests with the `GOstats` package, following the procedure outlined in the vignette for "[Hypergeometric testing with unsupported model organisms](https://www.bioconductor.org/packages/release/bioc/html/GOstats.html)".
+
+# Load libraries & data
+
+```{r}
+suppressMessages(library(GOstats))
+suppressMessages(library(GSEABase))
+```
+
+## Sperm Proteins
+```{r}
+#DE output from DEP
+pieris.DE <- read.csv(file = "../../Part1_Proteomics/Results/pierisSpermProtDiffEx.csv", 
+header = TRUE)
+```
+
+
+Partition sperm proteins by differential abundance results. Extract sets of unique GeneIDs for Apy-, Eup-, and Un-biased genes. 
+
+```{r}
+UnbiasedProteins <- pieris.DE[pieris.DE$master.de == "unbiased", ]
+Eu.DE <- pieris.DE[pieris.DE$master.de == "eupyrene", ]
+A.DE <- pieris.DE[pieris.DE$master.de == "apyrene", ]
+
+# UnbiasedProteins <- pieris.DE[pieris.DE$significant_bh == FALSE, ]
+allspermprots <- unique(pieris.DE$GeneID)
+sharedproteins <- unique(UnbiasedProteins$GeneID)
+Eupy.proteins <- unique(Eu.DE$GeneID)
+Apy.proteins <- unique(A.DE$GeneID)
+
+```
+
+## PANNZER GO
+
+Read in Pannzer GO results and format for working with `GOstats`
+```{r}
+prapaeGO <- read.delim("../PANNZEROutputs/GO.out")
+GeneIdentifiers <- read.csv("../../Part0_DataCleaning/Results/TrxID.GeneName.GeneID.csv")
+prapaeGO.all <- merge(x = prapaeGO, y = GeneIdentifiers[ , c(1,3)], 
+                      by.x = "qpid", by.y = "TrxID") #Need geneID for transcript in GO.out
+goframeData.prapae <- data.frame("go_id" = sprintf("GO:%07d", prapaeGO.all$goid), 
+                                 "Evidence" = "ISS", "gene_id" = prapaeGO.all$GeneID)
+
+allprots.prapae <- unique(prapaeGO.all$qpid) #Prapae sperm proteins with GO annotations
+
+```
+
+Format as `geneSetCollection` object.
+```{r}
+gsc.prapae <- GeneSetCollection(GOAllFrame(GOFrame(goframeData.prapae, 
+                                                   organism = "Pieris rapae")), 
+                                setType = GOCollection())
+
+```
+
+# GO Enrichment tests
+
+## Configure parameters
+
+To begin with, make a function that generates the relevant set of test parameters, so we will test each GO Class for each portion of the sperm proteome versus the WHOLE sperm proteome
+```{r}
+ontologyClasses <- c("CC", "BP", "MF")
+
+makeparams <- function(subsetName, genes) {
+  params.cats <- lapply(ontologyClasses, function(x) {
+    GSEAGOHyperGParams(
+      name = subsetName, 
+      geneSetCollection = gsc.prapae, 
+      geneIds = genes, 
+      universeGeneIds = allspermprots, 
+      ontology = x, 
+      pvalueCutoff = 0.05, 
+      conditional = TRUE,
+      testDirection = "over"
+      )  
+    } 
+  )
+  names(params.cats) <- paste0(subsetName, "_", ontologyClasses)
+  return(params.cats)
+}
+```
+
+And now make param objects for each subset of the proteome.
+
+```{r}
+params.apyrene <- makeparams(subsetName = "apyrene", genes = Apy.proteins) #Parameter object for each of the ontology 
+params.eupyrene <- makeparams(subsetName = "eupyrene", genes = Eupy.proteins)  
+params.shared <- makeparams(subsetName = "shared", genes = sharedproteins) 
+```
+
+
+## Hypergeom Tests
+And then execute the Hypergeometric test for each of these subsets. Save R object out to file. 
+
+```{r}
+#params.list <- list(params.apyrene, params.eupyrene, params.shared)
+
+HG.list <- lapply(c(params.apyrene, params.eupyrene, params.shared), FUN = hyperGTest) 
+save(HG.list, file = "../Results/HypergeomTest.list.RData")
+
+```
+
+## Write Tables
+
+Here we will iterate over each combinaton of GO-class and sperm subset, writing out each set of results in turn to the same file.
+
+```{r}
+
+filename <- "../Results/prapaeGOenrichment_out.txt"
+# Organize output by GO type, then by sperm subset:
+
+hg.names <- names(HG.list)
+
+out.order <- c(grep("BP", hg.names), grep("MF", hg.names), grep("CC", hg.names))
+
+cat("Gene Ontology Enrichment using Bioconductor GOstat for P. rapae sperm proteins\n\n",  file = filename)
+
+for (i in out.order) {
+  cat("\n\n", hg.names[i],":\n", file = filename, append = T)
+  
+  suppressWarnings( # suppress "appending" warnings
+    write.table(summary(HG.list[[i]]), file = filename, 
+              quote = F, sep = "\t", row.names = F, append = T)
+  )
+}
+```
+
+
+
+
+# Session Info
+```{r}
+sessionInfo()
+```
+

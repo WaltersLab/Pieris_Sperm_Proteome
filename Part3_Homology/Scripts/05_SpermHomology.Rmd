@@ -1,0 +1,335 @@
+---
+title: "P. rapae sperm proteome homology"
+author: "Katie McLaughlin & James R. Walters"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: readable
+    toc: true
+    toc_float: true
+    toc_collapsed: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Parse ProteinOrtho
+
+## Input ProteinOrtho
+Predicted orthologs between Pieris, monarch, and Manduca, using `ProteinOrtho` pipeline, run previously on cluster. Now parse and summarize results.
+
+```{r}
+# Read in results from ProteinOrtho.  Missing genes are listed as "*", so set to NA
+orthos <- read.delim("../Inputs/Prap_Msex_Dple.proteinortho.tsv", na.strings = '*')
+names(orthos) <- c("nSpecies", "nGenes", "score", "Dple", "Msex", "Prap")  # clean up column names.
+# How many orthogroups? 
+nrow(orthos)
+# How many orthogroups missing in each species?
+sapply(orthos[,4:6], function(x) {sum(is.na(x))})
+
+
+# Clean up names of identifiers
+orthos$DpleGene <- gsub(x =  orthos$Dple, pattern="-PA", replacement = "", fixed = T) # create a column of gene IDs stripped of -PA suffix.
+orthos$MsexGene <- gsub(x =  orthos$Msex, pattern="-R\\w", replacement = "", perl = T) # create a column of gene IDs for manduca stripped of -R* suffix.
+
+```
+
+
+## Anchor by Pieris ID
+
+We want a data table that is "anchored" by unique Pieris IDs. 
+So split any Pieris paralogs from within an orthogroup, duplicating entries for the matching species. We will also fold in the geneID for Pieris for each transcript ID.
+
+```{r}
+# now I need to split any paralogs, duplicating entries for the matching species
+prap.ortho.long <- data.frame() # create empty DF for filling up
+prap.ortho.long$Prap <- character(0) # add on additional column for unique, separated Pieris genes.
+prap.ortho.long$Dple <- character(0) # add on additional column for CSV monarch homologs
+prap.ortho.long$Msex <- character(0) # add on additional column for CSV manduca homologs
+# unwrap paralogs for dplex, so each row has one dplex gene
+for (i in seq_len(nrow(orthos)) ) { # 
+   ogs.vec <- strsplit(orthos$Prap[i], split=",", fixed=T)[[1]]  # split csv into vector
+   for (j in seq_along(ogs.vec)) {  # for each split pieris id
+      prap.ortho.long <- rbind(prap.ortho.long, data.frame("Prap"= ogs.vec[j], orthos[i,c("DpleGene","MsexGene")]))  # add row with associated orthogroups
+   }
+}
+
+# Load Trx-Gene relation
+prapIDtable <- read.csv(file = "../../Part0_DataCleaning/Results/TrxID.GeneName.GeneID.csv")
+
+
+prap.ortho.long.gene <- merge(x = prapIDtable, y = prap.ortho.long, 
+                              by.x = "TrxID" , by.y = "Prap")
+
+```
+
+It's worth noting that the full table of orthologs from ProteinOrtho has many Manduca-monarch pairwise orthologs without a Pieris ortholog.  So when we merge in the geneIDs for Pieris, we remove the orthogroups that don't have a Pieris entry (i.e. are Manduca-monarch only), but this isn't important, since we only care about Pieris proteins and their orthologs.
+
+```{r}
+dim(prap.ortho.long)
+# How many missing orthogroups per species
+apply(prap.ortho.long, 2, function(x) sum(is.na(x)))
+
+dim(prap.ortho.long.gene)
+
+# How many missing orthogroups per species, after removing orthorgroups
+# without a Pieris entry
+apply(prap.ortho.long.gene, 2, function(x) sum(is.na(x)))
+```
+Now we can write out the full data, as well as the data with Pieris gene ID
+
+```{r}
+write.table(x = prap.ortho.long, file = "../Results/Prap_Msex_Dple-protorth-long.txt",
+            sep = "\t", quote = F, row.names = F)
+
+write.table(x = prap.ortho.long.gene, file = "../Results/Prap_Msex_Dple-protorthGene-long.txt",
+            sep = "\t", quote = F, row.names = F)
+
+```
+
+# Sperm proteins
+
+## Orthology
+Now we can start to examine patterns of orthology for sperm proteins.
+
+Note, we need to do the extra work to operate on GeneID, because orthology predictions were made based on TranscriptID for the single transcript isoform selected to represent the gene in orthology predictions.
+
+(For each gene, a transcript was randomly selected among all the longest and otherwise identical transcripts, for use in ProteinOrtho.  This means that in many cases, the transcript isoform identified in the proteomics is not necessarily the isoform used in orthology.  So we need to base counts of orthologs on geneIDs, not TrxID).
+
+
+
+```{r}
+# this is the set of identified Pieris sperm proteins from MS.
+spermProts <- read.csv(file = "../../Part2_Function/Results/PANNZER.BLAST.DE_Merged.csv")
+
+
+# Now limit orthologs to ONLY proteins detected in proteomics.
+# Need to operate on GeneID, cause arbitrary choices made about
+# which transcripts were used in orthology. So remove Trx from this
+# because it reflects orthology transcript, not (necessarily) the transcript
+# used in the proteomics database for peptide matching. 
+ProteinOrthoSpermGene <- prap.ortho.long.gene[ 
+  prap.ortho.long.gene$GeneID %in% spermProts$GeneID, -1] 
+
+write.csv(x = ProteinOrthoSpermGene, file = "../Results/ProteinOrthoSpermGene.csv")
+```
+
+
+And we can tabulate how many Pieris sperm genes have orthologs in each species:
+
+```{r}
+
+# Number of Pieris sperm genes
+nSpermGenes <- length(unique(spermProts$GeneID))
+print(nSpermGenes)
+```
+
+So the total number of Pieris sperm _genes_ is: `r nSpermGenes`
+
+Now let's partition these out among those with or without orthologs.
+
+```{r}
+
+# Number of Pieris sperm genes with orthologs
+nSpermGenesWithOrthos <- nrow(ProteinOrthoSpermGene)
+nSpermGenesLackOrthos <- nSpermGenes - nSpermGenesWithOrthos
+
+
+print(nSpermGenesWithOrthos)
+print(nSpermGenesLackOrthos)
+```
+
+The total of Pieris sperm genes with orthologs found in _either_ monarch or Manduca is: `r nSpermGenesWithOrthos`
+
+Leaving the number without orthologs as:  `r nSpermGenesLackOrthos`
+
+We can partition out the sperm proteins without orthologs, and write them out to file as "orphan" sperm proteins.
+```{r}
+# get details of sperm prots w/o orthologs
+spermOrphans_ProtOrth <- spermProts[ ! spermProts$GeneID %in%
+                                       ProteinOrthoSpermGene$GeneID, ]  
+write.csv(x = spermOrphans_ProtOrth, file = "../Results/spermOrphanProts_LepProtOrtho.csv")
+```
+
+
+## Orthology by species
+
+Now let's consider the how this breaks down for monarch versus Manudca. Considering only the `r nSpermGenesWithOrthos` Pieris sperm proteins that have an ortholog in _either_ species, how many missing in 
+
+```{r}
+# Number of proteins without orthologs in monarch or manduca
+MissingSpermGenesBySpp <- apply(ProteinOrthoSpermGene[3:4], 2, function(x) sum(is.na(x)))
+MissingSpermGenesBySpp
+```
+
+So among Pieris proteins with sperm homologs in either species:
+
+* `r MissingSpermGenesBySpp["DpleGene"]` are missing an ortholog in monarch
+* `r MissingSpermGenesBySpp["MsexGene"]` are missing an ortholog in Manduca
+
+This is consistent with phylogeny; we expect fewer missing othologs between Pieris and monarch, than Pieris and Manduca.
+
+
+
+
+# Sperm protein homology
+
+Now we will cross reference the Pieris sperm proteome with the sperm proteomes from Monarch & Manduca
+
+```{r}
+#Read in sperm proteome tables from Msex and Dplex
+monarchSpermProteomeTbl <- read.csv(file = "../Inputs/monarchSpermProteome.csv", header = TRUE)
+manducaSpermProteomeTbl <- read.csv(file = "../Inputs/manducaSpermProteome.csv", header = TRUE)
+
+```
+
+
+In order to cross-reference orthology with sperm proteomes, use function which will unwrap csv list and look for identifiers in the resulting vector. 
+
+```{r}
+#Custom Function
+# This function cross-references manduca|monarch orthologs or pieiris with sperm 
+# protein list, returning T if any are sperm prots.
+# `qry` is a set of one or more manduca|monarch proteins orthologous to pieris sperm prot; will be CSV.
+# `ref` is the complete list of manduca|monarch sperm proteins
+xrefSpermProts <- function(qry, ref) {
+  qryvec <- unlist(strsplit(x = qry, split = ","))
+  isSperm <- any( qryvec %in% ref)
+    #If it is a sperm protein, where is it found?
+  return(isSperm)
+}
+
+```
+
+Here's a test case of using the function.
+
+Since at least one protein found in the CSV list of monarch orthologs to the selected Pieris sperm protein is also found in the monarch sperm proteome, we report `TRUE` and consider these to be "sperm homologs". 
+
+Searching with a nonsense query ("RockChalk") gives `FALSE`, which is what would happen if the query protein(s) from monarch or manduca (which are orthologs to the Pieris sperm protein) are _not found_ in the monarch or manduca sperm proteome.
+
+```{r}
+# test case:  DPOGS203334,DPOGS214479
+testcase <- ProteinOrthoSpermGene$DpleGene[122]
+print(testcase)
+
+# Positive test case; at least one monarch proteins is in sperm
+xrefSpermProts(qry = testcase, ref = monarchSpermProteomeTbl$Gene)
+# Negative test case, where it can't possibly match a sperm geneID in monarch
+xrefSpermProts(qry = "RockChalk", ref = monarchSpermProteomeTbl$Gene)
+
+```
+
+
+## Sperm homologs by species
+
+Now we can apply this to all Pieris sperm proteins, for both monarch and manduca.
+
+```{r}
+# applied to all monarch orthologs of pieris proteins reported by ProtOrtho.
+allMonarch <- sapply(ProteinOrthoSpermGene$DpleGene, function(x) {
+  xrefSpermProts(qry = x, ref = monarchSpermProteomeTbl$Gene)})
+
+# applied to all manduca orthologs of pieris proteins reported by ProtOrtho.
+allManduca <- sapply(ProteinOrthoSpermGene$MsexGene, function(x) {
+  xrefSpermProts(qry = x, ref = manducaSpermProteomeTbl$Gene)})
+
+#Ortholog Detection - tabulated how many pieris proteins are found to have sperm-homologs in Monarch|Manduca.
+nDpleSpermHom <- sum(allMonarch) 
+nMsexSpermHom <- sum(allManduca) 
+
+SpermHomCounts <- c(nMsexSpermHom, nDpleSpermHom)
+names(SpermHomCounts) <- c("Manduca", "Danaus")
+print(SpermHomCounts)
+
+```
+
+
+So it appears to be the case that Manduca has more sperm homologs than monarch, which is not what we expect by phylogeny. However, we need to account for the fact that more sperm proteins were identified in Manduca (`r nrow(manducaSpermProteomeTbl)`) than monarch (`r nrow(monarchSpermProteomeTbl)`). So there is also a greater opportunity to _find_ sperm homologs in Manduca.  We should thus look at this proportionately.  What _proportion_ of sperm proteins in monarch or Manduca have sperm homologs in Pieris?
+
+```{r}
+# Proportion of Manduca sperm proteins with Pieris sperm homologs
+nMsexSpermHom/nrow(manducaSpermProteomeTbl)
+# Proportion of Danaus sperm proteins with Pieris sperm homologs
+nDpleSpermHom/nrow(monarchSpermProteomeTbl)
+
+```
+
+
+So even taking into account proportionality, it appears we still have more sperm homologs in Manduca, so the pattern persists that the result is not consistent with phylogeny.
+
+## Merge sperm homology for output
+
+Now we know whether each pieris sperm protein has a "sperm homolog" in monarch or Manduca. We can merge these results  into the other annotations of the Pieris sperm proteome.
+
+```{r}
+
+# Add results from Monarch & Manduca onto dataframe ProteinOrthoSperm
+ProteinOrthoSpermGene["spermProteomePresence_Monarch"] <- allMonarch
+ProteinOrthoSpermGene["spermProteomePresence_Manduca"] <- allManduca
+
+colnames(ProteinOrthoSpermGene)
+# Rearrange column names to group species results together
+# Drop GeneName, since it is redundant when merged back in.
+ProteinOrthoSperm_Reordered <- ProteinOrthoSpermGene[, c(2, 3, 5, 4, 6)]
+
+
+# Merge orthology & sperm homology results into "master" dataframe of sperm proteomics results with annotations.
+Homology_MasterDF <- merge(x = spermProts, y = ProteinOrthoSperm_Reordered, 
+                           by.x = "GeneID", by.y = "GeneID", all.x = TRUE)
+
+#Write out to file
+write.csv(Homology_MasterDF, file = "../Results/HomologyMasterDF.csv")
+
+```
+
+This file `Homology_MasterDF.csv` now has the compete set of results:
+
+* Differential abundance
+* Functional Annotations
+* Orthology to monarch & Manduca
+* Sperm protein homology to monarch & Manduca
+
+
+# Homolog proportions by Pieris morph
+
+Cross tabulate the presence of sperm homologs in monarch or manduca with whether the Pieris proteins shows morph-biased abundance.
+
+## monarch
+
+Start with monarch
+```{r}
+#Monarch
+monarchHomologs <- table(Homology_MasterDF$master.de,
+                         Homology_MasterDF$spermProteomePresence_Monarch)
+
+monarch.HomologProp <- prop.table(monarchHomologs, margin = 1) #proportions - Eupyrene are most conserved
+MonarchHomologResults <- cbind(monarchHomologs, monarch.HomologProp)
+
+#Write out to file 
+write.csv(MonarchHomologResults, file = "../Results/MonarchHomologCounts.csv")
+knitr::kable(round(MonarchHomologResults, 3))
+
+fisher.test(monarchHomologs) #significant differences
+```
+
+## Manduca
+
+
+```{r}
+
+#Manduca
+manducaHomologs <- table(Homology_MasterDF$master.de,
+                         Homology_MasterDF$spermProteomePresence_Manduca)
+manduca.HomologProp <- prop.table(manducaHomologs, margin = 1)
+
+#Write out to file
+ManducaHomologResults <- cbind(manducaHomologs, manduca.HomologProp)
+
+#Write out to file 
+write.csv(ManducaHomologResults, file = "../Results/ManducaHomologCounts.csv")
+knitr::kable(round(ManducaHomologResults, 3))
+
+fisher.test(manducaHomologs) 
+```
+

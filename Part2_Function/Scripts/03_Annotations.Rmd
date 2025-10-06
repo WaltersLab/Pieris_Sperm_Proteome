@@ -1,0 +1,208 @@
+---
+title: "P. rapae Protein Functional Annotations "
+author: "Katie McLaughlin & James R. Walters"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: readable
+    toc: true
+    toc_float: true
+    toc_collapsed: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Load libraries
+
+```{r}
+suppressMessages(library(Biostrings))
+library(kableExtra)
+```
+
+# Merge BLAST & PANNZER
+
+##  Pannzer
+Load `pannzer` annotations. Select only the `DE` lines corresponding to actual predictions. Ignore all the rest of the results for the timebeing.
+
+```{r}
+pannzer <- read.delim(file = "../PANNZEROutputs/anno.out", as.is = TRUE, na.strings = "n.d.", quote = "")
+DEtype <- pannzer[pannzer$type == "DE", ]
+```
+
+##  Blast
+
+```{r}
+#Rename column names before merging with pannzer 
+colnamesBlast <- c("query_seq.id", "subject_seq.id", "percent_identicalMatches", 
+                   "alignment_length", "number_mismatches", "number_gapOpenings",
+                   "start_query.alignment", "end_query.alignment", "start_subject.alignment", 
+                   "end_subject.alignment", "expect_value", "bit_value", 
+                   "organism_commonName", "organism_scientificName", "organism_group", "function") 
+blast <- read.table(file = "../BLASTOutputs/longestCDSOutput.txt", sep = "\t", 
+                    fill = TRUE, col.names = colnamesBlast, as.is = T, quote = "")
+
+```
+
+## Combine results 
+Merge pannzer and blast results.
+```{r}
+functionalResults <- merge(x = DEtype, y = blast, by.x = c("qpid"), 
+                           by.y = c("query_seq.id"), all = TRUE) 
+# Want the union - use argument "all = "
+```
+
+
+## Match with genes
+
+Now cross reference these functional results with a single representative protein/gene.
+
+Have to do some clean up here of the Longest CDS FASTA. Probably should have done this in the original cleaning, but just keep it here for now. Make a table of TrxID, GeneID, and GeneName for the selected Longest CDS.
+```{r}
+longestCDS_FAS <- readAAStringSet(filepath = "../../Part0_DataCleaning/Results/CleanedProteomeFASTAs/PierisLongestCDS.fas")
+
+# Generating the Table for NonRedundants
+protNames_NR <- names(longestCDS_FAS) #class(protNames_NR)
+trxList <- strsplit(names(longestCDS_FAS), split = " gene")  #Parse fasta header from AAStringSet into list of unique IDs
+
+trxID.geneName.geneID <- do.call(what = rbind, args = trxList) #Turn this list into a matrix, to access only trxID or GeneName directly
+colnamesProt.mtx <- c("TranscriptID", "GeneID", "GeneName")
+colnames(trxID.geneName.geneID) <- colnamesProt.mtx 
+trxID.geneName.geneID[ , 2] <- gsub("ID=", "", trxID.geneName.geneID[ , 2]) 
+trxID.geneName.geneID[ , 3] <- gsub("name=", "", trxID.geneName.geneID[ , 3])
+
+# Sort by geneID
+trxID.geneName.geneID.Long <- trxID.geneName.geneID[order(trxID.geneName.geneID[,2]), ]
+
+write.csv(x = trxID.geneName.geneID.Long, 
+          file = "../../Part0_DataCleaning/Results/longestCDS_TrxID.GeneName.GeneID.csv", 
+          row.names = F, quote = T)
+
+```
+
+
+## Merge all & write out
+
+Now merge functional annotations from BLAST & PANNZER with identifiers of longest CDS, so we end up with a single annotation per gene. 
+
+```{r}
+
+completeAnnotationTable <- merge(x = trxID.geneName.geneID.Long, 
+                                 y = functionalResults, by.x = c("TranscriptID"), 
+                                 by.y = c("qpid"), all.x = TRUE)
+
+# write.csv(x = completeAnnotationTable, file = "../completeAnnotationTable.csv", row.names = F, quote = T)
+write.table(x = completeAnnotationTable, file = "../Results/CompleteAnnotationTable.txt", 
+            sep = "\t",
+            row.names = FALSE, quote = TRUE)
+```
+
+# Sperm proteins
+
+Above we have consolidated the annotations for every protein in the genome.  Below, we will merge limit these results with the sperm proteins identified via mass spec, to give annotations just for the sperm proteins.
+
+## Annotate sperm proteins
+Cross reference DE results and functional annotations
+
+```{r}
+deSet <- read.csv(file = "../../Part1_Proteomics/Results/pierisSpermProtDiffEx.csv", header = TRUE)
+BLAST.PANNZERSet <- completeAnnotationTable # rename this for downstream code.
+```
+
+
+```{r}
+merge_by_gene <- merge(x = deSet[ , -1], y = BLAST.PANNZERSet, by = "GeneID")
+
+save(merge_by_gene, file = "../Results/PANNZER.BLAST.DE_Merged.RData")
+
+#Write out to csv
+write.csv(merge_by_gene, file = "../Results/PANNZER.BLAST.DE_Merged.csv", row.names = TRUE)
+
+```
+
+
+## Tabulate annotations
+
+How many sperm proteins have PANNZER annotations?
+
+
+```{r}
+#Cross-Tabulate 
+desc <- merge_by_gene$master.de  # get sperm-differentiation assignment
+type <- is.na(merge_by_gene$desc) # Logical, TRUE if annotated by PANNZER
+missingannotations <- table(desc, type)
+
+write.csv(missingannotations, file = "../Results/Pannzer-by-DE_table.csv",
+            quote = F, col.names = NA, row.names = T )
+
+kable(missingannotations)
+kable(round(prop.table(missingannotations), 4))
+
+
+chisq.test(missingannotations)
+
+```
+
+It appears the apy- & eup-biased proteins are disproportionately likely to be without annotations.
+
+
+How many sperm proteins have BLAST and/or PANNZER annotations?
+
+```{r}
+#Summarize how many proteins do or do not have annotations
+missingAnn <- apply(merge_by_gene[,c("desc","subject_seq.id")], MAR = 2, function(x) {sum(is.na(x))})
+names(missingAnn) <- c("PANNZER", "BLAST")
+print(missingAnn)
+```
+
+
+Let's cross-reference how many sperm proteins have BLAST vs PANNZER
+```{r}
+#How many have BLAST versus how many have PANNZER
+PANNZER_annotations <- !is.na(merge_by_gene$desc)
+BLAST_annotations <- !is.na(merge_by_gene$subject_seq.id)
+
+annotationComparisons <- table(PANNZER_annotations, BLAST_annotations) #Cross tabulate
+
+print(annotationComparisons)
+# Using ftable captures dim names
+write.ftable(ftable(annotationComparisons), file = "../Results/annotationComparisons.txt",
+             quote = F)
+
+```
+
+## Streamline output
+
+The complete data structure has a lot of columns that aren't very useful.  So let's slim this down to columns that are the more informative selection.
+
+```{r}
+goodCols <- c("GeneID", "TrxID", "Means.All", "Means.Apy", "Means.Eupy", 
+              "Apyrene_vs_Eupyrene_p.bh", "significant_bh","Apyrene_vs_Eupyrene_diff", 
+              "desc", "subject_seq.id", "expect_value", "organism_commonName",
+              "organism_scientificName", "organism_group", "function.")
+
+goodCols[!goodCols %in% names(merge_by_gene)]
+
+merge_by_gene[order(merge_by_gene$Means.All), goodCols] %>% 
+  kbl() %>%  kable_paper("hover", full_width = F, font_size = 9) %>% 
+  scroll_box(width = "800px", height = "500px")
+
+```
+
+
+Save this "slimmer" version of annotations to a distinct file.  
+```{r}
+
+GeneAnnotations <- merge_by_gene[ , goodCols]
+
+#Write out to csv
+write.csv(GeneAnnotations, file = "../Results/GeneAnnotations.csv")
+
+```
+
+
+# Session Info
+```{r}
+sessionInfo()
+```

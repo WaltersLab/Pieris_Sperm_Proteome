@@ -1,0 +1,4 @@
+                    BLAST_annotations FALSE TRUE
+PANNZER_annotations                             
+FALSE                                   257  108
+TRUE                                     49 1248
