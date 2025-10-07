@@ -143,6 +143,36 @@ for (i in out.order) {
 
 
 
+In this case, the data will output in TIDY fashion. This makes it easier to include as supplement in paper, I believe.
+
+```{r}
+
+filename <- "../Results/prapaeGOenrichment_TIDY.txt"
+# Organize output by GO type, then by sperm subset:
+
+GOcats <- c("CC" = "Cellular Component", "BP" = "Biological Process", "MF" = "Molecular Function")
+
+#cat("Gene Ontology Enrichment using Bioconductor GOstat for P. rapae sperm proteins\n\n",  file = filename)
+cat("Sperm Bias", "GO category",names(summary(HG.list[[1]])),"\n", sep = "\t", file = filename)
+
+for (i in out.order) {
+  outGO <- summary(HG.list[[i]])
+  sperm_GOtype <- unlist(strsplit(hg.names[i], split = "_", fixed = T))
+  spermtype <- rep(sperm_GOtype[1], length(nrow(outGO)))
+  GOtype <- rep(GOcats[sperm_GOtype[2]], length(nrow(outGO)))
+  names(GOtype) <- NULL # gets rid of warning from dataframe about rownames
+  outGO <- cbind("SpermClass" = spermtype,
+                  "GO_Category" = GOtype,
+                  outGO)
+  
+  suppressWarnings( # suppress "appending" warnings
+  write.table(outGO, file = filename, col.names = FALSE,
+              quote = F, sep = "\t", row.names = F, append = T)
+  )
+}
+```
+
+
 
 # Session Info
 ```{r}
