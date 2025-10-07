@@ -303,7 +303,18 @@ outplot <- pnumb + pnorm + plot_layout(guides = "collect")
 print(outplot)
 
 ggsave(plot = outplot, filename = "../Results/Count-Abund_prefilter.pdf", 
-       width = 6, height = 3, scale=1.8)
+       width = 180, height = 90, scale=1.8, units = "mm")
+
+outplotlab <- pnumb + pnorm + plot_layout(guides = "collect") +
+  plot_annotation(tag_levels = 'A')
+
+ggsave(plot = outplotlab, filename = "../Results/Count-Abund_prefilter_ABlabels.jpg", 
+       width = 180, height = 90, scale=1.8, units = "mm")
+
+ggsave(plot = outplotlab, filename = "../Results/Count-Abund_prefilter_ABlabels.pdf", 
+       width = 180, height = 90, scale=1.8, units = "mm")
+
+
 
 
 ```
