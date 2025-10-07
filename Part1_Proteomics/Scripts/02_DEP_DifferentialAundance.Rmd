@@ -169,6 +169,25 @@ plot_missval.jrw(pieris.filt[!rowData(pieris.filt)$mar], title = "MNAR proteins"
 dev.off()
 ```
 
+Combine the two heatmaps into a single plot, which will be more useful than the pdf for including as a supplemental figure.
+
+```{r}
+
+
+missvalsfile <- "../Results/MissingVals_Heatmaps.jpg"
+
+marPlot <- grid.grabExpr(plot_missval.jrw(pieris.filt[rowData(pieris.filt)$mar], title = "MAR proteins"))
+
+mnarPlot <- grid.grabExpr(plot_missval.jrw(pieris.filt[!rowData(pieris.filt)$mar], title = "MNAR proteins"))
+
+jpeg(filename = missvalsfile, height = 10, width = 8, units = "in", res = 300)
+wrap_plots(marPlot, mnarPlot, ncol = 1)
+dev.off()
+
+
+```
+
+
 
 ## Qualitative Differences
 
