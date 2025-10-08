@@ -67,7 +67,8 @@ pcaplot <- plot_pca(pieris.filt, n = 500) +
 
 
 ggsave(plot = pcaplot, filename = "../Results/PCA_filtered.pdf", 
-       width = 5, height = 4, scale = 1.1)
+       width = 85, height = 80, units = "mm", scale = 1.7)
+       #width = 5, height = 4, scale = 1.1)
 ```
 
 # Standard Visualizations
@@ -311,6 +312,8 @@ plot_volcano(pieris.hack, contrast = "Apyrene_vs_Eupyrene", add_names = F)
 plot_pca(pieris.hack)
 
 ```
+
+
 ## Good Volcano
 
 Make a volcano plot for publication. Could use DEP's `plot_pca()`, but I'd like to customize it further. Following [this example](https://erikaduan.github.io/posts/2021-01-02-volcano-plots-with-ggplot2/). Also [this reference](https://dataanalytics.org.uk/axis-labels-in-r-plots-using-expression/) for generating subscripts with `expression`
