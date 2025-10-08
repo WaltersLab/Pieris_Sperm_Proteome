@@ -16,6 +16,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Parse ProteinOrtho
 
+## Load packages
+```{r}
+suppressMessages(library(tidyverse))
+```
+
+
 ## Input ProteinOrtho
 Predicted orthologs between Pieris, monarch, and Manduca, using `ProteinOrtho` pipeline, run previously on cluster. Now parse and summarize results.
 
@@ -331,5 +337,46 @@ write.csv(ManducaHomologResults, file = "../Results/ManducaHomologCounts.csv")
 knitr::kable(round(ManducaHomologResults, 3))
 
 fisher.test(manducaHomologs) 
+```
+
+## Plot homology
+
+Let's try to capture these patterns of homology in a barplot.
+
+First we need to get the data into tidy format.
+
+
+```{r}
+monarch.HomologPropDF <- as.data.frame.matrix(monarch.HomologProp)
+monarch.HomologPropDF$Species <- "Danaus"
+monarch.HomologPropDF$Sperm <- rownames(monarch.HomologPropDF)
+rownames(monarch.HomologPropDF) <- NULL
+
+manduca.HomologPropDF <- as.data.frame.matrix(manduca.HomologProp)
+manduca.HomologPropDF$Species <- "Manduca"
+manduca.HomologPropDF$Sperm <- rownames(manduca.HomologPropDF)
+rownames(manduca.HomologPropDF) <- NULL
+
+combo.HomologProp <- rbind(manduca.HomologPropDF, monarch.HomologPropDF)
+names(combo.HomologProp)[1:2] <- c("NotAnnot", "Annotated")
+
+```
+And then we can plot it.
+
+```{r}
+
+homoplot <- ggplot(data = combo.HomologProp, 
+                   aes(x = Sperm, y = Annotated, fill = Species )) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(values = c("#F28E2B","#4E79A7" )) +
+  labs(x = "Sperm morph enrichment", y = "Proportion with sperm homolog") +
+  ylim(c(0,0.6)) + theme_light() + 
+  theme(legend.title = element_blank(), legend.position = "bottom") 
+  
+
+homoplot
+
+ggsave(plot = homoplot, filename = "../Results/HomologyBarPlot.pdf", 
+       width = 85 , height = 85, units = "mm", scale = 1.3)
 ```
 
