@@ -354,7 +354,7 @@ volcPlot <- ggplot(volcDat, aes(x = Apyrene_vs_Eupyrene_diff,
 print(volcPlot)
 
 ggsave(plot = volcPlot, filename = "../Results/Volcano_PierisSperm.pdf", 
-       width = 5, height = 3, scale = 1.2)
+       width = 180, height = 90, units = "mm", scale = 1)
 
 
 
