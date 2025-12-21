@@ -376,7 +376,11 @@ homoplot <- ggplot(data = combo.HomologProp,
 
 homoplot
 
+#PDF
 ggsave(plot = homoplot, filename = "../Results/HomologyBarPlot.pdf", 
+       width = 85 , height = 85, units = "mm", scale = 1.3)
+#JPG
+ggsave(plot = homoplot, filename = "../Results/HomologyBarPlot.jpg", 
        width = 85 , height = 85, units = "mm", scale = 1.3)
 ```
 

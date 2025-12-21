@@ -65,10 +65,16 @@ pcaplot <- plot_pca(pieris.filt, n = 500) +
   
   ggtitle("Principal Component Analysis")
 
-
+# PDF version
 ggsave(plot = pcaplot, filename = "../Results/PCA_filtered.pdf", 
        width = 85, height = 80, units = "mm", scale = 1.7)
        #width = 5, height = 4, scale = 1.1)
+
+# JPG version
+ggsave(plot = pcaplot, filename = "../Results/PCA_filtered.jpg", 
+       width = 85, height = 80, units = "mm", scale = 1.7)
+
+
 ```
 
 # Standard Visualizations
@@ -353,7 +359,11 @@ volcPlot <- ggplot(volcDat, aes(x = Apyrene_vs_Eupyrene_diff,
 
 print(volcPlot)
 
+# PDF
 ggsave(plot = volcPlot, filename = "../Results/Volcano_PierisSperm.pdf", 
+       width = 180, height = 90, units = "mm", scale = 1)
+# JPG
+ggsave(plot = volcPlot, filename = "../Results/Volcano_PierisSperm.jpg", 
        width = 180, height = 90, units = "mm", scale = 1)
 
 
