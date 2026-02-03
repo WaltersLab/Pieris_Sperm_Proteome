@@ -143,6 +143,25 @@ longestCDS <- unlist(longestCDS)
 writeXStringSet(x = longestCDS, filepath = "../Results/CleanedProteomeFASTAs/PierisLongestCDS.fas") 
 
 ```
+## Reformat to use GeneID is primary identifier
+
+Subsequent annotation efforts would be streamlined for merging with other sequencees if the sequence identifier were the gene and not the transcript ID.
+
+```{r}
+longestIDs <- names(longestCDS)
+newIDs <- gsub(pattern = "(PIERAPT\\d+) geneID=(PIERAPG\\d+) (genename=.+)", 
+               replacement = "\\2 trxID=\\1 \\3", 
+               x = longestIDs , perl = T)
+
+# duplicate object to avoid any future problmes
+# longestCDS is used again.
+longestCDSgeneID <- longestCDS 
+names(longestCDSgeneID) <- newIDs
+
+#Write out FASTA file
+writeXStringSet(x = longestCDSgeneID, filepath = "../Results/CleanedProteomeFASTAs/PierisLongestCDS_geneID.fas") 
+
+```
 
 
 # Visualize redundancies

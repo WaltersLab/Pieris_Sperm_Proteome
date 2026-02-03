@@ -1309,8 +1309,9 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -1321,7 +1322,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -1671,38 +1672,56 @@ analyses. We will choose the longest one.</p>
 <span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a></span>
 <span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#Write out FASTA file</span></span>
 <span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="fu">writeXStringSet</span>(<span class="at">x =</span> longestCDS, <span class="at">filepath =</span> <span class="st">&quot;../Results/CleanedProteomeFASTAs/PierisLongestCDS.fas&quot;</span>) </span></code></pre></div>
+<div id="reformat-to-use-geneid-is-primary-identifier" class="section level2">
+<h2>Reformat to use GeneID is primary identifier</h2>
+<p>Subsequent annotation efforts would be streamlined for merging with
+other sequencees if the sequence identifier were the gene and not the
+transcript ID.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>longestIDs <span class="ot">&lt;-</span> <span class="fu">names</span>(longestCDS)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>newIDs <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">pattern =</span> <span class="st">&quot;(PIERAPT</span><span class="sc">\\</span><span class="st">d+) geneID=(PIERAPG</span><span class="sc">\\</span><span class="st">d+) (genename=.+)&quot;</span>, </span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>               <span class="at">replacement =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">2 trxID=</span><span class="sc">\\</span><span class="st">1 </span><span class="sc">\\</span><span class="st">3&quot;</span>, </span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>               <span class="at">x =</span> longestIDs , <span class="at">perl =</span> T)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co"># duplicate object to avoid any future problmes</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co"># longestCDS is used again.</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>longestCDSgeneID <span class="ot">&lt;-</span> longestCDS </span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="fu">names</span>(longestCDSgeneID) <span class="ot">&lt;-</span> newIDs</span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#Write out FASTA file</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="fu">writeXStringSet</span>(<span class="at">x =</span> longestCDSgeneID, <span class="at">filepath =</span> <span class="st">&quot;../Results/CleanedProteomeFASTAs/PierisLongestCDS_geneID.fas&quot;</span>) </span></code></pre></div>
+</div>
 </div>
 <div id="visualize-redundancies" class="section level1">
 <h1>Visualize redundancies</h1>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">pdf</span>(<span class="at">file =</span> <span class="st">&quot;../Results/GenomePlots.pdf&quot;</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co">#The plot below demonstrates per gene the redundant and unique versions of transcript: </span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="do">## geneID &lt;- strsplit(names(pierisGenome), split = &quot; gene=&quot;) </span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="do">## gene.mtx &lt;- do.call(what = rbind, args = geneID)</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="do">## colnames(gene.mtx)[1] &lt;- &quot;TrxID&quot;</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">## colnames(gene.mtx)[2] &lt;- &quot;GeneName&quot;</span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="do">## geneAAsetsList &lt;- split(pierisGenome, f = gene.mtx[ ,2]) </span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>lengthSS <span class="ot">&lt;-</span> <span class="fu">sapply</span>(geneAAsetsList, length)</span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="do">## geneAAsetsListuniq &lt;- lapply(geneAAsetsList, unique)</span></span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>lengthSSUnique <span class="ot">&lt;-</span> <span class="fu">sapply</span>(geneAAsetsListuniq, length) <span class="co">#Length = count of transcripts</span></span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> lengthSS, <span class="at">y =</span> lengthSSUnique, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Original Count&quot;</span>, </span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Unique Transcripts&quot;</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.1</span>))</span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co">#This barplot shows the difference (in counts) between the original and unique counts of the genome.</span></span>
-<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>diffLengths <span class="ot">&lt;-</span> lengthSS <span class="sc">-</span> lengthSSUnique</span>
-<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>diffLengthsTable <span class="ot">&lt;-</span> <span class="fu">table</span>(diffLengths) <span class="co">#Tabulate the counts</span></span>
-<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a></span>
-<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="fu">barplot</span>(diffLengthsTable, <span class="at">xlab =</span> <span class="st">&quot;Count Length&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
-<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Difference Between Original and Unique Transcript Length&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">12000</span>), <span class="at">space =</span> <span class="dv">0</span>)</span>
-<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="co">#This barplot shows the number of unique transcripts versus gene length. </span></span>
-<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a>geneLength <span class="ot">&lt;-</span> <span class="fu">sapply</span>(longestSeqList, <span class="at">FUN =</span> width) </span>
-<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a></span>
-<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> geneLength, <span class="at">y =</span> lengthSSUnique, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Gene Length&quot;</span>, </span>
-<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Unique Transcripts&quot;</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.1</span>))</span>
-<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a></span>
-<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">pdf</span>(<span class="at">file =</span> <span class="st">&quot;../Results/GenomePlots.pdf&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co">#The plot below demonstrates per gene the redundant and unique versions of transcript: </span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="do">## geneID &lt;- strsplit(names(pierisGenome), split = &quot; gene=&quot;) </span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="do">## gene.mtx &lt;- do.call(what = rbind, args = geneID)</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="do">## colnames(gene.mtx)[1] &lt;- &quot;TrxID&quot;</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="do">## colnames(gene.mtx)[2] &lt;- &quot;GeneName&quot;</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="do">## geneAAsetsList &lt;- split(pierisGenome, f = gene.mtx[ ,2]) </span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>lengthSS <span class="ot">&lt;-</span> <span class="fu">sapply</span>(geneAAsetsList, length)</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="do">## geneAAsetsListuniq &lt;- lapply(geneAAsetsList, unique)</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>lengthSSUnique <span class="ot">&lt;-</span> <span class="fu">sapply</span>(geneAAsetsListuniq, length) <span class="co">#Length = count of transcripts</span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> lengthSS, <span class="at">y =</span> lengthSSUnique, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Original Count&quot;</span>, </span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Unique Transcripts&quot;</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.1</span>))</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="co">#This barplot shows the difference (in counts) between the original and unique counts of the genome.</span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>diffLengths <span class="ot">&lt;-</span> lengthSS <span class="sc">-</span> lengthSSUnique</span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>diffLengthsTable <span class="ot">&lt;-</span> <span class="fu">table</span>(diffLengths) <span class="co">#Tabulate the counts</span></span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a><span class="fu">barplot</span>(diffLengthsTable, <span class="at">xlab =</span> <span class="st">&quot;Count Length&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Difference Between Original and Unique Transcript Length&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">12000</span>), <span class="at">space =</span> <span class="dv">0</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a><span class="co">#This barplot shows the number of unique transcripts versus gene length. </span></span>
+<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a>geneLength <span class="ot">&lt;-</span> <span class="fu">sapply</span>(longestSeqList, <span class="at">FUN =</span> width) </span>
+<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> geneLength, <span class="at">y =</span> lengthSSUnique, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">&quot;Gene Length&quot;</span>, </span>
+<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Unique Transcripts&quot;</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">0.1</span>))</span>
+<span id="cb9-28"><a href="#cb9-28" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
 </div>
