@@ -1,0 +1,299 @@
+---
+title: "Targeting Annotations"
+author: "James R. Walters"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: readable
+    toc: true
+    toc_float: true
+---
+
+# Introduction
+
+Upon review, referees have asked for further annotation of proteins, specifically for annotations from:
+
+* SignalP: https://services.healthtech.dtu.dk/services/SignalP-6.0/
+* TargetP: https://services.healthtech.dtu.dk/services/TargetP-2.0/
+* TMHMM: https://services.healthtech.dtu.dk/services/TMHMM-2.0/ 
+
+I submitted to these servers and am now parsing results.
+
+```{r}
+# load needed libraries
+library(kableExtra)
+library(tidyverse)
+```
+
+
+# Load data
+
+```{r}
+sigPColNames <- c("GeneID",	"SigP_Pred",	"SigP_OTHER",	"SigP_SP",	"SigP_CSPos")
+signalP1 <- read.table(file = "../SignalP-TM-TargetP_Outputs/SignalP_chunk1_out/prediction_results.txt",
+                       skip = 2, col.names = sigPColNames, sep = "\t")
+signalP2 <- read.table(file = "../SignalP-TM-TargetP_Outputs/SignalP_chunk2_out/prediction_results.txt",
+                       skip = 2, col.names = sigPColNames, sep = "\t")
+
+sigP <- rbind(signalP1,signalP2)
+# Identifier has complete fasta header.
+# Only need GeneID, so remove rest.
+sigP$GeneID <- sub("\\s.*$", "", sigP$GeneID)
+str(sigP)
+
+table(sigP$SigP_Pred)
+
+
+```
+
+## TargetP
+
+```{r}
+targetPColNames <- c("GeneID",	"TargP_Pred",	"TargP_OTHER",	"TargP_SP",	"TargP_mTP",	"TargP_CSPos")
+targetP <- read.table(file = "../SignalP-TM-TargetP_Outputs/TargetP_out.txt", skip = 2,
+                      col.names = targetPColNames, sep = "\t")
+str(targetP)
+
+table(targetP$TargP_Pred)
+```
+
+
+## TMHMM
+
+TMHMM manual for interpretation: https://services.healthtech.dtu.dk/services/TMHMM-2.0/2-Guide.php
+
+```{r}
+tmColNames <- c("GeneID", "length", "expAA", "first60", "PredHel", "Topology")
+tmhmm <- read.table(file = "../SignalP-TM-TargetP_Outputs/TMHMM_out.txt",
+                    col.names = tmColNames)
+
+tmhmm$length <- as.numeric(sub(pattern = "len=", replacement = "",
+                              tmhmm$length))
+tmhmm$expAA <- as.numeric(sub(pattern = "ExpAA=", replacement = "",
+                              tmhmm$expAA))
+tmhmm$first60 <- as.numeric(sub(pattern = "First60=", replacement = "",
+                              tmhmm$first60))
+tmhmm$PredHel <- as.numeric(sub(pattern = "PredHel=", replacement = "",
+                              tmhmm$PredHel))
+tmhmm$Topology <- sub(pattern = "Topology=", replacement = "",
+                              tmhmm$Topology)
+# Add binary result, true if transmembrane predicted
+tmhmm$transmem <- tmhmm$PredHel > 0
+
+
+str(tmhmm)
+
+#
+table(tmhmm$transmem)
+```
+# Merge data
+
+Let's combine these new annotations from the DTU resources into a single dataframe.
+
+
+```{r}
+dtuAnno <- merge(x = sigP, y = targetP, by = "GeneID")
+dtuAnno <- merge(x = dtuAnno, y = tmhmm, by = "GeneID")
+str(dtuAnno)
+```
+
+And then we can merge these with all the other annotations we have so far.
+
+```{r}
+# loads `merge_by_gene` from previous annotation script
+load("../Results/PANNZER.BLAST.DE_Merged.Rdata")
+allAnno <- merge(x = merge_by_gene, y = dtuAnno, by = "GeneID")
+# str(allAnno)
+```
+
+and save it out to file.
+
+```{r}
+write.csv( x = allAnno, file = "../Results/PrapaeSpermProts_allAnnot.csv", row.names = TRUE)
+save(allAnno, file = "../Results/PrapaeSpermProts_allAnnot.Rdata" )
+```
+
+# Annotations by sperm subset
+
+Now we can do some cross-referencing of annotations by proteome subset.
+
+
+## Signal P
+
+First for signal peptides.
+```{r}
+sigPsubset <- table(allAnno$SigP_Pred, allAnno$master.de)
+sigPsubset.prop <- prop.table(sigPsubset, margin = 2)
+
+kable(sigPsubset)
+kable(round(sigPsubset.prop, digits = 3))
+sigPchisq <- chisq.test(x = sigPsubset)
+
+sigPchisq
+sigPchisq$stdres
+```
+
+Seems clear that Eupyrene-biased proteins are enriched for signal peptides. When chisq standardized residuals > |3|,  indicates a strong deviation from expected. 
+
+
+## Target P
+
+Let's now do the same for targeting peptides.  In particular, we want to focus on mitochondrial targeting peptides.
+```{r}
+targPsubset <- table(allAnno$TargP_Pred, allAnno$master.de)
+targPsubset.prop <- prop.table(targPsubset, margin = 2)
+
+kable(targPsubset)
+kable(round(targPsubset.prop, digits = 3))
+
+```
+
+Since we don't care about signal peptide predictions from the `TargetP` results, I will merge these with `OTHER` to make it a binary result for `mTP`
+
+```{r}
+mtpSubset <- targPsubset
+mtpSubset[2,] <- mtpSubset[2,] + mtpSubset[3,]
+mtpSubset <- mtpSubset[1:2,]
+mtpSubset.prop <- prop.table(mtpSubset, margin = 2)
+
+kable(mtpSubset)
+kable(round(mtpSubset.prop, digits = 3))
+
+targPchisq <- chisq.test(x = mtpSubset)
+
+targPchisq
+targPchisq$stdres
+```
+
+# Transmembrane
+
+Now test for differences in presence of transmembrane protein.
+```{r}
+tmsubset <- table(allAnno$transmem, allAnno$master.de)
+tmsubset.prop <- prop.table(tmsubset, margin = 2)
+
+kable(tmsubset)
+kable(round(tmsubset.prop, digits = 3))
+tmchisq <- chisq.test(x = tmsubset)
+
+tmchisq
+tmchisq$stdres
+```
+
+So there is a significant difference, but it is not as obvious that one group is an outlier. It is hard to make much of this result, in light of the other results for signalP and mtP. 
+
+
+# Plotting
+
+## Tidy data
+Let's do some work to visualize this.  It would probably be nicer to see it visually than in a table.
+
+
+First, clean up the objects for reasonable labelling
+```{r}
+subsetNames <- c("Apyrene", "Eupyrene", "Unbiased")
+colnames(sigPsubset.prop) <- subsetNames
+colnames(mtpSubset.prop) <- subsetNames
+
+annoRownames <- c("Absent", "Present")
+rownames(sigPsubset.prop) <- annoRownames
+rownames(mtpSubset.prop) <- rev(annoRownames)
+
+```
+
+
+```{r}
+# Function to convert to tidy
+prop_table_to_tidy <- function(x, annotation_name, present_row) {
+  df <- as.data.frame(x)
+
+  # Case 1: x was a table -> df has Var1/Var2/Freq
+  if (all(c("Var1", "Var2", "Freq") %in% names(df))) {
+    df %>%
+      transmute(
+        annotation = annotation_name,
+        class = as.character(Var1),
+        subset = as.character(Var2),
+        prop = as.numeric(Freq),
+        status = if_else(class == present_row, "Present", "Absent")
+      ) %>%
+      select(annotation, subset, status, prop)
+
+  } else {
+    # Case 2: x was a matrix/data.frame with rownames = class, cols = subsets
+    df %>%
+      tibble::rownames_to_column("class") %>%
+      pivot_longer(cols = -class, names_to = "subset", values_to = "prop") %>%
+      mutate(
+        annotation = annotation_name,
+        status = if_else(class == present_row, "Present", "Absent"),
+        prop = as.numeric(prop)
+      ) %>%
+      select(annotation, subset, status, prop)
+  }
+}
+
+
+
+
+
+df_sigp <- prop_table_to_tidy(sigPsubset.prop,
+                             annotation_name = "Signal peptide",
+                             present_row = "Present")
+
+df_mtp  <- prop_table_to_tidy(mtpSubset.prop,
+                             annotation_name = "Mitochondrial targeting peptide",
+                             present_row = "Present")
+
+df_all <- bind_rows(df_sigp, df_mtp) %>%
+  mutate(
+    subset = factor(subset, levels = subsetNames),
+    status = factor(status, levels = rev(annoRownames))
+  )
+
+str(df_all)
+```
+
+```{r}
+present_absent_cols <- c(
+  "Present" = "green4",  # dark, muted green
+  "Absent"   = "grey80"
+)
+
+
+annoPlot <- ggplot(df_all, aes(x = subset, y = prop, fill = status)) +
+  geom_col(width = 0.75) +
+  facet_wrap(~ annotation, nrow = 1) +
+  scale_fill_manual(values = present_absent_cols) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1), limits = c(0, 1)) +
+  labs(x = "Sperm morph enrichment", 
+       y = "Proportion of proteins", 
+       fill = "Predicted peptide:") +
+  theme_light() +
+  theme(
+    legend.position = "bottom",
+    strip.background = element_blank(),
+    strip.text = element_text(color = "black"),
+    axis.title.x = element_text(size = 12, 
+                                margin = margin(t = 10))
+  )
+
+annoPlot
+```
+
+```{r}
+#PDF
+ggsave(plot = annoPlot, filename = "../Results/PeptidePredictBarPlot.pdf", 
+       width = 85 , height = 60, units = "mm", scale = 1.5)
+#JPG
+ggsave(plot = annoPlot, filename = "../Results/PeptidePredictBarPlot.jpg", 
+       width = 85 , height = 60, units = "mm", scale = 1.5)
+```
+
+
+# Session Info
+
+```{r}
+sessionInfo()
+```
+

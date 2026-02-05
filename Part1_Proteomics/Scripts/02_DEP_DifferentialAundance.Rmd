@@ -14,6 +14,7 @@ Load the necessary packages, the SE object, and the analysis scripts.
 ```{r setup, include = TRUE}
 suppressMessages(library(DEP))
 suppressMessages(library(SummarizedExperiment))
+suppressMessages(library(Biostrings))
 library(ggplot2)
 library(kableExtra)
 library(patchwork)
@@ -451,6 +452,38 @@ save(pieris.imp.mle, file = "../Results/pierisImputedMLE.RData")
 #Write out to csv
 write.csv(pierisSpermProtDiffEx ,"../Results/pierisSpermProtDiffEx.csv", row.names = FALSE)
 ```
+
+## Extract Sperm Protein Fasta
+
+I need to extract the sperm proteins for subsequent submission to annotation portals (e.g. SignalP, etc). This is a request from reviewers, so I'm adding this step in here, and using a fasta file with the longest protein ORF identified by the gene locus.
+
+```{r}
+allProts <- readAAStringSet(file = "../../Part0_DataCleaning/Results/CleanedProteomeFASTAs/PierisLongestCDS_geneID.fas")
+
+# extract GeneIDs only
+allProtNames <- names(allProts)
+allGeneID <- sub("\\s.*$", "", allProtNames)
+
+# subset to only Sperm proteins
+spermProts <- allProts[ allGeneID %in% pierisSpermProtDiffEx$GeneID ]
+
+writeXStringSet(x = spermProts, filepath = "../Results/pierisSpermProts_GeneID-all.fas") 
+
+```
+
+Additionally, some of the resources max out at 1000 submissions, so I need to partition this into two chunks:
+
+```{r}
+chunkSize <- 800
+
+# First chunk
+writeXStringSet(x = spermProts[1:chunkSize], filepath = "../Results/pierisSpermProts_GeneID-chunk1.fas") 
+
+# Remainder
+writeXStringSet(x = spermProts[-(1:chunkSize)], filepath = "../Results/pierisSpermProts_GeneID-chunk2.fas") 
+
+```
+
 
 
 # Session Info
