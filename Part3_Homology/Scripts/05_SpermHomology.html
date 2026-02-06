@@ -1663,7 +1663,7 @@ This means that in many cases, the transcript isoform identified in the
 proteomics is not necessarily the isoform used in orthology. So we need
 to base counts of orthologs on geneIDs, not TrxID).</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># this is the set of identified Pieris sperm proteins from MS.</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>spermProts <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;../../Part2_Function/Results/PANNZER.BLAST.DE_Merged.csv&quot;</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>spermProts <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&quot;../../Part2_Function/Results/PrapaeSpermProts_allAnnot.csv&quot;</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a></span>
 <span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a><span class="co"># Now limit orthologs to ONLY proteins detected in proteomics.</span></span>
@@ -1830,6 +1830,7 @@ of results:</p>
 <ul>
 <li>Differential abundance</li>
 <li>Functional Annotations</li>
+<li>Targeting peptide annotations</li>
 <li>Orthology to monarch &amp; Manduca</li>
 <li>Sperm protein homology to monarch &amp; Manduca</li>
 </ul>
