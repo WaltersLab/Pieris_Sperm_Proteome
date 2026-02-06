@@ -107,7 +107,7 @@ Note, we need to do the extra work to operate on GeneID, because orthology predi
 
 ```{r}
 # this is the set of identified Pieris sperm proteins from MS.
-spermProts <- read.csv(file = "../../Part2_Function/Results/PANNZER.BLAST.DE_Merged.csv")
+spermProts <- read.csv(file = "../../Part2_Function/Results/PrapaeSpermProts_allAnnot.csv")
 
 
 # Now limit orthologs to ONLY proteins detected in proteomics.
@@ -293,6 +293,7 @@ This file `Homology_MasterDF.csv` now has the compete set of results:
 
 * Differential abundance
 * Functional Annotations
+* Targeting peptide annotations
 * Orthology to monarch & Manduca
 * Sperm protein homology to monarch & Manduca
 
