@@ -1288,6 +1288,230 @@ window.buildTabsets = function(tocID) {
 };
 
 </script>
+<script>$(document).ready(function(){
+    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    if ($('[data-toggle="popover"]').popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+});
+</script>
+<style type="text/css">
+.lightable-minimal {
+border-collapse: separate;
+border-spacing: 16px 1px;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-minimal td {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal th {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal thead tr:last-child th {
+border-bottom: 2px solid #00000050;
+empty-cells: hide;
+}
+.lightable-minimal tbody tr:first-child td {
+padding-top: 0.5em;
+}
+.lightable-minimal.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-minimal.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic {
+border-top: 0.16em solid #111111;
+border-bottom: 0.16em solid #111111;
+width: 100%;
+margin-bottom: 10px;
+margin: 10px 5px;
+}
+.lightable-classic tfoot tr td {
+border: 0;
+}
+.lightable-classic tfoot tr:first-child td {
+border-top: 0.14em solid #111111;
+}
+.lightable-classic caption {
+color: #222222;
+}
+.lightable-classic td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic thead tr:last-child th {
+border-bottom: 0.10em solid #111111;
+}
+.lightable-classic.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic-2 {
+border-top: 3px double #111111;
+border-bottom: 3px double #111111;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-classic-2 tfoot tr td {
+border: 0;
+}
+.lightable-classic-2 tfoot tr:first-child td {
+border-top: 3px double #111111;
+}
+.lightable-classic-2 caption {
+color: #222222;
+}
+.lightable-classic-2 td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic-2 th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic-2 tbody tr:last-child td {
+border-bottom: 3px double #111111;
+}
+.lightable-classic-2 thead tr:last-child th {
+border-bottom: 1px solid #111111;
+}
+.lightable-classic-2.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic-2.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #EEE;
+border-collapse: collapse;
+margin-bottom: 10px;
+}
+.lightable-material tfoot tr td {
+border: 0;
+}
+.lightable-material tfoot tr:first-child td {
+border-top: 1px solid #EEE;
+}
+.lightable-material th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+}
+.lightable-material td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+border-top: 1px solid #eeeeee;
+}
+.lightable-material.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #ddd;
+}
+.lightable-material-dark {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #FFFFFF12;
+border-collapse: collapse;
+margin-bottom: 10px;
+background-color: #363640;
+}
+.lightable-material-dark tfoot tr td {
+border: 0;
+}
+.lightable-material-dark tfoot tr:first-child td {
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF60;
+}
+.lightable-material-dark td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF;
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark.lightable-hover tbody tr:hover {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody tr:nth-child(even) {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material-dark.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #FFFFFF12;
+}
+.lightable-paper {
+width: 100%;
+margin-bottom: 10px;
+color: #444;
+}
+.lightable-paper tfoot tr td {
+border: 0;
+}
+.lightable-paper tfoot tr:first-child td {
+border-top: 1px solid #00000020;
+}
+.lightable-paper thead tr:last-child th {
+color: #666;
+vertical-align: bottom;
+border-bottom: 1px solid #00000020;
+line-height: 1.15em;
+padding: 10px 5px;
+}
+.lightable-paper td {
+vertical-align: middle;
+border-bottom: 1px solid #00000010;
+line-height: 1.15em;
+padding: 7px 5px;
+}
+.lightable-paper.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-paper.lightable-striped tbody tr:nth-child(even) {
+background-color: #00000008;
+}
+.lightable-paper.lightable-striped tbody td {
+border: 0;
+}
+</style>
 
 <style type="text/css">
 code{white-space: pre-wrap;}
@@ -1309,8 +1533,9 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -1321,7 +1546,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -1574,7 +1799,8 @@ testing with unsupported model organisms</a>”.</p>
 <div id="load-libraries-data" class="section level1">
 <h1>Load libraries &amp; data</h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">suppressMessages</span>(<span class="fu">library</span>(GOstats))</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">suppressMessages</span>(<span class="fu">library</span>(GSEABase))</span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">suppressMessages</span>(<span class="fu">library</span>(GSEABase))</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
 <div id="sperm-proteins" class="section level2">
 <h2>Sperm Proteins</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co">#DE output from DEP</span></span>
@@ -1654,6 +1880,8 @@ Save R object out to file.</p>
 <h2>Write Tables</h2>
 <p>Here we will iterate over each combinaton of GO-class and sperm
 subset, writing out each set of results in turn to the same file.</p>
+<p>I also found that html reports are available for each GO-result
+object. So I’ve written these out at the same time.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>filename <span class="ot">&lt;-</span> <span class="st">&quot;../Results/prapaeGOenrichment_out.txt&quot;</span></span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co"># Organize output by GO type, then by sperm subset:</span></span>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
@@ -1670,7 +1898,9 @@ subset, writing out each set of results in turn to the same file.</p>
 <span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>    <span class="fu">write.table</span>(<span class="fu">summary</span>(HG.list[[i]]), <span class="at">file =</span> filename, </span>
 <span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>              <span class="at">quote =</span> F, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">row.names =</span> F, <span class="at">append =</span> T)</span>
 <span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a>  )</span>
-<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>  <span class="co"># make HTML reports for each result.</span></span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>  <span class="fu">htmlReport</span>(HG.list[[i]], <span class="at">file =</span> <span class="fu">paste0</span>(<span class="st">&quot;../Results/GO_html_tables/&quot;</span>, hg.names[i], <span class="st">&quot;.html&quot;</span>))</span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a>}</span></code></pre></div>
 <p>In this case, the data will output in TIDY fashion. This makes it
 easier to include as supplement in paper, I believe.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>filename <span class="ot">&lt;-</span> <span class="st">&quot;../Results/prapaeGOenrichment_TIDY.txt&quot;</span></span>
@@ -1692,18 +1922,2586 @@ easier to include as supplement in paper, I believe.</p>
 <span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a>                  outGO)</span>
 <span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a>  </span>
 <span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a>  <span class="fu">suppressWarnings</span>( <span class="co"># suppress &quot;appending&quot; warnings</span></span>
-<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a>    <span class="fu">write.table</span>(outGO, <span class="at">file =</span> filename, <span class="at">col.names =</span> F,</span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a>  <span class="fu">write.table</span>(outGO, <span class="at">file =</span> filename, <span class="at">col.names =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a>              <span class="at">quote =</span> F, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">row.names =</span> F, <span class="at">append =</span> T)</span>
 <span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a>  )</span>
 <span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
+<div id="go-by-gene" class="section level1">
+<h1>GO by Gene</h1>
+<p>For some particular enriched GO categories, it is desirable to
+examine exactly which genes are supporting that enrichment.</p>
+<p>Let’s write a function that will identify the genes associated with
+any particular set of GO IDs.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># INPUTS</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co"># myGO: vector of terms</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="co"># goRes: a GOHyperGResult object</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>getGOgenes <span class="ot">&lt;-</span> <span class="cf">function</span>(myGO, <span class="at">goRes =</span> HG.list[[<span class="st">&quot;apyrene_BP&quot;</span>]]) {</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  genesByTerm <span class="ot">&lt;-</span> <span class="fu">geneIdsByCategory</span>(goRes) <span class="co"># list of genes by GO id</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  GOtermsAll <span class="ot">&lt;-</span> <span class="fu">names</span>(genesByTerm) <span class="co"># vector of all GO enriched id</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>  <span class="co"># Report warning for non-matched terms</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>  missingGO <span class="ot">&lt;-</span> (<span class="sc">!</span> myGO <span class="sc">%in%</span> GOtermsAll)</span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">any</span>(missingGO)) {</span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>    <span class="fu">warning</span>(<span class="st">&quot;The following GO ids are not found:</span><span class="sc">\n</span><span class="st">&quot;</span>, </span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a>            <span class="fu">paste</span>(myGO[<span class="fu">which</span>(missingGO)], <span class="st">&quot;</span><span class="sc">\t\t\n</span><span class="st">&quot;</span>))</span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>  }</span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a>  </span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a>  godf <span class="ot">&lt;-</span> reshape2<span class="sc">::</span><span class="fu">melt</span>(genesByTerm) <span class="co"># melt list into dataframe</span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a>  <span class="fu">names</span>(godf) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GeneID&quot;</span>, <span class="st">&quot;GOid&quot;</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a>  myGOgenes <span class="ot">&lt;-</span> godf[ godf<span class="sc">$</span>GOid <span class="sc">%in%</span> myGO, ]</span>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a>  <span class="fu">return</span>(myGOgenes)</span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a>}</span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a><span class="co"># small test</span></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="co"># getGOgenes(myGO = c(&quot;GO:007037&quot;, &quot;GO:009015&quot;, &quot;GO:000609&quot;, &quot;GO:0015698&quot;) )</span></span></code></pre></div>
+<p>And we need to cross reference this with the annotations. Load
+<code>allAnno</code> dataframe from previous script.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">load</span>(<span class="at">file =</span> <span class="st">&quot;../Results/PrapaeSpermProts_allAnnot.Rdata&quot;</span>)</span></code></pre></div>
+<div id="erk-signaling" class="section level2">
+<h2>ERK signaling</h2>
+<p>One Apyrene-enriched <a href="GO:BP" class="uri">GO:BP</a> term that
+caught attention in review was <code>GO:0070372</code>, “regulation of
+ERK1 and ERK2 cascade”.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>erkGOgenes <span class="ot">&lt;-</span> <span class="fu">getGOgenes</span>(<span class="at">myGO =</span> <span class="fu">c</span>(<span class="st">&quot;GO:0070372&quot;</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">kable</span>(erkGOgenes) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>()</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+GeneID
+</th>
+<th style="text-align:left;">
+GOid
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+56
+</td>
+<td style="text-align:left;">
+PIERAPG00000010239
+</td>
+<td style="text-align:left;">
+<a href="GO:0070372" class="uri">GO:0070372</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+57
+</td>
+<td style="text-align:left;">
+PIERAPG00000010398
+</td>
+<td style="text-align:left;">
+<a href="GO:0070372" class="uri">GO:0070372</a>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>erkAnno <span class="ot">&lt;-</span> <span class="fu">merge</span>(erkGOgenes, allAnno, <span class="at">by  =</span> <span class="st">&quot;GeneID&quot;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="fu">kable</span>(erkAnno) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>), <span class="at">font_size =</span> <span class="dv">9</span>) <span class="sc">|&gt;</span> <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="at">height =</span> <span class="st">&quot;200px&quot;</span>)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover table-condensed" style="font-size: 9px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+GeneID
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+GOid
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+TrxID
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Npeptides
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Ndetect.apy
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Ndetect.eup
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+ID
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Nobs.apy
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Nobs.eup
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+mar
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+specific.eup
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+specific.apy
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+imputed
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+num_NAs
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Means.Apy
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Means.Eupy
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Means.All
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Apyrene_vs_Eupyrene_CI.L
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Apyrene_vs_Eupyrene_CI.R
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Apyrene_vs_Eupyrene_diff
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Apyrene_vs_Eupyrene_p.adj
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Apyrene_vs_Eupyrene_p.val
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+significant
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Apyrene_vs_Eupyrene_significant
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Apyrene_vs_Eupyrene_p.bh
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+significant_bh
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+master.de
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+TranscriptID
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+GeneName
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+type
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+score
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PPV
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+desc
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+subject_seq.id
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+percent_identicalMatches
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+alignment_length
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+number_mismatches
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+number_gapOpenings
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+start_query.alignment
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+end_query.alignment
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+start_subject.alignment
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+end_subject.alignment
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+expect_value
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+bit_value
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+organism_commonName
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+organism_scientificName
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+organism_group
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+function.
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+SigP_Pred
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+SigP_OTHER
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+SigP_SP
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+SigP_CSPos
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+TargP_Pred
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+TargP_OTHER
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+TargP_SP
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+TargP_mTP
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+TargP_CSPos
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+expAA
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+first60
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PredHel
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Topology
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+transmem
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000010239
+</td>
+<td style="text-align:left;">
+<a href="GO:0070372" class="uri">GO:0070372</a>
+</td>
+<td style="text-align:left;">
+PIERAPT00000024546
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+PIERAPG00000010239
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+18.92468
+</td>
+<td style="text-align:right;">
+18.01125
+</td>
+<td style="text-align:right;">
+18.01125
+</td>
+<td style="text-align:right;">
+0.8995673
+</td>
+<td style="text-align:right;">
+2.449665
+</td>
+<td style="text-align:right;">
+1.674616
+</td>
+<td style="text-align:right;">
+0.0591084
+</td>
+<td style="text-align:right;">
+0.0003147
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.0041187
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+PIERAPT00000024546
+</td>
+<td style="text-align:left;">
+Dlc90F
+</td>
+<td style="text-align:left;">
+DE
+</td>
+<td style="text-align:left;">
+1.0585470273
+</td>
+<td style="text-align:right;">
+0.5327641
+</td>
+<td style="text-align:left;">
+0.896551724138
+</td>
+<td style="text-align:left;">
+Dynein light chain Tctex-type
+</td>
+<td style="text-align:left;">
+Q94524.1
+</td>
+<td style="text-align:right;">
+79.091
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+111
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+184
+</td>
+<td style="text-align:left;">
+fruit fly
+</td>
+<td style="text-align:left;">
+Drosophila melanogaster
+</td>
+<td style="text-align:left;">
+flies
+</td>
+<td style="text-align:left;">
+RecName: Full=Dynein light chain Tctex-type; AltName: Full=TCTEX-1
+protein homolog
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3e-06
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:right;">
+0.999345
+</td>
+<td style="text-align:right;">
+0.000648
+</td>
+<td style="text-align:right;">
+0.000007
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+o
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000010398
+</td>
+<td style="text-align:left;">
+<a href="GO:0070372" class="uri">GO:0070372</a>
+</td>
+<td style="text-align:left;">
+PIERAPT00000024907
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+PIERAPG00000010398
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+18.44144
+</td>
+<td style="text-align:right;">
+17.80998
+</td>
+<td style="text-align:right;">
+17.80998
+</td>
+<td style="text-align:right;">
+0.3687190
+</td>
+<td style="text-align:right;">
+1.946646
+</td>
+<td style="text-align:right;">
+1.157682
+</td>
+<td style="text-align:right;">
+0.3955202
+</td>
+<td style="text-align:right;">
+0.0067652
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+0.0470449
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+PIERAPT00000024907
+</td>
+<td style="text-align:left;">
+Phb2
+</td>
+<td style="text-align:left;">
+DE
+</td>
+<td style="text-align:left;">
+0.842558603752
+</td>
+<td style="text-align:right;">
+0.4333675
+</td>
+<td style="text-align:left;">
+0.285714285714
+</td>
+<td style="text-align:left;">
+Prohibitin (Fragment)
+</td>
+<td style="text-align:left;">
+Q99623.2
+</td>
+<td style="text-align:right;">
+55.556
+</td>
+<td style="text-align:right;">
+198
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:right;">
+298
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+197
+</td>
+<td style="text-align:left;">
+human
+</td>
+<td style="text-align:left;">
+Homo sapiens;Mus musculus
+</td>
+<td style="text-align:left;">
+primates;rodents
+</td>
+<td style="text-align:left;">
+RecName: Full=Prohibitin-2; AltName: Full=B-cell receptor-associated
+protein BAP37; AltName: Full=D-prohibitin; AltName: Full=Repressor of
+estrogen receptor activity
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1e-06
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:right;">
+0.972109
+</td>
+<td style="text-align:right;">
+0.000182
+</td>
+<td style="text-align:right;">
+0.027709
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+o
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="mitochondrial" class="section level2">
+<h2>Mitochondrial</h2>
+<p>It appears that the apyrene-enriched proteins generate enrichment for
+many mitochondrial-related terms.</p>
+<div id="go-bp-mitochondrial" class="section level3">
+<h3>GO-BP Mitochondrial</h3>
+<p>Several apyrene-enriched <a href="GO:BP" class="uri">GO:BP</a> terms
+indicate mitochondrial function:</p>
+<ul>
+<li><a href="GO:0090151" class="uri">GO:0090151</a> establishment of
+protein localization to mitochondrial membrane</li>
+<li><a href="GO:0006099" class="uri">GO:0006099</a> tricarboxylic acid
+cycle</li>
+<li><a href="GO:0007008" class="uri">GO:0007008</a> outer mitochondrial
+membrane organization</li>
+<li><a href="GO:0070585" class="uri">GO:0070585</a> protein localization
+to mitochondrion</li>
+<li><a href="GO:0007007" class="uri">GO:0007007</a> inner mitochondrial
+membrane organization</li>
+<li><a href="GO:0006839" class="uri">GO:0006839</a> mitochondrial
+transport</li>
+<li><a href="GO:0007006" class="uri">GO:0007006</a> mitochondrial
+membrane organization</li>
+<li><a href="GO:0045333" class="uri">GO:0045333</a> cellular
+respiration</li>
+<li><a href="GO:0006626" class="uri">GO:0006626</a> protein targeting to
+mitochondrion</li>
+</ul>
+<p>So we can extract the relevant genes. It turns out, many of the same
+genes are supporting different terms.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>mitoGOBP <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;GO:0090151&quot;</span>, <span class="st">&quot;GO:0006099&quot;</span>, <span class="st">&quot;GO:0007008&quot;</span>, <span class="st">&quot;GO:0070585&quot;</span>, <span class="st">&quot;GO:0007007&quot;</span>,</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>             <span class="st">&quot;GO:0007006&quot;</span>, <span class="st">&quot;GO:0045333&quot;</span>, <span class="st">&quot;GO:0006626&quot;</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>mitoGOBPgenes <span class="ot">&lt;-</span> <span class="fu">getGOgenes</span>(<span class="at">myGO =</span> mitoGOBP, <span class="at">goRes =</span> HG.list[[<span class="st">&quot;apyrene_BP&quot;</span>]])</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="fu">kable</span>(mitoGOBPgenes) <span class="sc">|&gt;</span> <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>), <span class="at">font_size =</span> <span class="dv">9</span>)</span></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="font-size: 9px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+GeneID
+</th>
+<th style="text-align:left;">
+GOid
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+PIERAPG00000003917
+</td>
+<td style="text-align:left;">
+<a href="GO:0090151" class="uri">GO:0090151</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+PIERAPG00000004961
+</td>
+<td style="text-align:left;">
+<a href="GO:0090151" class="uri">GO:0090151</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+PIERAPG00000005994
+</td>
+<td style="text-align:left;">
+<a href="GO:0090151" class="uri">GO:0090151</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+PIERAPG00000004319
+</td>
+<td style="text-align:left;">
+<a href="GO:0006099" class="uri">GO:0006099</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+PIERAPG00000004598
+</td>
+<td style="text-align:left;">
+<a href="GO:0006099" class="uri">GO:0006099</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+PIERAPG00000008570
+</td>
+<td style="text-align:left;">
+<a href="GO:0006099" class="uri">GO:0006099</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+PIERAPG00000013722
+</td>
+<td style="text-align:left;">
+<a href="GO:0006099" class="uri">GO:0006099</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+PIERAPG00000014181
+</td>
+<td style="text-align:left;">
+<a href="GO:0006099" class="uri">GO:0006099</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+PIERAPG00000003917
+</td>
+<td style="text-align:left;">
+<a href="GO:0007008" class="uri">GO:0007008</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+PIERAPG00000004961
+</td>
+<td style="text-align:left;">
+<a href="GO:0007008" class="uri">GO:0007008</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+PIERAPG00000003917
+</td>
+<td style="text-align:left;">
+<a href="GO:0070585" class="uri">GO:0070585</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+22
+</td>
+<td style="text-align:left;">
+PIERAPG00000004961
+</td>
+<td style="text-align:left;">
+<a href="GO:0070585" class="uri">GO:0070585</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+23
+</td>
+<td style="text-align:left;">
+PIERAPG00000005994
+</td>
+<td style="text-align:left;">
+<a href="GO:0070585" class="uri">GO:0070585</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+PIERAPG00000004961
+</td>
+<td style="text-align:left;">
+<a href="GO:0007007" class="uri">GO:0007007</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+25
+</td>
+<td style="text-align:left;">
+PIERAPG00000005994
+</td>
+<td style="text-align:left;">
+<a href="GO:0007007" class="uri">GO:0007007</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+PIERAPG00000007378
+</td>
+<td style="text-align:left;">
+<a href="GO:0007007" class="uri">GO:0007007</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+38
+</td>
+<td style="text-align:left;">
+PIERAPG00000010239
+</td>
+<td style="text-align:left;">
+<a href="GO:0007006" class="uri">GO:0007006</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+39
+</td>
+<td style="text-align:left;">
+PIERAPG00000012330
+</td>
+<td style="text-align:left;">
+<a href="GO:0007006" class="uri">GO:0007006</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+40
+</td>
+<td style="text-align:left;">
+PIERAPG00000004319
+</td>
+<td style="text-align:left;">
+<a href="GO:0045333" class="uri">GO:0045333</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+41
+</td>
+<td style="text-align:left;">
+PIERAPG00000004598
+</td>
+<td style="text-align:left;">
+<a href="GO:0045333" class="uri">GO:0045333</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:left;">
+PIERAPG00000006982
+</td>
+<td style="text-align:left;">
+<a href="GO:0045333" class="uri">GO:0045333</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+43
+</td>
+<td style="text-align:left;">
+PIERAPG00000008570
+</td>
+<td style="text-align:left;">
+<a href="GO:0045333" class="uri">GO:0045333</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44
+</td>
+<td style="text-align:left;">
+PIERAPG00000013722
+</td>
+<td style="text-align:left;">
+<a href="GO:0045333" class="uri">GO:0045333</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:left;">
+PIERAPG00000014181
+</td>
+<td style="text-align:left;">
+<a href="GO:0045333" class="uri">GO:0045333</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+76
+</td>
+<td style="text-align:left;">
+PIERAPG00000004961
+</td>
+<td style="text-align:left;">
+<a href="GO:0006626" class="uri">GO:0006626</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+77
+</td>
+<td style="text-align:left;">
+PIERAPG00000005994
+</td>
+<td style="text-align:left;">
+<a href="GO:0006626" class="uri">GO:0006626</a>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">table</span>(mitoGOBPgenes<span class="sc">$</span>GeneID)</span></code></pre></div>
+<pre><code>## 
+## PIERAPG00000003917 PIERAPG00000004319 PIERAPG00000004598 PIERAPG00000004961 
+##                  3                  2                  2                  5 
+## PIERAPG00000005994 PIERAPG00000006982 PIERAPG00000007378 PIERAPG00000008570 
+##                  4                  1                  1                  2 
+## PIERAPG00000010239 PIERAPG00000012330 PIERAPG00000013722 PIERAPG00000014181 
+##                  1                  1                  2                  2</code></pre>
+<!-- So if we limit to the 12 genes for examining GO:BP annotations, we get: -->
+<!-- ```{r} -->
+<!-- mitoBPAnno <- allAnno[ allAnno$GeneID %in% unique(mitoGOBPgenes$GeneID), ] -->
+<!-- kable(mitoBPAnno) |> kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 9) -->
+<!-- ``` -->
+</div>
+<div id="go-cc-mitochondrial" class="section level3">
+<h3>GO-CC Mitochondrial</h3>
+<p>Several of the apyrene <a href="GO:CC" class="uri">GO:CC</a> terms
+are also related to mitochondria:</p>
+<ul>
+<li><a href="GO:0005741" class="uri">GO:0005741</a> mitochondrial outer
+membrane</li>
+<li><a href="GO:0005758" class="uri">GO:0005758</a> mitochondrial
+intermembrane space</li>
+<li><a href="GO:0098798" class="uri">GO:0098798</a> mitochondrial
+protein-containing complex</li>
+<li><a href="GO:0005740" class="uri">GO:0005740</a> mitochondrial
+envelope</li>
+<li><a href="GO:0005739" class="uri">GO:0005739</a> mitochondrion</li>
+<li><a href="GO:0005743" class="uri">GO:0005743</a> mitochondrial inner
+membrane</li>
+<li><a href="GO:0042645" class="uri">GO:0042645</a> mitochondrial
+nucleoid</li>
+</ul>
+<p>So we can extract the relevant genes. It turns out, many of the same
+genes are supporting different terms.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>mitoGOCC <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;GO:0005741&quot;</span>,    <span class="st">&quot;GO:0005758&quot;</span>,   <span class="st">&quot;GO:0098798&quot;</span>,   <span class="st">&quot;GO:0005740&quot;</span>,</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>               <span class="st">&quot;GO:0005739&quot;</span>,    <span class="st">&quot;GO:0005743&quot;</span>,   <span class="st">&quot;GO:0042645&quot;</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>mitoGOCCgenes <span class="ot">&lt;-</span> <span class="fu">getGOgenes</span>(<span class="at">myGO =</span> mitoGOCC, <span class="at">goRes =</span> HG.list[[<span class="st">&quot;apyrene_CC&quot;</span>]])</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="fu">table</span>(mitoGOCCgenes<span class="sc">$</span>GeneID)</span></code></pre></div>
+<pre><code>## 
+## PIERAPG00000001111 PIERAPG00000002853 PIERAPG00000002927 PIERAPG00000003917 
+##                  1                  2                  1                  3 
+## PIERAPG00000004212 PIERAPG00000004598 PIERAPG00000004961 PIERAPG00000005994 
+##                  2                  1                  3                  3 
+## PIERAPG00000007200 PIERAPG00000008570 PIERAPG00000008663 PIERAPG00000010239 
+##                  2                  1                  2                  1 
+## PIERAPG00000010379 PIERAPG00000010398 PIERAPG00000011184 PIERAPG00000012330 
+##                  1                  4                  2                  3 
+## PIERAPG00000012921 PIERAPG00000014181 
+##                  1                  1</code></pre>
+<p>How much to these overlap with the <a href="GO:BP" class="uri">GO:BP</a> genes?</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">unique</span>(mitoGOCCgenes<span class="sc">$</span>GeneID) <span class="sc">%in%</span> <span class="fu">unique</span>(mitoGOBPgenes<span class="sc">$</span>GeneID))</span></code></pre></div>
+<pre><code>## 
+## FALSE  TRUE 
+##    10     8</code></pre>
+<p>There is some overlap, but only by about half! Let’s combine these
+into a single master dataframe.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>apyGOCC <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">GeneID =</span> <span class="fu">unique</span>(mitoGOCCgenes<span class="sc">$</span>GeneID),</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>                      <span class="at">GOCC =</span> <span class="fu">rep</span>(<span class="cn">TRUE</span>, <span class="fu">length</span>(<span class="fu">unique</span>(mitoGOCCgenes<span class="sc">$</span>GeneID)))</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>)</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>apyGOBP <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">GeneID =</span> <span class="fu">unique</span>(mitoGOBPgenes<span class="sc">$</span>GeneID),</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>                      <span class="at">GOBP =</span> <span class="fu">rep</span>(<span class="cn">TRUE</span>, <span class="fu">length</span>(<span class="fu">unique</span>(mitoGOBPgenes<span class="sc">$</span>GeneID)))</span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a>)</span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a>apymitoGOgenes <span class="ot">&lt;-</span> <span class="fu">merge</span>(apyGOCC, apyGOBP, <span class="at">by =</span> <span class="st">&quot;GeneID&quot;</span>, <span class="at">all =</span> T)</span>
+<span id="cb22-9"><a href="#cb22-9" tabindex="-1"></a>apymitoGOgenes<span class="sc">$</span>GOCC[<span class="fu">is.na</span>(apymitoGOgenes<span class="sc">$</span>GOCC)] <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb22-10"><a href="#cb22-10" tabindex="-1"></a>apymitoGOgenes<span class="sc">$</span>GOBP[<span class="fu">is.na</span>(apymitoGOgenes<span class="sc">$</span>GOBP)] <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb22-11"><a href="#cb22-11" tabindex="-1"></a><span class="fu">table</span>(apymitoGOgenes[,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
+<pre><code>##        GOBP
+## GOCC    FALSE TRUE
+##   FALSE     0    4
+##   TRUE     10    8</code></pre>
+<p>So we have a total of 22 different genes that are apyrene-biased and
+supporting mitochondria-related GO terms.</p>
+</div>
+<div id="merge-extract-annotations" class="section level3">
+<h3>Merge &amp; Extract annotations</h3>
+<p>Ultimately, we want to look at the functional predictions
+specifically associated with these 22 apyrene-biased genes with
+mito-related functions. So merge the geneset with the annotations.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>apyMitoAnno <span class="ot">&lt;-</span> <span class="fu">merge</span>(<span class="at">x =</span> apymitoGOgenes, <span class="at">y =</span> allAnno, <span class="at">by =</span> <span class="st">&quot;GeneID&quot;</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>headersWanted <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GeneID&quot;</span>, <span class="st">&quot;GeneName&quot;</span>, <span class="st">&quot;GOCC&quot;</span>, <span class="st">&quot;GOBP&quot;</span>, <span class="st">&quot;TrxID&quot;</span>, <span class="st">&quot;Apyrene_vs_Eupyrene_p.bh&quot;</span>, <span class="st">&quot;significant_bh&quot;</span>, <span class="st">&quot;master.de&quot;</span>, <span class="st">&quot;desc&quot;</span>, <span class="st">&quot;subject_seq.id&quot;</span>, <span class="st">&quot;expect_value&quot;</span>, <span class="st">&quot;bit_value&quot;</span>, <span class="st">&quot;organism_commonName&quot;</span>, <span class="st">&quot;organism_scientificName&quot;</span>, <span class="st">&quot;organism_group&quot;</span>, <span class="st">&quot;function.&quot;</span>, <span class="st">&quot;SigP_Pred&quot;</span>, <span class="st">&quot;TargP_Pred&quot;</span>, <span class="st">&quot;transmem&quot;</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>apyMitoAnno <span class="ot">&lt;-</span> apyMitoAnno[, headersWanted]</span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a><span class="co">#  allAnno[ allAnno$GeneID %in% unique(mitoGOBPgenes$GeneID), ]</span></span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a><span class="fu">kable</span>(apyMitoAnno) <span class="sc">|&gt;</span> </span>
+<span id="cb24-8"><a href="#cb24-8" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>), </span>
+<span id="cb24-9"><a href="#cb24-9" tabindex="-1"></a>                <span class="at">font_size =</span> <span class="dv">9</span>) <span class="sc">|&gt;</span></span>
+<span id="cb24-10"><a href="#cb24-10" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="at">height =</span> <span class="st">&quot;400px&quot;</span>)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped table-hover table-condensed" style="font-size: 9px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+GeneID
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+GeneName
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+GOCC
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+GOBP
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+TrxID
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Apyrene_vs_Eupyrene_p.bh
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+significant_bh
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+master.de
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+desc
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+subject_seq.id
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+expect_value
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+bit_value
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+organism_commonName
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+organism_scientificName
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+organism_group
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+function.
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+SigP_Pred
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+TargP_Pred
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+transmem
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000001111
+</td>
+<td style="text-align:left;">
+mai-2
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PIERAPT00000002575
+</td>
+<td style="text-align:right;">
+0.0212138
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Mitochondrial ATPase inhibitor IATP
+</td>
+<td style="text-align:left;">
+O44441.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+78.2
+</td>
+<td style="text-align:left;">
+Caenorhabditis elegans
+</td>
+<td style="text-align:left;">
+Caenorhabditis elegans
+</td>
+<td style="text-align:left;">
+nematodes
+</td>
+<td style="text-align:left;">
+RecName: Full=ATPase inhibitor mai-2, mitochondrial; AltName: Full=ATP
+synthase F1 subunit epsilon; Flags: Precursor
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+mTP
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000002853
+</td>
+<td style="text-align:left;">
+proB_2
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PIERAPT00000006780
+</td>
+<td style="text-align:right;">
+0.0002437
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000002927
+</td>
+<td style="text-align:left;">
+Hsc70-5
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PIERAPT00000006971
+</td>
+<td style="text-align:right;">
+0.0270367
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Heat shock protein cognate 5
+</td>
+<td style="text-align:left;">
+P29845.2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1090.0
+</td>
+<td style="text-align:left;">
+fruit fly
+</td>
+<td style="text-align:left;">
+Drosophila melanogaster
+</td>
+<td style="text-align:left;">
+flies
+</td>
+<td style="text-align:left;">
+RecName: Full=Heat shock 70 kDa protein cognate 5
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+mTP
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000003917
+</td>
+<td style="text-align:left;">
+Tomm22
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000009393
+</td>
+<td style="text-align:right;">
+0.0019569
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Mitochondrial import receptor subunit TOM22 homolog
+</td>
+<td style="text-align:left;">
+O17287.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+85.9
+</td>
+<td style="text-align:left;">
+Caenorhabditis elegans
+</td>
+<td style="text-align:left;">
+Caenorhabditis elegans
+</td>
+<td style="text-align:left;">
+nematodes
+</td>
+<td style="text-align:left;">
+RecName: Full=Mitochondrial import receptor subunit TOM22 homolog
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000004212
+</td>
+<td style="text-align:left;">
+l(2)37Cc
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PIERAPT00000010116
+</td>
+<td style="text-align:right;">
+0.0266685
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Prohibitin
+</td>
+<td style="text-align:left;">
+P24156.2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+469.0
+</td>
+<td style="text-align:left;">
+fruit fly
+</td>
+<td style="text-align:left;">
+Drosophila melanogaster
+</td>
+<td style="text-align:left;">
+flies
+</td>
+<td style="text-align:left;">
+RecName: Full=Protein l(2)37Cc
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000004319
+</td>
+<td style="text-align:left;">
+l(1)G0156
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000010383
+</td>
+<td style="text-align:right;">
+0.5620202
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+unbiased
+</td>
+<td style="text-align:left;">
+Isocitrate dehydrogenase [NAD] subunit alpha, mitochondrial
+</td>
+<td style="text-align:left;">
+Q9VWH4.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+251.0
+</td>
+<td style="text-align:left;">
+fruit fly
+</td>
+<td style="text-align:left;">
+Drosophila melanogaster
+</td>
+<td style="text-align:left;">
+flies
+</td>
+<td style="text-align:left;">
+RecName: Full=Probable isocitrate dehydrogenase [NAD] subunit alpha,
+mitochondrial; AltName: Full=Isocitric dehydrogenase subunit alpha;
+AltName: Full=NAD(+)-specific ICDH subunit alpha; Flags: Precursor
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000004319
+</td>
+<td style="text-align:left;">
+l(1)G0156
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000010381
+</td>
+<td style="text-align:right;">
+0.0000237
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Isocitrate dehydrogenase [NAD] subunit alpha, mitochondrial
+</td>
+<td style="text-align:left;">
+Q9VWH4.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+251.0
+</td>
+<td style="text-align:left;">
+fruit fly
+</td>
+<td style="text-align:left;">
+Drosophila melanogaster
+</td>
+<td style="text-align:left;">
+flies
+</td>
+<td style="text-align:left;">
+RecName: Full=Probable isocitrate dehydrogenase [NAD] subunit alpha,
+mitochondrial; AltName: Full=Isocitric dehydrogenase subunit alpha;
+AltName: Full=NAD(+)-specific ICDH subunit alpha; Flags: Precursor
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000004598
+</td>
+<td style="text-align:left;">
+ACO2
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000011051
+</td>
+<td style="text-align:right;">
+0.0253107
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Aconitate hydratase, mitochondrial
+</td>
+<td style="text-align:left;">
+Q99KI0.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1192.0
+</td>
+<td style="text-align:left;">
+house mouse
+</td>
+<td style="text-align:left;">
+Mus musculus
+</td>
+<td style="text-align:left;">
+rodents
+</td>
+<td style="text-align:left;">
+RecName: Full=Aconitate hydratase, mitochondrial; Short=Aconitase;
+AltName: Full=Citrate hydro-lyase; Flags: Precursor
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+mTP
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000004961
+</td>
+<td style="text-align:left;">
+samm50bsamm50
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000011909
+</td>
+<td style="text-align:right;">
+0.0376979
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Sorting and assembly machinery component 50
+</td>
+<td style="text-align:left;">
+Q5U3I0.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+226.0
+</td>
+<td style="text-align:left;">
+zebrafish
+</td>
+<td style="text-align:left;">
+Danio rerio
+</td>
+<td style="text-align:left;">
+bony fishes
+</td>
+<td style="text-align:left;">
+RecName: Full=Sorting and assembly machinery component 50 homolog B
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000005994
+</td>
+<td style="text-align:left;">
+Timm13
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000014361
+</td>
+<td style="text-align:right;">
+0.0070848
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Mitochondrial import inner membrane translocase subunit
+</td>
+<td style="text-align:left;">
+P62075.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+127.0
+</td>
+<td style="text-align:left;">
+house mouse
+</td>
+<td style="text-align:left;">
+Mus musculus;Rattus norvegicus
+</td>
+<td style="text-align:left;">
+rodents
+</td>
+<td style="text-align:left;">
+RecName: Full=Mitochondrial import inner membrane translocase subunit
+Tim13
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000006982
+</td>
+<td style="text-align:left;">
+Cox6a1_2
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000016791
+</td>
+<td style="text-align:right;">
+0.0373709
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Cytochrome c oxidase subunit
+</td>
+<td style="text-align:left;">
+P43024.2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+110.0
+</td>
+<td style="text-align:left;">
+house mouse
+</td>
+<td style="text-align:left;">
+Mus musculus
+</td>
+<td style="text-align:left;">
+rodents
+</td>
+<td style="text-align:left;">
+RecName: Full=Cytochrome c oxidase subunit 6A1, mitochondrial; AltName:
+Full=Cytochrome c oxidase polypeptide VIa-liver; Flags: Precursor
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+mTP
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000007200
+</td>
+<td style="text-align:left;">
+FeCh_2
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PIERAPT00000017295
+</td>
+<td style="text-align:right;">
+0.0013415
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Ferrochelatase
+</td>
+<td style="text-align:left;">
+Q9V9S8.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+277.0
+</td>
+<td style="text-align:left;">
+fruit fly
+</td>
+<td style="text-align:left;">
+Drosophila melanogaster
+</td>
+<td style="text-align:left;">
+flies
+</td>
+<td style="text-align:left;">
+RecName: Full=Ferrochelatase, mitochondrial; AltName: Full=Heme
+synthase; AltName: Full=Protoheme ferro-lyase; Flags: Precursor
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000007378
+</td>
+<td style="text-align:left;">
+Ghitm
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000017657
+</td>
+<td style="text-align:right;">
+0.0010594
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+growth hormone-inducible transmembrane protein isoform X3
+</td>
+<td style="text-align:left;">
+Q91VC9.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+224.0
+</td>
+<td style="text-align:left;">
+house mouse
+</td>
+<td style="text-align:left;">
+Mus musculus
+</td>
+<td style="text-align:left;">
+rodents
+</td>
+<td style="text-align:left;">
+RecName: Full=Growth hormone-inducible transmembrane protein; AltName:
+Full=Mitochondrial morphology and cristae structure 1; Short=MICS1;
+Flags: Precursor
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+mTP
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000008570
+</td>
+<td style="text-align:left;">
+AAEL011789AAEL002956
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000020499
+</td>
+<td style="text-align:right;">
+0.0182828
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Citrate synthase
+</td>
+<td style="text-align:left;">
+Q17GM7.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+798.0
+</td>
+<td style="text-align:left;">
+yellow fever mosquito
+</td>
+<td style="text-align:left;">
+Aedes aegypti
+</td>
+<td style="text-align:left;">
+mosquitos
+</td>
+<td style="text-align:left;">
+RecName: Full=Probable citrate synthase 1, mitochondrial; Flags:
+Precursor
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000008663
+</td>
+<td style="text-align:left;">
+Tim8
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PIERAPT00000020699
+</td>
+<td style="text-align:right;">
+0.0216602
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Mitochondrial import inner membrane translocase subunit
+</td>
+<td style="text-align:left;">
+Q9Y1A3.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+126.0
+</td>
+<td style="text-align:left;">
+fruit fly
+</td>
+<td style="text-align:left;">
+Drosophila melanogaster
+</td>
+<td style="text-align:left;">
+flies
+</td>
+<td style="text-align:left;">
+RecName: Full=Mitochondrial import inner membrane translocase subunit
+Tim8
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000010239
+</td>
+<td style="text-align:left;">
+Dlc90F
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000024546
+</td>
+<td style="text-align:right;">
+0.0041187
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Dynein light chain Tctex-type
+</td>
+<td style="text-align:left;">
+Q94524.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+184.0
+</td>
+<td style="text-align:left;">
+fruit fly
+</td>
+<td style="text-align:left;">
+Drosophila melanogaster
+</td>
+<td style="text-align:left;">
+flies
+</td>
+<td style="text-align:left;">
+RecName: Full=Dynein light chain Tctex-type; AltName: Full=TCTEX-1
+protein homolog
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000010379
+</td>
+<td style="text-align:left;">
+Adk2
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PIERAPT00000024857
+</td>
+<td style="text-align:right;">
+0.0193968
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Adenylate kinase
+</td>
+<td style="text-align:left;">
+Q1HQK0.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+371.0
+</td>
+<td style="text-align:left;">
+yellow fever mosquito
+</td>
+<td style="text-align:left;">
+Aedes aegypti
+</td>
+<td style="text-align:left;">
+mosquitos
+</td>
+<td style="text-align:left;">
+RecName: Full=Adenylate kinase; AltName: Full=ATP-AMP
+transphosphorylase; AltName: Full=ATP:AMP phosphotransferase; AltName:
+Full=Adenylate kinase cytosolic and mitochondrial; AltName:
+Full=Adenylate monophosphate kinase
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000010398
+</td>
+<td style="text-align:left;">
+Phb2
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PIERAPT00000024907
+</td>
+<td style="text-align:right;">
+0.0470449
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Prohibitin (Fragment)
+</td>
+<td style="text-align:left;">
+Q99623.2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+197.0
+</td>
+<td style="text-align:left;">
+human
+</td>
+<td style="text-align:left;">
+Homo sapiens;Mus musculus
+</td>
+<td style="text-align:left;">
+primates;rodents
+</td>
+<td style="text-align:left;">
+RecName: Full=Prohibitin-2; AltName: Full=B-cell receptor-associated
+protein BAP37; AltName: Full=D-prohibitin; AltName: Full=Repressor of
+estrogen receptor activity
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000011184
+</td>
+<td style="text-align:left;">
+POLDIP2
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PIERAPT00000026801
+</td>
+<td style="text-align:right;">
+0.0017578
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Polymerase delta-interacting protein 2
+</td>
+<td style="text-align:left;">
+Q9Y2S7.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+355.0
+</td>
+<td style="text-align:left;">
+human
+</td>
+<td style="text-align:left;">
+Homo sapiens
+</td>
+<td style="text-align:left;">
+primates
+</td>
+<td style="text-align:left;">
+RecName: Full=Polymerase delta-interacting protein 2; AltName: Full=38
+kDa DNA polymerase delta interaction protein; Short=p38
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000012330
+</td>
+<td style="text-align:left;">
+porin_2
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000029330
+</td>
+<td style="text-align:right;">
+0.0070848
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Voltage-dependent anion-selective channel
+</td>
+<td style="text-align:left;">
+Q94920.3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+386.0
+</td>
+<td style="text-align:left;">
+fruit fly
+</td>
+<td style="text-align:left;">
+Drosophila melanogaster
+</td>
+<td style="text-align:left;">
+flies
+</td>
+<td style="text-align:left;">
+RecName: Full=Voltage-dependent anion-selective channel; AltName:
+Full=DmVDAC; AltName: Full=Porin
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000012921
+</td>
+<td style="text-align:left;">
+hibch
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+PIERAPT00000030696
+</td>
+<td style="text-align:right;">
+0.0255580
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+3-hydroxyisobutyryl-CoA hydrolase, mitochondrial
+</td>
+<td style="text-align:left;">
+Q58EB4.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+339.0
+</td>
+<td style="text-align:left;">
+zebrafish
+</td>
+<td style="text-align:left;">
+Danio rerio
+</td>
+<td style="text-align:left;">
+bony fishes
+</td>
+<td style="text-align:left;">
+RecName: Full=3-hydroxyisobutyryl-CoA hydrolase, mitochondrial; AltName:
+Full=3-hydroxyisobutyryl-coenzyme A hydrolase; Short=HIB-CoA hydrolase;
+Short=HIBYL-CoA-H; Flags: Precursor
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+mTP
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000013722
+</td>
+<td style="text-align:left;">
+l(1)G0156_3
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000032565
+</td>
+<td style="text-align:right;">
+0.0205982
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Putative isocitrate dehydrogenase [NAD] subunit alpha, mitochondrial
+</td>
+<td style="text-align:left;">
+Q9VWH4.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+194.0
+</td>
+<td style="text-align:left;">
+fruit fly
+</td>
+<td style="text-align:left;">
+Drosophila melanogaster
+</td>
+<td style="text-align:left;">
+flies
+</td>
+<td style="text-align:left;">
+RecName: Full=Probable isocitrate dehydrogenase [NAD] subunit alpha,
+mitochondrial; AltName: Full=Isocitric dehydrogenase subunit alpha;
+AltName: Full=NAD(+)-specific ICDH subunit alpha; Flags: Precursor
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+mTP
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PIERAPG00000014181
+</td>
+<td style="text-align:left;">
+dlst_3
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+PIERAPT00000033662
+</td>
+<td style="text-align:right;">
+0.0136004
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:left;">
+apyrene
+</td>
+<td style="text-align:left;">
+Dihydrolipoyllysine-residue succinyltransferase component of
+2-oxoglutarate dehydrogenase complex, mitochondrial
+</td>
+<td style="text-align:left;">
+Q90512.1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+420.0
+</td>
+<td style="text-align:left;">
+torafugu
+</td>
+<td style="text-align:left;">
+Takifugu rubripes
+</td>
+<td style="text-align:left;">
+bony fishes
+</td>
+<td style="text-align:left;">
+RecName: Full=Dihydrolipoyllysine-residue succinyltransferase component
+of 2-oxoglutarate dehydrogenase complex, mitochondrial; AltName:
+Full=2-oxoglutarate dehydrogenase complex component E2; Short=OGDC-E2;
+AltName: Full=Dihydrolipoamide succinyltransferase component of
+2-oxoglutarate dehydrogenase complex; AltName: Full=E2K; Flags:
+Precursor
+</td>
+<td style="text-align:left;">
+OTHER
+</td>
+<td style="text-align:left;">
+mTP
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ```{r} -->
+<!-- kable(mitoGOCCgenes) |> kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 9) -->
+<!-- table(mitoGOBPgenes$GeneID) -->
+<!-- ``` -->
+<!-- So if we limit to the 12 genes for examining annotations, we get: -->
+<!-- ```{r} -->
+<!-- mitoBPAnno <- allAnno[ allAnno$GeneID %in% unique(mitoGOBPgenes$GeneID), ] -->
+<!-- kable(mitoBPAnno) |> kable_styling(bootstrap_options = c("striped", "hover", "condensed"), font_size = 9) -->
+<!-- ``` -->
+</div>
+</div>
+<div id="write-go-gene-tables" class="section level2">
+<h2>Write GO gene tables</h2>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> apyMitoAnno, <span class="at">file =</span> <span class="st">&quot;../Results/apyMitoGOgenesAnnotated.csv&quot;</span>,</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>          <span class="at">row.names =</span> F)</span></code></pre></div>
+</div>
+</div>
 <div id="session-info" class="section level1">
 <h1>Session Info</h1>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 <pre><code>## R version 4.5.1 (2025-06-13)
 ## Platform: aarch64-apple-darwin20
-## Running under: macOS Sequoia 15.6.1
+## Running under: macOS Sequoia 15.7.3
 ## 
 ## Matrix products: default
 ## BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib 
@@ -1720,30 +4518,35 @@ easier to include as supplement in paper, I believe.</p>
 ## [8] base     
 ## 
 ## other attached packages:
-##  [1] GO.db_3.21.0         GSEABase_1.70.1      annotate_1.86.1     
-##  [4] XML_3.99-0.19        GOstats_2.74.0       graph_1.86.0        
-##  [7] Category_2.74.0      Matrix_1.7-4         AnnotationDbi_1.70.0
-## [10] IRanges_2.42.0       S4Vectors_0.46.0     Biobase_2.68.0      
-## [13] BiocGenerics_0.54.0  generics_0.1.4      
+##  [1] GO.db_3.21.0         kableExtra_1.4.0     GSEABase_1.70.1     
+##  [4] annotate_1.86.1      XML_3.99-0.19        GOstats_2.74.0      
+##  [7] graph_1.86.0         Category_2.74.0      Matrix_1.7-4        
+## [10] AnnotationDbi_1.70.0 IRanges_2.42.0       S4Vectors_0.46.0    
+## [13] Biobase_2.68.0       BiocGenerics_0.54.0  generics_0.1.4      
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] sass_0.4.10             bitops_1.0-9            RSQLite_2.4.3          
-##  [4] lattice_0.22-7          digest_0.6.37           evaluate_1.0.5         
-##  [7] grid_4.5.1              genefilter_1.90.0       fastmap_1.2.0          
-## [10] blob_1.2.4              jsonlite_2.0.0          GenomeInfoDb_1.44.2    
-## [13] DBI_1.2.3               survival_3.8-3          httr_1.4.7             
-## [16] UCSC.utils_1.4.0        Rgraphviz_2.52.0        Biostrings_2.76.0      
-## [19] jquerylib_0.1.4         cli_3.6.5               rlang_1.1.6            
-## [22] crayon_1.5.3            XVector_0.48.0          AnnotationForge_1.50.0 
-## [25] splines_4.5.1           bit64_4.6.0-1           cachem_1.1.0           
-## [28] yaml_2.3.10             tools_4.5.1             memoise_2.0.1          
-## [31] GenomeInfoDbData_1.2.14 vctrs_0.6.5             R6_2.6.1               
-## [34] png_0.1-8               matrixStats_1.5.0       lifecycle_1.0.4        
-## [37] KEGGREST_1.48.1         RBGL_1.84.0             bit_4.6.0              
-## [40] pkgconfig_2.0.3         bslib_0.9.0             xfun_0.53              
-## [43] rstudioapi_0.17.1       MatrixGenerics_1.20.0   knitr_1.50             
-## [46] xtable_1.8-4            htmltools_0.5.8.1       rmarkdown_2.29         
-## [49] compiler_4.5.1          RCurl_1.98-1.17</code></pre>
+##  [1] KEGGREST_1.48.1         xfun_0.53               bslib_0.9.0            
+##  [4] lattice_0.22-7          vctrs_0.6.5             tools_4.5.1            
+##  [7] bitops_1.0-9            RSQLite_2.4.3           blob_1.2.4             
+## [10] pkgconfig_2.0.3         RColorBrewer_1.1-3      lifecycle_1.0.4        
+## [13] GenomeInfoDbData_1.2.14 AnnotationForge_1.50.0  stringr_1.5.2          
+## [16] compiler_4.5.1          farver_2.1.2            textshaping_1.0.3      
+## [19] Biostrings_2.76.0       GenomeInfoDb_1.44.2     htmltools_0.5.8.1      
+## [22] sass_0.4.10             RCurl_1.98-1.17         yaml_2.3.10            
+## [25] crayon_1.5.3            jquerylib_0.1.4         cachem_1.1.0           
+## [28] genefilter_1.90.0       digest_0.6.37           stringi_1.8.7          
+## [31] reshape2_1.4.4          splines_4.5.1           fastmap_1.2.0          
+## [34] grid_4.5.1              cli_3.6.5               magrittr_2.0.4         
+## [37] dichromat_2.0-0.1       RBGL_1.84.0             survival_3.8-3         
+## [40] UCSC.utils_1.4.0        scales_1.4.0            bit64_4.6.0-1          
+## [43] rmarkdown_2.29          XVector_0.48.0          httr_1.4.7             
+## [46] matrixStats_1.5.0       bit_4.6.0               png_0.1-8              
+## [49] memoise_2.0.1           evaluate_1.0.5          knitr_1.50             
+## [52] viridisLite_0.4.2       rlang_1.1.6             Rcpp_1.1.0             
+## [55] xtable_1.8-4            glue_1.8.0              DBI_1.2.3              
+## [58] xml2_1.4.0              Rgraphviz_2.52.0        svglite_2.2.1          
+## [61] rstudioapi_0.17.1       jsonlite_2.0.0          plyr_1.8.9             
+## [64] R6_2.6.1                systemfonts_1.3.1       MatrixGenerics_1.20.0</code></pre>
 </div>
 
 
