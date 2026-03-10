@@ -367,6 +367,10 @@ ggsave(plot = volcPlot, filename = "../Results/Volcano_PierisSperm.pdf",
 ggsave(plot = volcPlot, filename = "../Results/Volcano_PierisSperm.jpg", 
        width = 180, height = 90, units = "mm", scale = 1)
 
+ggsave(plot = volcPlot, filename = "../Results/Volcano_PierisSperm_wide.jpg", 
+       width = 180, height = 70, units = "mm", scale = 1,
+       dpi = 300)
+
 
 
 
